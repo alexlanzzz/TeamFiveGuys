@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden; 
+}
+
+.fishing-scene {
+    position: relative; 
+    height: 100vh; 
+    width: 100vw; 
+}
+
+.fisherman {
+    position: absolute; 
+    width: 70vw; 
+    height: auto; 
+    right: 0;
+    bottom: 0; 
+}
+
+
+.cloud {
+    position: absolute;
+    width: 200px; 
+    height: auto;
+    opacity: 0.9;
+}
+
+
+.cloud1 {
+    top: 20px;
+    left: 20px;
+    z-index: 1; 
+}
+
+
+.cloud2 {
+    top: 5px;
+    left: 150px;
+    z-index: 2; 
+}
