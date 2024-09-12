@@ -6,29 +6,28 @@
     <title>Fishing Scene</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/general_layout.css">
+    <link rel="stylesheet" href="css/fish_page_layout.css">
 </head>
 <body>
     <div class="fishing-scene">
         <img src="images/fisher.png" alt="Fisherman" class="fisherman" usemap="#fishing-map">
         <map name="fishing-map">
-            <area shape="rect" coords="364,46,606,426" href="fish_page.html" alt="Fish Rod" title="Click for find fish location">
-            <area shape="rect" coords="849,9,1024,253" href="fish_page.html" alt="Fish Rod" title="Click for fish information!">
+            <area shape="rect" coords="364,46,606,426" href="fish_page.html" alt="Fish Rod" title="Click for fish information">
+            <area shape="rect" coords="849,9,1024,253" href="#" title="Click for fishing Spot!" id="Spot_image">
             <area shape="rect" coords="24,432,1001,527" href="tide_page.html" alt="Tide" title="Click for tide information!">
         </map>
 
         <img src="images/cloud 1.png" alt="cloud1" class="cloud cloud1">
         <img src="images/cloud 2.png" alt="cloud2" class="cloud cloud2">
     </div>
-    <script>
-        document.querySelector('.fisherman').addEventListener("click", function(event) {
-        var clientX = event.clientX;
-        var clientY = event.clientY;
-        var offsetX = event.offsetX;
-        var offsetY = event.offsetY;
+    <div id="Spot_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Fishing spot Information</h2>
+            <p>This is some information about the Fishing Spot.</p>
+        </div>
+    </div>
 
-        console.log("ClientX: " + clientX + ", ClientY: " + clientY);
-        console.log("OffsetX: " + offsetX + ", OffsetY: " + offsetY); 
-        });
-    </script>
+    <script src="js/index.js"></script>
 </body>
 </html>

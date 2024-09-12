@@ -6,16 +6,28 @@
     <title>Fishing Spot</title>
     <link rel="stylesheet" href="css/fish_page_layout.css">
     <link rel="stylesheet" href="css/general_layout.css">
+    <link rel="stylesheet" href="css/fish_page_layout.css">
 </head>
 <body class="fish_page_container">
     <div id="tide_page">
-        <img src="images/cloud 1.png" alt="Tide Page">
+        <a href="tide_page.html"><img src="images/cloud 1.png" alt="Tide Page"></a>
     </div>
     <div id="main_page">
-        <img src="images/fisher.png" alt="Home Page">
+        <a href="index.html"><img src="images/fisher.png" alt="Home Page"></a>
     </div>
     <main id="main_content">
-        <img src="images/fish 1.png" alt="Fish">
+        <img src="images/fish 1.png" alt="Fish" id="fish_image">
     </main>
+
+    <!-- Modal Structure -->
+    <div id="fish_modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Fish Information</h2>
+            <p>This is some information about the fish.</p>
+        </div>
+    </div>
+
+    <script src="js/fish_information.js"></script>
 </body>
 </html>
