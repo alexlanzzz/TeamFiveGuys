@@ -11,22 +11,23 @@
     <div class="fishing-scene">
         <img src="images/fisher.png" alt="Fisherman" class="fisherman" usemap="#fishing-map">
         <map name="fishing-map">
-            <area shape="rect" coords="535,12,607,158" href="fish_page.html" alt="Fish Rod">
-            <area shape="rect" coords="200,20,353,270" href="fish_page.html" alt="Fish Rod">
+            <area shape="rect" coords="364,46,606,426" href="fish_page.html" alt="Fish Rod" title="Click for find fish location">
+            <area shape="rect" coords="849,9,1024,253" href="fish_page.html" alt="Fish Rod" title="Click for fish information!">
+            <area shape="rect" coords="24,432,1001,527" href="tide_page.html" alt="Tide" title="Click for tide information!">
         </map>
 
         <img src="images/cloud 1.png" alt="cloud1" class="cloud cloud1">
         <img src="images/cloud 2.png" alt="cloud2" class="cloud cloud2">
     </div>
     <script>
-        document.querySelector('.fisherman').addEventListener("mousemove", function(event) {
+        document.querySelector('.fisherman').addEventListener("click", function(event) {
         var clientX = event.clientX;
         var clientY = event.clientY;
         var offsetX = event.offsetX;
         var offsetY = event.offsetY;
 
-        console.log("ClientX: " + clientX + ", ClientY: " + clientY);  // 相对于视窗
-        console.log("OffsetX: " + offsetX + ", OffsetY: " + offsetY);  // 相对于元素
+        console.log("ClientX: " + clientX + ", ClientY: " + clientY);
+        console.log("OffsetX: " + offsetX + ", OffsetY: " + offsetY); 
         });
     </script>
 </body>
