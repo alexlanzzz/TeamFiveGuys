@@ -1,11 +1,10 @@
-
 .fishing-scene {
     position: relative;
     height: 100vh;
     width: 100vw;
+    overflow: hidden; /* 防止元素溢出 */
 }
 
-/* 海洋图片 */
 .ocean-image {
     position: absolute;
     width: 100%;
@@ -15,10 +14,11 @@
     z-index: 0;
 }
 
+
 /* 椅子图片 */
 .chair-image {
     position: absolute;
-    width: 1000px;
+    width: 40%;
     height: auto;
     right: 0%;
     bottom: 25%;
@@ -28,10 +28,10 @@
 /* 渔夫视频 */
 .fisherman {
     position: absolute;
-    width: 1200px;
+    width: 50%;
     height: auto;
     right: 0%;
-    bottom: 32%;
+    bottom: 30%;
     transition: transform 0.3s ease-in-out;
     z-index: 2;
 }
@@ -39,7 +39,7 @@
 /* 车辆图片 */
 .car-image {
     position: absolute;
-    width: 150px;
+    width: 7%;
     height: auto;
     right: 0%;
     bottom: 38%;
@@ -49,7 +49,7 @@
 /* 云朵 */
 .cloud {
     position: absolute;
-    width: 250px;
+    width: 15%;
     height: auto;
     opacity: 0.9;
 }
@@ -59,14 +59,14 @@
 }
 
 .cloud1 {
-    top: 20px;
-    left: 20px;
+    top: 9%;
+    left: 5%;
     z-index: 3;
 }
 
 .cloud2 {
-    top: 5px;
-    left: 150px;
+    top: 5%;
+    left: 14%;
     z-index: 4;
 }
 
