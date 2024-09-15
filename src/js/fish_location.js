@@ -191,7 +191,7 @@ $(document).ready(function() {
         $('#locations-container').html(htmlContent || '<p>No fish found for this location.</p>');
     }
 
-    // Step 4: Handle dropdown change event
+    // Handle dropdown change event
     $('#location-filter').on('change', function() {
         const selectedLocation = $(this).val();
         if (selectedLocation) {
