@@ -1,0 +1,45 @@
+.tide_page_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+#ocean-image {
+    width: 800px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    cursor: pointer;
+}
+#tide-info {
+    position: absolute;
+    right: 15% ;  
+    top: 50%; 
+    transform: translateY(-50%); 
+    padding: 10px;
+    width: 300px;
+    
+    
+    
+}
+#main_page {
+    grid-column: 4 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    position: relative;
+}
+
+#main_page img {
+    width: 50%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
