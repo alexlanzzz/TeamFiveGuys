@@ -55,10 +55,13 @@
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
+    transition: transform 0.3s ease; /* Smooth transition for the transform */
+    transform-origin: center; /* Keep the scaling centered */
+    will-change: transform; /* Hint the browser about the upcoming changes */
 }
 
 #main_content img:hover {
-    transform: scale(1.1);
+    transform: translateX(-50%) scale(1.1); /* Scale the image to 110% of its original size */
 }
 
 /* Modal styles */
@@ -92,4 +95,26 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+/* Example CSS content */
+.location {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.location h2 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.location ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.location li {
+    margin: 5px 0;
 }
