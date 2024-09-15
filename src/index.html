@@ -2,29 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fishing Scene</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/general_layout.css">
-    <link rel="stylesheet" href="css/fish_page_layout.css">
 </head>
 <body>
     <div class="fishing-scene">
-        <img src="images/fisher.png" alt="Fisherman" class="fisherman" usemap="#fishing-map">
-        <map name="fishing-map">
-            <area shape="rect" coords="364,46,606,426" href="fish_page.html" alt="Fish Rod" title="Click for fish information">
-            <area shape="rect" coords="849,9,1024,253" href="#" title="Click for fishing Spot!" id="Spot_image">
-            <area shape="rect" coords="24,432,1001,527" href="tide_page.html" alt="Tide" title="Click for tide information!">
-        </map>
-
+        <a href="tide_page.html">
+            <img src="images/Ocean.png" alt="Ocean" class="ocean-image">
+        </a>
+        <img src="images/chair.png" alt="Chair" class="chair-image">
+        <video class="fisherman" muted playsinline loop preload="auto">
+            <source src="images/fisherman.webm" type="video/webm">
+            <source src="images/fisherman.mp4" type="video/mp4">
+        </video>
+        <a href="fish_page.html">
+            <img src="images/car.png" alt="Car" class="car-image">
+        </a>
+    </div>
+    
+    <div class="cloud-img">
         <img src="images/cloud 1.png" alt="cloud1" class="cloud cloud1">
         <img src="images/cloud 2.png" alt="cloud2" class="cloud cloud2">
     </div>
+
     <div id="Spot_modal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Fishing spot Information</h2>
-            <p>This is some information about the Fishing Spot.</p>
+            <h2>Fishing Spot Information</h2>
+            <p>This is some information about the fishing spot.</p>
         </div>
     </div>
 
