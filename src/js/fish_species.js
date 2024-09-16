@@ -1,4 +1,16 @@
-// Step 1: Fetch the class names
+// Function to ensure the URL starts with "https://"
+function ensureHttpsUrl(url) {
+    if (url.startsWith("http://")) {
+        // Replace "http://" with "https://"
+        return url.replace("http://", "https://");
+    } else if (!url.startsWith("http://") && !url.startsWith("https://")) {
+        // If the URL does not start with either, prepend "https://"
+        return "https://" + url;
+    }
+    return url;  // If it already starts with "https://", return as is
+}
+
+// Fetch the class names
 function fetchClassNames() {
     const classNamesUrl = 'https://apps.des.qld.gov.au/species/?op=getclassnames&kingdom=animals';
 
@@ -24,16 +36,19 @@ function fetchClassNames() {
     });
 }
 
-// Step 2: Fetch the family names for each class
+// Fetch the family names for each class
 function fetchFamilyNames(familyNamesUrl) {
+    // Ensure "https://" is added only if it's not already in the URL
+    familyNamesUrl = ensureHttpsUrl(familyNamesUrl);
+    console.log('Family Names URL:', familyNamesUrl);
+
     $.ajax({
         url: familyNamesUrl,
         dataType: 'json',
         success: function(response) {
             console.log('Family Names:', response);  // Log the response to inspect its structure
 
-            // Access the array within the response (adjust this depending on the structure)
-            const families = response.Family || response.FamilyNames || response;  // Adapt to actual response format
+            const families = response.Family || response.FamilyNames || response;
 
             if (Array.isArray(families)) {
                 families.forEach(family => {
@@ -49,15 +64,16 @@ function fetchFamilyNames(familyNamesUrl) {
     });
 }
 
-// Step 3: Fetch species information for each family
+// Fetch species information for each family
 function fetchSpeciesInformation(speciesUrl) {
+    speciesUrl = ensureHttpsUrl(speciesUrl);
+    console.log('Species URL:', speciesUrl);
+    
     $.ajax({
         url: speciesUrl,
         dataType: 'json',
         success: function(response) {
             console.log('Species Information:', response);
-
-            // Display or process species data as needed
             displaySpeciesInfo(response);
         },
         error: function(error) {
@@ -101,17 +117,18 @@ function displaySpeciesInfo(speciesData) {
 
 // Fetch additional species profile information and display it in a modal
 function fetchSpeciesProfile(profileUrl) {
+    profileUrl = ensureHttpsUrl(profileUrl);
+    console.log('Species Profile URL:', profileUrl);
+
     $.ajax({
         url: profileUrl,
         dataType: 'json',
         success: function(profileData) {
             console.log('Profile Data:', profileData);
 
-            // Check if profileData contains valid Species object
             if (profileData && profileData.Species && Object.keys(profileData.Species).length > 0) {
                 const speciesDetails = profileData.Species;
 
-                // Safeguard against missing or undefined values
                 const acceptedCommonName = speciesDetails.AcceptedCommonName || 'Not available';
                 const classCommonName = speciesDetails.ClassCommonName || 'Not available';
                 const familyCommonName = speciesDetails.FamilyCommonName || 'Not available';
@@ -119,7 +136,6 @@ function fetchSpeciesProfile(profileUrl) {
                 const scientificName = speciesDetails.ScientificName || 'Not available';
                 const speciesEnvironment = speciesDetails.SpeciesEnvironment || 'Not available';
 
-                // Populate the modal content with profile details
                 let modalContent = `<h3>${acceptedCommonName}</h3>
                                     <p><strong>Class Common Name:</strong> ${classCommonName}</p>
                                     <p><strong>Family Common Name:</strong> ${familyCommonName}</p>
@@ -129,11 +145,9 @@ function fetchSpeciesProfile(profileUrl) {
 
                 $('#modal-body').html(modalContent);
 
-                // Show the modal
                 const modal = document.getElementById("speciesProfileModal");
                 modal.style.display = "block";
             } else {
-                // Handle the case when no species data is found
                 console.error("No species data found for this profile.");
                 $('#modal-body').html('<p>No species data found.</p>');
                 const modal = document.getElementById("speciesProfileModal");
