@@ -15,35 +15,15 @@
     z-index: 0;
 }
 
-/* 椅子图片 */
-.chair-image {
-    position: absolute;
-    width: 1000px;
-    height: auto;
-    right: 0%;
-    bottom: 25%;
-    z-index: 1;
-}
-
 /* 渔夫视频 */
 .fisherman {
     position: absolute;
-    width: 1200px;
+    width: 60vw;
     height: auto;
     right: 0%;
-    bottom: 32%;
+    bottom: 8%;
     transition: transform 0.3s ease-in-out;
     z-index: 2;
-}
-
-/* 车辆图片 */
-.car-image {
-    position: absolute;
-    width: 150px;
-    height: auto;
-    right: 0%;
-    bottom: 38%;
-    z-index: 5;
 }
 
 /* 云朵 */
