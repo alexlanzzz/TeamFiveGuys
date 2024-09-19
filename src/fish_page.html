@@ -1,45 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Fishing Spot</title>
-        <link rel="stylesheet" href="css/general_layout.css">
-        <link rel="stylesheet" href="css/fish_page_layout.css">
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    </head>
-    <body class="fish_page_container">
-        <div id="tide_page">
-            <a href="tide_page.html"><img src="images/cloud 1.png" alt="Tide Page"></a>
-        </div>
-        <div id="main_page">
-            <a href="index.html"><img src="images/fisher.png" alt="Home Page"></a>
-        </div>
-        <main id="main_content">
-            <img src="images/fish 1.png" alt="Fish" id="fish_image">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishing Spot</title>
+    <link rel="stylesheet" href="css/general_layout.css">
+    <link rel="stylesheet" href="css/fish_page_layout.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="fish_page_container">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tide_page.html">Tide Information</a></li>
+            <li><a href="fish_page.html">Fish Information</a></li>
+            <li><a href="about_us.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="tide_page">
+        <a href="tide_page.html"><img src="images/cloud 1.png" alt="Tide Page"></a>
+    </div>
+    <div id="main_page">
+        <a href="index.html"><img src="images/fisher.png" alt="Home Page"></a>
+    </div>
+    <main id="main_content">
+        <img src="images/fish 1.png" alt="Fish" id="fish_image">
 
-            <a href="fish_species_demo.html" target="_blank">
-                <button id="fish_species_button">Fish Species Demo Page</button>
-            </a>
-        
-            <!-- Location Filter Structure -->
-            <label for="location-filter">Select Location:</label>
-            <select id="location-filter"></select>
-            <div id="locations-container"></div>
-        </main>
-
-        <!-- Modal Structure -->
-        <div id="fish_modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Fish Information</h2>
-                    <h3 id="fish_name">Blue Tang</h3>
-                    <p id="fish_class">Fish Class: Ray-finned fishes</p>
-                    <p id="fish_location">Fish Family: Surgeonfishes</p>
-            </div>
-        </div>
-
-        <script src="js/fish_information.js"></script>
-        <script src="js/fish_location.js"></script>
-    </body>
+        <a href="fish_species_demo.html" target="_blank">
+            <button id="fish_species_button">Fish Species Demo Page</button>
+        </a>
+    
+        <!-- Location Filter Structure -->
+        <label for="location-filter">Select Location:</label>
+    </main>
+</body>
 </html>
