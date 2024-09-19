@@ -44,7 +44,6 @@
     grid-column: 1 / -1;
     grid-row: 2 / -1;
     padding: 10px;
-    background: url("../images/Ocean.png");
     background-size: cover;
 }
 

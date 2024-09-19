@@ -17,35 +17,31 @@
                 <li><a href="about_us.html">Contact</a></li>
             </ul>
         </nav>
-        <div id="tide_page">
-            <a href="tide_page.html"><img src="images/cloud 1.png" alt="Tide Page"></a>
-        </div>
         <div id="main_page">
             <a href="index.html"><img src="images/fisher.png" alt="Home Page"></a>
         </div>
         <main id="main_content">
             <img src="images/fish 1.png" alt="Fish" id="fish_image">
-
-            <a href="fish_species_demo.html" target="_blank">
-                <button id="fish_species_button">Fish Species Demo Page</button>
-            </a>
         
             <!-- Location Filter Structure -->
             <label for="location-filter">Select Location:</label>
             <select id="location-filter"></select>
-            <div id="locations-container"></div>
+            <div id="locations-container"></div> <!-- Speices -->
+            <div id="wiki-container"></div>  <!-- wikipedia content -->
         </main>
 
-        <!-- Modal Structure -->
+        <!-- Modal Structure 
         <div id="fish_modal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <h2>Fish Information</h2>
-                    <h3 id="fish_name">Blue Tang</h3>
-                    <p id="fish_class">Fish Class: Ray-finned fishes</p>
-                    <p id="fish_location">Fish Family: Surgeonfishes</p>
+                <h2 id="modal-title">Fish Information</h2>
+                <h3 id="fish_name"></h3>
+                <p id="fish_class"></p>
+                <p id="fish_location"></p>  
+                <p id="wiki_summary"></p>
+                <a id="wiki_link" href="#" target="_blank">Read more on Wikipedia</a>
             </div>
-        </div>
+        </div> -->
 
         <script src="js/fish_information.js"></script>
         <script src="js/fish_location.js"></script>

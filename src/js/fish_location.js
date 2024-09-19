@@ -35,7 +35,6 @@ $(document).ready(function() {
             data: data,
             dataType: 'json',
             success: function(response) {
-                console.log(response);
                 if (response.result.records) {
                     displayFishData(response.result.records);
                 } else {
@@ -55,14 +54,49 @@ $(document).ready(function() {
             const location = record['Location stocked'];
 
             if (!stockedSpecies.has(species)) {
-                htmlContent += `<p>${species} - Stocked in ${location}</p>`;
+                htmlContent += `<p class="fish-item" data-species="${species}">${species} - Stocked in ${location}</p>`;
                 stockedSpecies.add(species); // Add species to the Set to prevent duplicates
             }
         });
         $('#locations-container').html(htmlContent || '<p>No fish found for this location.</p>');
+
+        // Attach click event to each fish item for Wikipedia info
+        $('.fish-item').on('click', function() {
+            const species = $(this).data('species');
+            fetchWikipediaInfo(species);  // Fetch information from Wikipedia when fish is clicked
+        });
     }
 
-    // Step 4: Handle dropdown change event
+    // Fetch information from Wikipedia API
+    function fetchWikipediaInfo(fishSpecies) {
+        const wikiApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(fishSpecies)}`;
+
+        $.ajax({
+            url: wikiApiUrl,
+            dataType: 'json',
+            success: function(response) {
+                if (response.extract) {
+                    displayWikipediaInfo(response);
+                } else {
+                    $('#wiki-container').html(`<p>No Wikipedia information found for ${fishSpecies}.</p>`);
+                }
+            },
+            error: function() {
+                $('#wiki-container').html('<p>Failed to fetch Wikipedia information. Please try again later.</p>');
+            }
+        });
+    }
+
+    // Display the fetched Wikipedia info directly on the page (no links)
+    function displayWikipediaInfo(wikiData) {
+        let htmlContent = `
+            <h2>${wikiData.title}</h2>
+            <p>${wikiData.extract}</p>
+        `;
+        $('#wiki-container').html(htmlContent); // Replace content with Wikipedia info
+    }
+
+    // Handle dropdown change event
     $('#location-filter').on('change', function() {
         const selectedLocation = $(this).val();
         if (selectedLocation) {
