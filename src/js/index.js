@@ -1,11 +1,27 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 获取渔夫视频元素
     const fishermanVideo = document.querySelector('.fisherman');
+    const body = document.querySelector('body');
+    
     console.log('fishermanVideo:', fishermanVideo);
     if (!fishermanVideo) {
-        console.error('无法获取 fisherman 视频元素');
+        console.error('Unable to get fisherman video element');
         return;
     }
+
+    // Create the fishing text element
+    const fishingText = document.createElement('div');
+    fishingText.classList.add('fishing-text');
+    fishingText.innerText = 'CLICK TO GO FISHING';
+    body.appendChild(fishingText);
+
+    // Track the mouse movement across the entire page
+    body.addEventListener("mousemove", function(event) {
+        // Move the text along with the cursor
+        fishingText.style.left = (event.pageX + 10) + 'px';
+        fishingText.style.top = (event.pageY + 10) + 'px';
+        fishingText.style.display = 'block'; // Ensure the text is always visible
+    });
 
     // 获取模态框和关闭按钮
     var modal = document.getElementById("Spot_modal");
@@ -15,17 +31,17 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Close button element:', span);
 
     if (!modal) {
-        console.error('无法获取模态框元素');
+        console.error('Unable to get modal element');
     }
 
     if (!span) {
-        console.error('无法获取关闭按钮元素');
+        console.error('Unable to get close button element');
     }
 
     // 当鼠标悬停在渔夫视频上时，播放视频
     fishermanVideo.addEventListener("mouseenter", function() {
         console.log("Mouse entered fisherman video");
-        fishermanVideo.currentTime = 0; // 重置到视频开始位置
+        fishermanVideo.currentTime = 0; // Reset video to start position
         if (fishermanVideo.readyState >= 2) {
             fishermanVideo.play();
         } else {
@@ -39,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
     fishermanVideo.addEventListener("mouseleave", function() {
         console.log("Mouse left fisherman video");
         fishermanVideo.pause();
-        fishermanVideo.currentTime = 0; // 重置到视频开始位置
+        fishermanVideo.currentTime = 0; // Reset video to start position
     });
 
     // 当用户点击渔夫视频时，打开模态框

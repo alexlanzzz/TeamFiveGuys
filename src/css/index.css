@@ -5,50 +5,26 @@
     width: 100vw;
 }
 
-/* 海洋图片 */
 .ocean-image {
     position: absolute;
-    width: 100%;
+    width: 80%;
     height: auto;
     bottom: 0;
-    left: 0;
+    left: 15%;
     z-index: 0;
 }
 
-/* 渔夫视频 */
 .fisherman {
     position: absolute;
-    width: 60vw;
+    width: 45vw; /* Smaller size */
     height: auto;
-    right: 0%;
-    bottom: 8%;
+    bottom: 4%; /* Align closer to the bottom of the ocean image */
+    left: 73%; /* Position the fisherman at the center over the ocean */
+    transform: translateX(-50%); /* Center the fisherman horizontally */
+    z-index: 2; /* Ensure it is above the ocean image */
     transition: transform 0.3s ease-in-out;
-    z-index: 2;
 }
 
-/* 云朵 */
-.cloud {
-    position: absolute;
-    width: 250px;
-    height: auto;
-    opacity: 0.9;
-}
-
-.cloud:hover {
-    transform: scale(1.1);
-}
-
-.cloud1 {
-    top: 20px;
-    left: 20px;
-    z-index: 3;
-}
-
-.cloud2 {
-    top: 5px;
-    left: 150px;
-    z-index: 4;
-}
 
 /* 模态框样式 */
 .modal {
@@ -92,3 +68,34 @@
     text-decoration: none;
     cursor: pointer;
 }
+
+
+/* Updated class for the "CLICK TO GO FISHING" text */
+.fishing-text {
+    position: absolute;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 700;
+    font-size: 4rem; /* Large font size */
+    color: black; /* Keep the color black */
+    padding: 10px;
+    border-radius: 0px;
+    display: none; /* Initially hidden */
+    z-index: 3;
+
+    /* Add jumping animation */
+    animation: jump 1s infinite ease-in-out;
+}
+
+/* Define the jumping effect (moving slightly up and down) */
+@keyframes jump {
+    0% {
+        transform: translateY(0); /* Start at original position */
+    }
+    50% {
+        transform: translateY(-10px); /* Jump up */
+    }
+    100% {
+        transform: translateY(0); /* Back to original position */
+    }
+}
+
