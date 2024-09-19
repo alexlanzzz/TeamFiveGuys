@@ -1,120 +1,221 @@
+/* Reset some basic elements */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Container for Fish Page */
 .fish_page_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-
-#tide_page {
-    grid-column: 1 / 2;
-    grid-row: 1 / -1;
-    width: 100%;
+    /* Flex layout to arrange content vertically */
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: flex-start;
-    align-items: flex-start;
-}
-
-#tide_page img {
-    width: 30%;
-    height: auto;
-}
-
-#main_page {
-    grid-column: 4 / -1;
-    grid-row: 1 / -1;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    position: relative;
-}
-
-#main_page img {
-    width: 50%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-#main_content {
-    grid-column: 1 / -1;
-    grid-row: 2 / -1;
-    padding: 10px;
-    background: url("../images/Ocean.png");
-    background-size: cover;
-}
-
-#main_content img {
-    width: 20%;
-    height: auto;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: transform 0.3s ease; /* Smooth transition for the transform */
-    transform-origin: center; /* Keep the scaling centered */
-    will-change: transform; /* Hint the browser about the upcoming changes */
-}
-
-#main_content img:hover {
-    transform: translateX(-50%) scale(1.1); /* Scale the image to 110% of its original size */
-}
-
-/* Modal styles */
-.modal {
-    display: none; /* Hidden by default */
-    position: absolute; /* Position it absolutely */
-    z-index: 1; /* Sit on top */
-    width: 300px; /* Fixed width for portrait layout */
-    height: 400px; /* Fixed height for portrait layout */
-    background-color: #fefefe;
-    border: 1px solid #888;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    padding: 20px;
-}
-
-.modal-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Example CSS content */
-.location {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.location h2 {
     margin: 0;
-    font-size: 1.5em;
-}
-
-.location ul {
-    list-style-type: none;
     padding: 0;
+    width: 100%;
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    background-color: #f9f9f9; /* Optional: Set a background color */
 }
 
-.location li {
+/* Loader Styles */
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey border */
+    border-top: 8px solid #3498db; /* Blue border on top */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* Spin animation */
+    margin: 20px auto; /* Center the loader */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Main Content Area */
+#main_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Optional: Limit the maximum width */
+    box-sizing: border-box;
+}
+
+/* Location Filter Dropdown */
+#main_content label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#location-filter {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Container for Fish Images */
+#locations-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    justify-content: center; /* Center items horizontally */
+    width: 100%;
+}
+
+/* Individual Fish Item Container */
+.fish-item-container {
+    text-align: center; /* Center text and images */
+    width: 150px; /* Set a fixed width */
+    transition: transform 0.2s; /* Smooth transform on hover */
+    position: relative; /* For positioning the popup */
+    background-color: #fff; /* Optional: Set a background color for each item */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+}
+
+.fish-item-container:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Enhance shadow on hover */
+}
+
+/* Fish Image Styles */
+.fish-item {
+    width: 100%; /* Make image take full container width */
+    height: auto; /* Maintain aspect ratio */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    border: 2px solid #ccc; /* Light grey border */
+    border-radius: 8px; /* Rounded corners */
+    transition: border-color 0.2s; /* Smooth border color transition */
+}
+
+.fish-item:hover {
+    border-color: #66afe9; /* Change border color on hover */
+}
+
+/* Fish Name Text */
+.fish-item-container p {
+    margin-top: 10px; /* Space above the text */
+    font-weight: bold; /* Bold text */
+    font-size: 1rem; /* Set font size */
+    color: #333; /* Text color */
+}
+
+/* Popup Styles */
+.popup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    z-index: 1000;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.popup.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Popup Content Styles */
+.popup-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.popup-content p {
     margin: 5px 0;
+    color: #555;
+}
+
+.popup-content strong {
+    color: #333;
+}
+
+/* Popup Arrow */
+.popup::after {
+    content: '';
+    position: absolute;
+    top: -10px; /* Position above the popup */
+    left: 20px; /* Adjust as needed */
+    border-width: 10px;
+    border-style: solid;
+    border-color: transparent transparent #ccc transparent; /* Downward arrow */
+}
+
+.popup::before {
+    content: '';
+    position: absolute;
+    top: -8px; /* Slightly offset for layering */
+    left: 20px; /* Adjust as needed */
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent; /* Downward arrow */
+}
+
+/* Responsive Design */
+
+/* For small screens (max-width: 600px) */
+@media (max-width: 600px) {
+    .fish-item-container {
+        width: 120px; /* Slightly increase for better visibility on small screens */
+    }
+
+    .fish-item-container p {
+        font-size: 0.9rem; /* Reduce font size */
+    }
+
+    .popup {
+        max-width: 200px; /* Smaller popup on small screens */
+        font-size: 0.8rem;
+    }
+
+    .popup::after, .popup::before {
+        left: 15px; /* Adjust arrow position */
+    }
+}
+
+/* For medium screens (min-width: 601px and max-width: 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .fish-item-container {
+        width: 140px; /* Adjust container width */
+    }
+
+    .fish-item-container p {
+        font-size: 1rem; /* Maintain font size */
+    }
+
+    .popup {
+        max-width: 250px; /* Medium popup size */
+    }
+}
+
+/* For large screens (min-width: 1025px) */
+@media (min-width: 1025px) {
+    .fish-item-container {
+        width: 150px; /* Set container width */
+    }
+
+    .fish-item-container p {
+        font-size: 1.1rem; /* Increase font size */
+    }
+
+    .popup {
+        max-width: 300px; /* Larger popup size */
+    }
 }

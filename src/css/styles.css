@@ -1,0 +1,69 @@
+body {
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 700; /* Ensures bold version is used */
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+.menu-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: black;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+.side-menu {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Set to the same width as the menu */
+    width: 400px; /* Increased width to fit longer text */
+    height: 100%;
+    background-color: white;
+    padding-top: 70px; /* Add space at the top to center the list vertically */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Stack elements vertically */
+    justify-content: center; /* Center elements vertically */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+}
+
+.side-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto; /* Center the list horizontally */
+}
+
+.side-menu ul li {
+    font-size: 50px; /* Increased font size */
+    margin-bottom: 50px; /* Added more space between each location */
+    letter-spacing: 1px; /* Adjust letter spacing for the font */
+    cursor: pointer;
+    white-space: nowrap; /* Ensures the text stays on one line */
+}
+
+.side-menu ul li:hover {
+    text-decoration: underline;
+}
+
+.side-menu.open {
+    right: 0;
+}
+
+/* Test Amatic SC with a large heading */
+h1 {
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 700;
+    font-size: 80px; /* Larger font size for testing */
+    color: black;
+}
