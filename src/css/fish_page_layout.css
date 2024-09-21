@@ -1,23 +1,113 @@
-/* Reset some basic elements */
-body, html {
-    margin: 0;
-    padding: 0;
+.fish_page_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    height: 100%;
+    position: relative;
 }
 
-/* Container for Fish Page */
-.fish_page_container {
-    /* Flex layout to arrange content vertically */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    margin: 0;
-    padding: 0;
+.fish_page_header-left {
+    width: 5%;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.fish_page_header-right {
+    width: 3%;
+    padding-right: 5px;
+    padding-top: 5px;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+
+.location-name {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.location-filter-container {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    right: 5%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.location-filter-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.location-filter-container select {
     width: 100%;
-    min-height: 100vh; /* Ensure it covers the full viewport height */
-    background-color: #f9f9f9; /* Optional: Set a background color */
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Modal styles (for pop-up window) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 15% auto; /* Centered vertically and horizontally */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Limit the maximum width */
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#location-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#location-list li {
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+#location-list li:hover {
+    background-color: #ddd;
 }
 
 /* Loader Styles */
@@ -36,9 +126,17 @@ body, html {
     100% { transform: rotate(360deg); }
 }
 
+.fish_page_border {
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+}
+
 /* Main Content Area */
 #main_content {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
     padding: 20px;
@@ -66,20 +164,24 @@ body, html {
     display: flex;
     flex-wrap: wrap;
     gap: 20px; /* Space between items */
-    justify-content: center; /* Center items horizontally */
+    justify-content: center;
     width: 100%;
+    max-width: 1200px;
+    box-sizing: border-box;
 }
 
 /* Individual Fish Item Container */
 .fish-item-container {
-    text-align: center; /* Center text and images */
-    width: 150px; /* Set a fixed width */
-    transition: transform 0.2s; /* Smooth transform on hover */
-    position: relative; /* For positioning the popup */
-    background-color: #fff; /* Optional: Set a background color for each item */
+    text-align: center;
+    width: 200px; /* Set a fixed width for the container */
+    height: auto;
+    position: relative;
+    background-color: #fff;
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    box-sizing: border-box;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 .fish-item-container:hover {
@@ -91,10 +193,11 @@ body, html {
 .fish-item {
     width: 100%; /* Make image take full container width */
     height: auto; /* Maintain aspect ratio */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    border: 2px solid #ccc; /* Light grey border */
-    border-radius: 8px; /* Rounded corners */
-    transition: border-color 0.2s; /* Smooth border color transition */
+    max-width: 100%; /* Ensure image doesn’t overflow container */
+    object-fit: contain; /* Scale image to fit within the container without being distorted */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s;
 }
 
 .fish-item:hover {
@@ -103,10 +206,20 @@ body, html {
 
 /* Fish Name Text */
 .fish-item-container p {
-    margin-top: 10px; /* Space above the text */
-    font-weight: bold; /* Bold text */
-    font-size: 1rem; /* Set font size */
-    color: #333; /* Text color */
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+.fish-item-container img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s;
 }
 
 /* Popup Styles */

@@ -22,14 +22,43 @@ $(document).ready(function() {
         // Add more mappings here if needed
     };
 
-    // Function to populate the location dropdown menu
-    function populateLocationDropdown() {
-        let dropdownHTML = '<option value="">Select a Location</option>'; // Default option
-        Object.keys(locationDict).forEach(location => {
-            dropdownHTML += `<option value="${location}">${location}</option>`;
-        });
-        $('#location-filter').html(dropdownHTML);  // Assuming your select element has id="location-filter"
-    }
+    const locationModal = $('#location-modal');
+    const locationList = $('#location-list');
+    const closeModalBtn = $('.close-btn');
+
+    // Add this line to select the location display in the header
+    const locationNameDisplay = $('#location-name');
+
+    // Populate modal with location names
+    Object.keys(locationDict).forEach(location => {
+        locationList.append(`<li class="location-item">${location}</li>`);
+    });
+
+    // Show modal when location icon is clicked
+    $('#location-icon').click(function () {
+        locationModal.css('display', 'block'); // Show the modal
+    });
+
+    // Close modal when close button is clicked
+    closeModalBtn.click(function () {
+        locationModal.css('display', 'none'); // Hide the modal
+    });
+
+    // Close modal when clicking outside the modal content
+    $(window).click(function (event) {
+        if ($(event.target).is(locationModal)) {
+            locationModal.css('display', 'none'); // Hide the modal
+        }
+    });
+
+    // When a location is selected, update the location name in the header and close the modal
+    $(document).on('click', '.location-item', function () {
+        const selectedLocation = $(this).text();
+        locationNameDisplay.text(selectedLocation); // Update the location name in the header
+        locationModal.css('display', 'none'); // Close modal after selection
+
+        fetchData(selectedLocation);
+    });
 
     // Function to fetch fish data based on the selected location
     function fetchData(location) {
@@ -78,27 +107,22 @@ $(document).ready(function() {
                 const imageName = speciesImageMap[species] || 'fish1.png';
                 htmlContent += `
                     <div class="fish-item-container">
-                        <img 
-                            class="fish-item" 
-                            data-species="${species}" 
-                            src="images/fishes/${imageName}" 
-                            alt="${species}" 
-                            title="${species} - Stocked in ${location}"
-                        >
+                        <img src="images/fishes/${imageName}" alt="${species}" class="fish-item">
                         <p>${species}</p>
                     </div>
                 `;
-                stockedSpecies.add(species); // Add species to the Set to prevent duplicates
+                stockedSpecies.add(species);
             }
         });
 
-        $('#locations-container').html(htmlContent || '<p>No fish found for this location.</p>');
+        // Insert the fish items into the container
+        $('#locations-container').html(htmlContent);
 
-        // Attach click event to each fish image to fetch Wikipedia info
-        $('.fish-item').on('click', function(event) {
-            const species = $(this).data('species');
-            fetchWikipediaInfo(species, $(this));
-            event.stopPropagation(); // Prevent the event from bubbling up to the document
+        // Attach click event to each fish-item-container to show the Wikipedia popup
+        $('.fish-item-container').click(function() {
+            const species = $(this).find('p').text(); // Get the species name from the <p> element
+            const $imageElement = $(this).find('img'); // Get the clicked image element
+            fetchWikipediaInfo(species, $imageElement); // Fetch the Wikipedia info for this species
         });
     }
 
@@ -192,5 +216,5 @@ $(document).ready(function() {
     });
 
     // Initialize the dropdown menu on page load
-    populateLocationDropdown();
+   //populateLocationDropdown();
 });
