@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sliding Menu</title>
+    <title>Wavy Line Test</title>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    
 </head>
 <body>
+
+    <!-- Your existing content -->
     <div class="menu-icon" id="menuIcon">
         <div class="bar"></div>
         <div class="bar"></div>
@@ -17,18 +18,27 @@
 
     <nav class="side-menu" id="sideMenu">
         <ul>
-            <li>MT CROSBY WEIR</li>
-            <li>BREMER RIVER</li>
-            <li>NORTH PINE DAM</li>
-            <li>SOMERSET DAM</li>
-            <li>WIVENHOE DAM</li>
-            <li>CABOOLTURE RIVER WEIR</li>
-            <li>LOGAN RIVER</li>
-            <li>ALBERT RIVER</li>
+            <li>Home</li>
+            <li>Fishing Spots</li>
+            <li>Fish Species</li>
+            <li>Tide Information</li>
+            <li>Contact</li>
         </ul>
     </nav>
 
-    
+   <!-- Helm Container -->
+   <div class="helm-container">
+    <img src="images/helm.png" alt="Helm" class="helm">
+    <!-- Locations around the helm -->
+    <div class="location" data-angle="0">Mt Crosby Weir</div>
+    <div class="location" data-angle="45">Bremer River</div>
+    <div class="location" data-angle="90">North Pine Dam</div>
+    <div class="location" data-angle="135">Somerset Dam</div>
+    <div class="location" data-angle="180">Wivenhoe Dam</div>
+    <div class="location" data-angle="225">Caboolture River Weir</div>
+    <div class="location" data-angle="270">Logan River</div>
+    <div class="location" data-angle="315">Albert River</div>
+    </div>
     <script src="js/test.js"></script>
 </body>
 </html>

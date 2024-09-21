@@ -67,3 +67,45 @@ h1 {
     font-size: 80px; /* Larger font size for testing */
     color: black;
 }
+
+/* Helm container styling */
+.helm-container {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px; /* Adjusted for bigger size */
+    height: 700px; /* Adjusted for bigger size */
+    perspective: 1000px;
+    z-index: 10;
+}
+
+/* Helm image styling */
+.helm {
+    position: absolute; /* Allow manual control over its position */
+    top: 55%; /* Move it up or down as needed */
+    left: 0%; /* Center it horizontally */
+    transform: translate(-50%, -50%); /* Center the helm exactly at its container */
+    width: 130%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Location labels around the helm */
+.location {
+    position: absolute;
+    width: 150px;
+    text-align: center;
+    top: 80%;
+    left: 50%;
+    font-size: 40px; /* Larger font size */
+    transform-origin: center;
+    transform: rotate(0deg) translate(220px); /* Adjusted translate value */
+}
+
+/* Hover effects for location */
+.location:hover {
+    cursor: pointer;
+    color: #4eb6bc;
+    font-weight: bold;
+}
