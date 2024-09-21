@@ -71,36 +71,38 @@ h1 {
 /* Helm container styling */
 .helm-container {
     position: fixed;
-    bottom: -100px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 700px; /* Adjusted for bigger size */
-    height: 700px; /* Adjusted for bigger size */
-    perspective: 1000px;
+    width: 700px;
+    height: 700px;
+    background-color: transparent;
     z-index: 10;
+    overflow: hidden;
 }
 
 /* Helm image styling */
 .helm {
-    position: absolute; /* Allow manual control over its position */
-    top: 55%; /* Move it up or down as needed */
-    left: 0%; /* Center it horizontally */
-    transform: translate(-50%, -50%); /* Center the helm exactly at its container */
-    width: 130%;
-    height: auto;
-    transition: transform 0.3s ease-in-out;
+    position: absolute;
+    width: 90%; /* Ensure the helm image scales to fit the container width */
+    height: auto; /* Maintain the aspect ratio */
+    top: 100%; /* Center the helm vertically */
+    left: 50%; /* Center the helm horizontally */
+    transform: translate(-50%, -50%); /* Correct initial centering */
+    transition: transform 1s ease-in-out; /* Smooth rotation */
 }
 
 /* Location labels around the helm */
 .location {
     position: absolute;
-    width: 150px;
+    width: 95px;
+    line-height: 1.2;
     text-align: center;
-    top: 80%;
-    left: 50%;
-    font-size: 40px; /* Larger font size */
-    transform-origin: center;
-    transform: rotate(0deg) translate(220px); /* Adjusted translate value */
+    font-size: 32px;
+    top: 100%;
+    left: 45%;
+    white-space: normal;
+    transition: transform 1s ease-in-out;
 }
 
 /* Hover effects for location */
@@ -109,3 +111,4 @@ h1 {
     color: #4eb6bc;
     font-weight: bold;
 }
+
