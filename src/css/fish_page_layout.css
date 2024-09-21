@@ -145,7 +145,6 @@
     box-sizing: border-box;
 }
 
-/* Location Filter Dropdown */
 #main_content label {
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -162,42 +161,42 @@
 /* Container for Fish Images */
 #locations-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Space between items */
-    justify-content: center;
-    width: 100%;
-    max-width: 1200px;
+    flex-wrap: wrap; /* Wrap items if they don't fit in one row */
+    justify-content: space-between; /* Distribute space evenly */
+    width: 100%; /* Full width */
+    padding: 20px;
     box-sizing: border-box;
+    max-width: 1200px; /* Optional: Limit the maximum width of the content */
+    margin: 0 auto; /* Center the content */
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 /* Individual Fish Item Container */
 .fish-item-container {
+    width: 30%; /* Increase to 30% of the row width for bigger items */
+    margin-bottom: 20px; /* Space between rows */
     text-align: center;
-    width: 200px; /* Set a fixed width for the container */
-    height: auto;
-    position: relative;
     background-color: #fff;
-    padding: 10px;
+    padding: 20px; /* Increase padding for larger container */
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhance shadow */
+    transition: transform 0.2s ease-in-out;
     box-sizing: border-box;
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
 .fish-item-container:hover {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Enhance shadow on hover */
+    transform: scale(1.1); /* Increase the hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
 /* Fish Image Styles */
 .fish-item {
-    width: 100%; /* Make image take full container width */
-    height: auto; /* Maintain aspect ratio */
-    max-width: 100%; /* Ensure image doesn’t overflow container */
-    object-fit: contain; /* Scale image to fit within the container without being distorted */
+    width: 100%; /* Image fills the entire container */
+    height: auto;
+    object-fit: contain; /* Scale image to fit within container */
     border: 2px solid #ccc;
     border-radius: 8px;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s ease;
 }
 
 .fish-item:hover {
@@ -230,7 +229,7 @@
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    max-width: 300px;
+    max-width: 300px; /* Limit the width */
     z-index: 1000;
     font-size: 0.9rem;
     opacity: 0;
@@ -243,7 +242,11 @@
     transform: scale(1);
 }
 
-/* Popup Content Styles */
+/* Popup content styling */
+.popup-content {
+    padding: 10px;
+}
+
 .popup-content h3 {
     margin-top: 0;
     margin-bottom: 10px;
@@ -252,33 +255,20 @@
 }
 
 .popup-content p {
-    margin: 5px 0;
-    color: #555;
-}
-
-.popup-content strong {
+    margin: 10px 0;
     color: #333;
+    font-size: 1rem;
+    line-height: 1.6; /* Increase line height for better readability */
 }
 
-/* Popup Arrow */
-.popup::after {
-    content: '';
-    position: absolute;
-    top: -10px; /* Position above the popup */
-    left: 20px; /* Adjust as needed */
-    border-width: 10px;
-    border-style: solid;
-    border-color: transparent transparent #ccc transparent; /* Downward arrow */
+/* Links in popup content */
+.popup-content a {
+    color: #3498db;
+    text-decoration: none;
 }
 
-.popup::before {
-    content: '';
-    position: absolute;
-    top: -8px; /* Slightly offset for layering */
-    left: 20px; /* Adjust as needed */
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent #fff transparent; /* Downward arrow */
+.popup-content a:hover {
+    text-decoration: underline;
 }
 
 /* Responsive Design */
@@ -300,6 +290,11 @@
 
     .popup::after, .popup::before {
         left: 15px; /* Adjust arrow position */
+    }
+
+    .popup-content {
+        max-height: 150px; /* Smaller height for mobile */
+        overflow-y: auto; /* Enable scrolling */
     }
 }
 

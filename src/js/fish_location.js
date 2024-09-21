@@ -135,6 +135,7 @@ $(document).ready(function() {
             url: wikiApiUrl,
             dataType: 'json',
             success: function(response) {
+                console.log(response);
                 if (response.extract) {
                     showPopup(response.extract, $imageElement);
                 } else {
@@ -152,35 +153,20 @@ $(document).ready(function() {
         removePopup(); // Remove any existing popup
 
         // Create the popup element
-        const $popup = $('<div class="popup"></div>').text(content);
+        const $popup = $(`
+            <div class="popup">
+                <div class="popup-content">
+                    <h3>Fish Information</h3>
+                    <p>${content}</p>
+                </div>
+            </div>
+        `);
 
         // Append the popup to the body
         $('body').append($popup);
 
-        // Position the popup near the clicked image
-        const imageOffset = $imageElement.offset();
-        const imageHeight = $imageElement.height();
-        const popupWidth = $popup.outerWidth();
-        const popupHeight = $popup.outerHeight();
-
-        // Calculate position: below the image, adjust if near the bottom of the viewport
-        let top = imageOffset.top + imageHeight + 10; // 10px below the image
-        let left = imageOffset.left;
-
-        // Check if popup goes beyond the right edge of the viewport
-        if (left + popupWidth > $(window).width()) {
-            left = $(window).width() - popupWidth - 10; // 10px margin from the edge
-        }
-
-        // Check if popup goes beyond the bottom edge of the viewport
-        if (top + popupHeight > $(window).scrollTop() + $(window).height()) {
-            top = imageOffset.top - popupHeight - 10; // Position above the image
-        }
-
-        $popup.css({
-            top: top,
-            left: left
-        });
+        // Initially, calculate position after rendering the popup
+        adjustPopupPosition($popup, $imageElement);
 
         // Add the show class to start the transition
         setTimeout(function() {
@@ -190,6 +176,40 @@ $(document).ready(function() {
         // Close the popup when clicking outside
         $(document).on('click.popup', function() {
             removePopup();
+        });
+    }
+
+    // Function to adjust the position of the popup after it's rendered
+    function adjustPopupPosition($popup, $imageElement) {
+        // Get the position and size of the image element
+        const imageOffset = $imageElement.offset();
+        const imageHeight = $imageElement.height();
+        const popupWidth = $popup.outerWidth();
+        const popupHeight = $popup.outerHeight();
+
+        // Calculate initial top and left position: below the image
+        let top = imageOffset.top + imageHeight + 10; // 10px below the image
+        let left = imageOffset.left;
+
+        // Adjust if the popup goes beyond the right edge of the viewport
+        if (left + popupWidth > $(window).width()) {
+            left = $(window).width() - popupWidth - 10; // Keep 10px away from the right edge
+        }
+
+        // Adjust if the popup goes beyond the bottom edge of the viewport
+        if (top + popupHeight > $(window).scrollTop() + $(window).height()) {
+            top = imageOffset.top - popupHeight - 10; // Position above the image if it doesn't fit below
+        }
+
+        // Check if the popup would appear off-screen above and reposition below if needed
+        if (top < $(window).scrollTop()) {
+            top = imageOffset.top + imageHeight + 10; // Place it below the image
+        }
+
+        // Set the final position of the popup
+        $popup.css({
+            top: top + 'px',
+            left: left + 'px'
         });
     }
 
@@ -214,7 +234,4 @@ $(document).ready(function() {
             removePopup(); // Clear any existing popup
         }
     });
-
-    // Initialize the dropdown menu on page load
-   //populateLocationDropdown();
 });
