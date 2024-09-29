@@ -6,10 +6,23 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/general_layout.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
-
+    <!-- Include Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
+    <!-- Menu Button -->
+    <div id="menu-button" class="menu-button">
+        <i class="fas fa-bars"></i>
+    </div>
+    
+    <!-- Weather Information Container -->
+    <div id="weather-info" class="weather-info">
+        <i class="fas fa-cloud-sun"></i> <span id="temperature">Loading...</span>, <span id="weather-description">--</span>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <nav id="sidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="tide_page.html">Tide Information</a></li>
@@ -18,6 +31,7 @@
         </ul>
     </nav>
     
+    <!-- Main Content Area -->
     <div class="fishing-scene">
         <a href="Find_a_FISHING_SPOT.html">
             <img src="images/pool.png" alt="Ocean" class="ocean-image">
