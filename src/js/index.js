@@ -92,7 +92,7 @@ const weatherDescriptionElement = document.getElementById('weather-description')
 let weatherData = null; // To cache weather data
 
 // WeatherAPI.com API Key
-const WEATHER_API_KEY = 'YOUR_WEATHERAPI_COM_API_KEY'; // Replace with your actual API key
+const WEATHER_API_KEY = '6a693f44a26e44eb86f101010242909'; // Replace with your actual API key
 
 // Toggle Sidebar
 menuButton.addEventListener('click', (event) => {
