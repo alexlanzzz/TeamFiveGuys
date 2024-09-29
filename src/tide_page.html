@@ -1,13 +1,19 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!-- Set language to English -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fishing Spot</title>
-    <link rel="stylesheet" href="css/tide_page.css">
+    <!-- Link to your existing CSS files -->
     <link rel="stylesheet" href="css/general_layout.css">
+    <link rel="stylesheet" href="css/tide_page.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body class="tide_page_container">
+<body>
+    <!-- Navigation Bar -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -17,17 +23,32 @@
         </ul>
     </nav>
     
-    <div id="main_page">
-        <a href="index.html"><img src="images/fisher.png" alt="Home Page"></a>
-    </div>
-    <img id="ocean-image" src="images/tide.png" alt="Ocean Image">
-    <div id="tide-info">
-        <h3>Tide Information</h3>
-        <div id="tide-data">
-                
+    <header class="fish_page_header">
+        <img src="images/cloud 1.png" alt="Weather Icon" class="fish_page_header-left">
+        <div class="location-name" id="location-name">Select Location</div>
+        <img src="images/location_icon.png" alt="Location Icon" class="fish_page_header-right" id="location-icon">
+        <div class="location-filter-container" id="location-filter-container">
+            <label for="location-filter">Select Location:</label>
+            <select id="location-filter"></select>
+        </div>
+    </header>
+
+    <div id="location-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Select Location</h2>
+            <ul id="location-list">
+                <!-- List of locations will be dynamically inserted here -->
+            </ul>
         </div>
     </div>
 
+
+    <!-- Main Content Area -->
+    <h1>Tide Height Over Time</h1>
+    <canvas id="tideCanvas" width="1200" height="600"></canvas>
+
+    <!-- Scripts -->
     <script src="js/tide.js"></script>
 </body>
 </html>
