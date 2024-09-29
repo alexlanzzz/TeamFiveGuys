@@ -1,45 +1,351 @@
-.tide_page_container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-}
-#ocean-image {
-    width: 900px;
-    height: 500px;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    cursor: pointer;
-}
-#tide-info {
-    position: absolute;
-    right: 15% ;  
-    top: 50%; 
-    transform: translateY(-50%); 
-    padding: 10px;
-    width: 300px;
-    
-    
-    
-}
-#main_page {
-    grid-column: 4 / -1;
-    grid-row: 1 / -1;
-    width: 100%;
+.fish_page_header {
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     position: relative;
 }
 
-#main_page img {
-    width: 50%;
-    height: auto;
+.fish_page_header-left {
+    width: 5%;
+    padding-left: 5px;
+    padding-top: 5px;
+}
+
+.fish_page_header-right {
+    width: 3%;
+    padding-right: 5px;
+    padding-top: 5px;
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+
+.location-name {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.location-filter-container {
+    display: none; /* Hidden by default */
     position: absolute;
+    top: 100%;
+    right: 5%;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.location-filter-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.location-filter-container select {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Modal styles (for pop-up window) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
     top: 0;
-    right: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background */
+}
+
+.modal-content {
+    position: relative;
+    background-color: white;
+    margin: 15% auto; /* Centered vertically and horizontally */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px; /* Limit the maximum width */
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#location-list {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+#location-list li {
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+#location-list li:hover {
+    background-color: #ddd;
+}
+
+/* Loader Styles */
+.loader {
+    border: 8px solid #f3f3f3; /* Light grey border */
+    border-top: 8px solid #3498db; /* Blue border on top */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite; /* Spin animation */
+    margin: 20px auto; /* Center the loader */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fish_page_border {
+    margin-top: 50px;
+    width: 100%;
+    height: auto;
+}
+
+/* Main Content Area */
+#main_content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px; /* Optional: Limit the maximum width */
+    box-sizing: border-box;
+}
+
+#main_content label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#location-filter {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+/* Container for Fish Images */
+#locations-container {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items if they don't fit in one row */
+    justify-content: space-between; /* Distribute space evenly */
+    width: 100%; /* Full width */
+    padding: 20px;
+    box-sizing: border-box;
+    max-width: 1200px; /* Optional: Limit the maximum width of the content */
+    margin: 0 auto; /* Center the content */
+    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+}
+
+/* Individual Fish Item Container */
+.fish-item-container {
+    width: 30%; /* Increase to 30% of the row width for bigger items */
+    margin-bottom: 20px; /* Space between rows */
+    text-align: center;
+    background-color: #fff;
+    padding: 20px; /* Increase padding for larger container */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhance shadow */
+    transition: transform 0.2s ease-in-out;
+    box-sizing: border-box;
+}
+
+.fish-item-container:hover {
+    transform: scale(1.1); /* Increase the hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* Fish Image Styles */
+.fish-item {
+    width: 100%; /* Image fills the entire container */
+    height: auto;
+    object-fit: contain; /* Scale image to fit within container */
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s ease;
+}
+
+.fish-item:hover {
+    border-color: #66afe9; /* Change border color on hover */
+}
+
+/* Fish Name Text */
+.fish-item-container p {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #333;
+}
+
+.fish-item-container img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+}
+
+/* Popup Styles */
+.popup {
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    max-width: 300px; /* Limit the width */
+    z-index: 1000;
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.popup.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Popup content styling */
+.popup-content {
+    padding: 10px;
+}
+
+.popup-content h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.popup-content p {
+    margin: 10px 0;
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6; /* Increase line height for better readability */
+}
+
+/* Links in popup content */
+.popup-content a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.popup-content a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+
+/* For small screens (max-width: 600px) */
+@media (max-width: 600px) {
+    .fish-item-container {
+        width: 120px; /* Slightly increase for better visibility on small screens */
+    }
+
+    .fish-item-container p {
+        font-size: 0.9rem; /* Reduce font size */
+    }
+
+    .popup {
+        max-width: 200px; /* Smaller popup on small screens */
+        font-size: 0.8rem;
+    }
+
+    .popup::after, .popup::before {
+        left: 15px; /* Adjust arrow position */
+    }
+
+    .popup-content {
+        max-height: 150px; /* Smaller height for mobile */
+        overflow-y: auto; /* Enable scrolling */
+    }
+}
+
+/* For medium screens (min-width: 601px and max-width: 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .fish-item-container {
+        width: 140px; /* Adjust container width */
+    }
+
+    .fish-item-container p {
+        font-size: 1rem; /* Maintain font size */
+    }
+
+    .popup {
+        max-width: 250px; /* Medium popup size */
+    }
+}
+
+/* For large screens (min-width: 1025px) */
+@media (min-width: 1025px) {
+    .fish-item-container {
+        width: 150px; /* Set container width */
+    }
+
+    .fish-item-container p {
+        font-size: 1.1rem; /* Increase font size */
+    }
+
+    .popup {
+        max-width: 300px; /* Larger popup size */
+    }
+}
+
+body {
+    font-family: 'Amatic SC', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 100vh;  
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Amatic SC', sans-serif;
+    margin-bottom: 20px; 
+}
+
+canvas {
+    width: 1200px;
+    height: 600px;  
+    
 }
