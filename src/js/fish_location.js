@@ -19,45 +19,19 @@ $(document).ready(function() {
         "Mary River Cod": "Mary-River-Cod.jpg",
         "Saratoga": "Saratoga.jpg",
         "Silver Perch": "SILVER_PERCH.jpg"
-        // Add more mappings here if needed
     };
 
-    const locationModal = $('#location-modal');
-    const locationList = $('#location-list');
-    const closeModalBtn = $('.close-btn');
-
-    // Add this line to select the location display in the header
+    // Update location name in the header on click
     const locationNameDisplay = $('#location-name');
+    const locations = document.querySelectorAll('.location');
 
-    // Populate modal with location names
-    Object.keys(locationDict).forEach(location => {
-        locationList.append(`<li class="location-item">${location}</li>`);
-    });
-
-    // Show modal when location icon is clicked
-    $('#location-icon').click(function () {
-        locationModal.css('display', 'block'); // Show the modal
-    });
-
-    // Close modal when close button is clicked
-    closeModalBtn.click(function () {
-        locationModal.css('display', 'none'); // Hide the modal
-    });
-
-    // Close modal when clicking outside the modal content
-    $(window).click(function (event) {
-        if ($(event.target).is(locationModal)) {
-            locationModal.css('display', 'none'); // Hide the modal
-        }
-    });
-
-    // When a location is selected, update the location name in the header and close the modal
-    $(document).on('click', '.location-item', function () {
-        const selectedLocation = $(this).text();
-        locationNameDisplay.text(selectedLocation); // Update the location name in the header
-        locationModal.css('display', 'none'); // Close modal after selection
-
-        fetchData(selectedLocation);
+    // Event listener for clicking the helm locations
+    locations.forEach((location) => {
+        location.addEventListener('click', function() {
+            const selectedLocation = this.textContent;
+            locationNameDisplay.text(selectedLocation); // Update location name
+            fetchData(selectedLocation); // Fetch fish data based on location
+        });
     });
 
     // Function to fetch fish data based on the selected location
@@ -99,11 +73,9 @@ $(document).ready(function() {
 
         fishRecords.forEach(record => {
             const species = record['Species stocked'];
-            const location = record['Location stocked'];
 
             // Ensure each species is displayed only once
             if (!stockedSpecies.has(species)) {
-                // Get the corresponding image filename or use a default image
                 const imageName = speciesImageMap[species] || 'fish1.png';
                 htmlContent += `
                     <div class="fish-item-container">
@@ -120,9 +92,9 @@ $(document).ready(function() {
 
         // Attach click event to each fish-item-container to show the Wikipedia popup
         $('.fish-item-container').click(function() {
-            const species = $(this).find('p').text(); // Get the species name from the <p> element
-            const $imageElement = $(this).find('img'); // Get the clicked image element
-            fetchWikipediaInfo(species, $imageElement); // Fetch the Wikipedia info for this species
+            const species = $(this).find('p').text();
+            const $imageElement = $(this).find('img');
+            fetchWikipediaInfo(species, $imageElement); // Fetch Wikipedia info for this species
         });
     }
 
@@ -130,12 +102,10 @@ $(document).ready(function() {
     function fetchWikipediaInfo(fishSpecies, $imageElement) {
         const wikiApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(fishSpecies)}`;
 
-        // Fetch Wikipedia information
         $.ajax({
             url: wikiApiUrl,
             dataType: 'json',
             success: function(response) {
-                console.log(response);
                 if (response.extract) {
                     showPopup(response.extract, $imageElement);
                 } else {
@@ -152,7 +122,6 @@ $(document).ready(function() {
     function showPopup(content, $imageElement) {
         removePopup(); // Remove any existing popup
 
-        // Create the popup element
         const $popup = $(`
             <div class="popup">
                 <div class="popup-content">
@@ -162,18 +131,13 @@ $(document).ready(function() {
             </div>
         `);
 
-        // Append the popup to the body
         $('body').append($popup);
-
-        // Initially, calculate position after rendering the popup
         adjustPopupPosition($popup, $imageElement);
 
-        // Add the show class to start the transition
         setTimeout(function() {
             $popup.addClass('show');
         }, 10); // Delay to allow CSS transition
 
-        // Close the popup when clicking outside
         $(document).on('click.popup', function() {
             removePopup();
         });
@@ -181,32 +145,26 @@ $(document).ready(function() {
 
     // Function to adjust the position of the popup after it's rendered
     function adjustPopupPosition($popup, $imageElement) {
-        // Get the position and size of the image element
         const imageOffset = $imageElement.offset();
         const imageHeight = $imageElement.height();
         const popupWidth = $popup.outerWidth();
         const popupHeight = $popup.outerHeight();
 
-        // Calculate initial top and left position: below the image
-        let top = imageOffset.top + imageHeight + 10; // 10px below the image
+        let top = imageOffset.top + imageHeight + 10;
         let left = imageOffset.left;
 
-        // Adjust if the popup goes beyond the right edge of the viewport
         if (left + popupWidth > $(window).width()) {
-            left = $(window).width() - popupWidth - 10; // Keep 10px away from the right edge
+            left = $(window).width() - popupWidth - 10;
         }
 
-        // Adjust if the popup goes beyond the bottom edge of the viewport
         if (top + popupHeight > $(window).scrollTop() + $(window).height()) {
-            top = imageOffset.top - popupHeight - 10; // Position above the image if it doesn't fit below
+            top = imageOffset.top - popupHeight - 10;
         }
 
-        // Check if the popup would appear off-screen above and reposition below if needed
         if (top < $(window).scrollTop()) {
-            top = imageOffset.top + imageHeight + 10; // Place it below the image
+            top = imageOffset.top + imageHeight + 10;
         }
 
-        // Set the final position of the popup
         $popup.css({
             top: top + 'px',
             left: left + 'px'
@@ -216,7 +174,7 @@ $(document).ready(function() {
     // Function to remove the popup
     function removePopup() {
         $('.popup').remove();
-        $(document).off('click.popup'); // Remove the event handler
+        $(document).off('click.popup');
     }
 
     // Event handler to prevent closing the popup when clicking inside it
@@ -224,14 +182,18 @@ $(document).ready(function() {
         event.stopPropagation();
     });
 
-    // Event handler for when the location dropdown changes
-    $('#location-filter').on('change', function() {
-        const selectedLocation = $(this).val();
-        if (selectedLocation) {
-            fetchData(selectedLocation);  // Fetch data based on the selected location
-        } else {
-            $('#locations-container').html('<p>Please select a location.</p>');
-            removePopup(); // Clear any existing popup
-        }
+    // **Fix Helm Rotation**
+    const helm = document.querySelector('.helm');
+    let currentRotation = 0;  // Track the current rotation
+
+    helm.addEventListener('click', function () {
+        currentRotation += 90; // Rotate 90 degrees with each click
+        helm.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
+
+        locations.forEach((location, index) => {
+            const angle = index * 45; // Each location is 45 degrees apart
+            const newAngle = angle + currentRotation;
+            location.style.transform = `rotate(${newAngle}deg) translate(300px) rotate(-${newAngle}deg)`;
+        });
     });
 });
