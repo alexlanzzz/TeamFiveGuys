@@ -17,7 +17,7 @@ body, html {
     color: #fff;
     padding: 12px 16px;
     border-radius: 6px;
-    font-size: 20px; /* Increased font size */
+    font-size: 2vw; /* Increased font size */
     display: flex;
     align-items: center;
     transition: left 0.3s ease; /* Smooth transition when shifting */
@@ -25,14 +25,14 @@ body, html {
 }
 
 .weather-info img, .weather-info i {
-    width: 30px; /* Increased icon size */
-    height: 30px;
+    width: 2vw; /* Increased icon size */
+    height: 2vw;
     margin-right: 12px;
 }
 
 /* Menu Button Styles */
 .menu-button {
-    font-size: 30px;
+    font-size: 2vw;
     cursor: pointer;
     color: #fff;
     padding: 10px 15px;
