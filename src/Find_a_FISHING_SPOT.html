@@ -4,21 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find a Fishing Spot</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/general_layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Find_a_FISHING_SPOT.css">
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tide_page.html">Tide Information</a></li>
+            <li><a href="fish_page.html">Fish Information</a></li>
+            <li><a href="about_us.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <div id="loading" style="display: none;">
+        <img src="images/loding.Gif.gif" alt="Loading...">
+    </div> 
+
     <div class="container">
         <div class="map-background">
             <h1>Find a Fishing Spot</h1>
             <ul class="fishing-spots">
-                <li>MT Crosby Weir</li>
-                <li>Bremer River</li>
-                <li>North Pine Dam</li>
-                <li>Somerset Dam</li>
-                <li>Wivenhoe Dam</li>
-                <li>Caboolture River Weir</li>
-                <li>Logan River</li>
-                <li>Albert River</li>
+                <li><a href="fish_page.html?location=MT%20Crosby%20Weir">MT Crosby Weir</a></li>
+                <li><a href="fish_page.html?location=Bremer%20River">Bremer River</a></li>
+                <li><a href="fish_page.html?location=North%20Pine%20Dam">North Pine Dam</a></li>
+                <li><a href="fish_page.html?location=Somerset%20Dam">Somerset Dam</a></li>
+                <li><a href="fish_page.html?location=Wivenhoe%20Dam">Wivenhoe Dam</a></li>
+                <li><a href="fish_page.html?location=Caboolture%20River%20Weir">Caboolture River Weir</a></li>
+                <li><a href="fish_page.html?location=Logan%20River">Logan River</a></li>
+                <li><a href="fish_page.html?location=Albert%20River">Albert River</a></li>
             </ul>
         </div>
         <div class="gif">
@@ -27,6 +43,6 @@
             </div>
           </div>
     </div>
-    <script src=""></script>
+    <script src="js/Find_a_FISHING_SPOT.js"></script>
 </body>
 </html>
