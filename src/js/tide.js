@@ -1,24 +1,66 @@
 //0d15ffe2-728d-11ef-a732-0242ac130004-0d160046-728d-11ef-a732-0242ac130004
 //b8983068-7320-11ef-968a-0242ac130004-b89830e0-7320-11ef-968a-0242ac130004
+$(document).ready(function() {
+  // Dictionary of available locations with coordinates (latitude, longitude)
+  const locationDict = {
+    "Mt Crosby Weir": "-27.5455,152.7649",       
+    "Caboolture River Weir": "-27.0716,152.9525", 
+    "Wivenhoe Dam": "-27.3836,152.5860",         
+    "North Pine Dam": "-27.2751,152.9165",       
+    "Somerset Dam": "-27.1287,152.5639",         
+    "Logan River": "-27.6392,153.2030",          
+    "Albert River": "-27.8004,153.2480",      
+    "Bremer River": "-27.6164,152.7661"        
+};
 
-function fetchTideDataAndDrawWave() {
-  const lat = 60.936;
-  const lng = 5.114;
+  const locationNameDisplay = $('#location-name');
+  const locations = document.querySelectorAll('.location');
 
-  fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=2024-09-14&end=2024-09-15`, {
+  // Retrieve the selected location from local storage
+  const selectedLocation = localStorage.getItem('selectedLocation');
+  if (selectedLocation) {
+      locationNameDisplay.text(selectedLocation); // Update location name
+      const coords = locationDict[selectedLocation]; 
+      if (coords) {
+          fetchTideData(coords);  
+      }
+  }
+
+ 
+function fetchTideData(coords) {
+  const [lat, lng] = coords.split(',');
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, '0'); 
+  const day = String(today.getDate()).padStart(2, '0');
+
+  
+  const currentDate = `${year}-${month}-${day}`;
+
+ 
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  const nextYear = tomorrow.getFullYear();
+  const nextMonth = String(tomorrow.getMonth() + 1).padStart(2, '0'); 
+  const nextDay = String(tomorrow.getDate()).padStart(2, '0');
+
+  
+  const endDate = `${nextYear}-${nextMonth}-${nextDay}`;
+
+  fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${currentDate}&end=${endDate}`, {
     headers: {
-      'Authorization': 'b8983068-7320-11ef-968a-0242ac130004-b89830e0-7320-11ef-968a-0242ac130004'
+      'Authorization': '0d15ffe2-728d-11ef-a732-0242ac130004-0d160046-728d-11ef-a732-0242ac130004'
     }
   })
   .then(response => response.json())
   .then(jsonData => {
     const tideData = jsonData.data.map(tide => ({
-      height: Math.max(Math.min(parseFloat(tide.height.toFixed(2)), 0.5), -0.5),  
+      height: Math.max(Math.min(parseFloat(tide.height.toFixed(2)), 2), -2),  
       time: new Date(tide.time), 
       type: tide.type  
     }));
-
-    drawWaveBars(tideData);  
+    console.log(tideData); 
+    drawSmoothWave(tideData);  
   })
   .catch(error => {
     console.error('Error fetching tide data:', error);
@@ -105,7 +147,7 @@ function drawWaveBars(tideData) {
   });
 }
 
-fetchTideDataAndDrawWave();
+
 function drawSmoothWave(tideData) {
   const canvas = document.getElementById('tideCanvas');
   const ctx = canvas.getContext('2d');
@@ -164,4 +206,4 @@ function drawSmoothWave(tideData) {
       ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x + 5, y - 10);
     }
   });
-}
+}})
