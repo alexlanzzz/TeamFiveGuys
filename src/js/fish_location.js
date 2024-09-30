@@ -18,7 +18,7 @@ $(document).ready(function() {
         "Golden Perch": "Golden_Perch.png",
         "Mary River Cod": "Murray_Cod.png",
         "Saratoga": "saratoga.png",
-        "Silver Perch": "SILVER_PERCH.jpg"
+        "Silver Perch": "silver perch.png",
     };
 
     // Update location name in the header on click
