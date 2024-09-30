@@ -25,6 +25,13 @@ $(document).ready(function() {
     const locationNameDisplay = $('#location-name');
     const locations = document.querySelectorAll('.location');
 
+    // Retrieve the selected location from local storage
+    const selectedLocation = localStorage.getItem('selectedLocation');
+    if (selectedLocation) {
+        locationNameDisplay.text(selectedLocation); // Update location name
+        fetchData(selectedLocation); // Fetch fish data based on location
+    }
+
     // Event listener for clicking the helm locations
     locations.forEach((location) => {
         location.addEventListener('click', function() {
