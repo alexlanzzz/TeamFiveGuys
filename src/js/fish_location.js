@@ -13,11 +13,11 @@ $(document).ready(function() {
 
     // Mapping of fish species names to their corresponding image filenames
     const speciesImageMap = {
-        "Australian Bass": "AUSTRALIAN_BASS.JPG",
-        "Barramundi": "Barramundi.jpg",
-        "Golden Perch": "GOLDEN_PERCH.jpg",
-        "Mary River Cod": "Mary-River-Cod.jpg",
-        "Saratoga": "Saratoga.jpg",
+        "Australian Bass": "australian_bass.png",
+        "Barramundi": "barramundi.png",
+        "Golden Perch": "Golden_Perch.png",
+        "Mary River Cod": "Murray_Cod.png",
+        "Saratoga": "saratoga.png",
         "Silver Perch": "SILVER_PERCH.jpg"
     };
 
