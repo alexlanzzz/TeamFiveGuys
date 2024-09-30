@@ -1,3 +1,7 @@
+main {
+    flex: 1; /* Take up remaining space */
+}
+
 .fish_page_header {
     display: flex;
     justify-content: space-between;
