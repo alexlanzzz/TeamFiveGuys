@@ -71,6 +71,25 @@
     background-image: url('../images/night.png');
 }
 
+.boathead-container {
+    position: absolute;
+    bottom: 0; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2; 
+    pointer-events: none; 
+}
+
+/* 船头图片样式 */
+.boathead {
+    width: 150vw;
+    height: auto;
+    max-width: 100%;
+    /* 添加响应式设计 */
+    @media (max-width: 768px) {
+        width: 100px; 
+    }
+}
 /* 加载动画容器样式 */
 #loading-container {
     position: fixed;
