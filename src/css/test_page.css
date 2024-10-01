@@ -75,47 +75,30 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: transform 1s ease-in-out;  /* Smooth rotation animation */
+    transition: transform 1s ease-in-out, box-shadow 0.3s ease; /* Smooth rotation animation */
     cursor: pointer;
 }
-
 /* Rotating arrow indicator (static for now) */
 .rotation-arrow {
     position: absolute;
-    width: 600px; /* Adjust the size of the arrow */
+    width: 500px; /* Adjust the size of the arrow */
     height: auto;
     top: -10%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.5s ease-in-out; /* Center the arrow around the helm */
+    transform: translate(-50%, -50%); /* Center the arrow around the helm */
 }
-
-/* Show the arrow when hovering over the helm */
-.helm:hover + .rotation-arrow {
-    opacity: 1; /* Fade in the arrow */
-}
-
-/* Fade out when cursor is removed */
-.helm + .rotation-arrow {
-    opacity: 0; /* Fade out the arrow */
-}
-
 .location {
     position: absolute;
     font-size: 25px;
     width: 100px;
     text-align: center;
     transform-origin: center center;
-    transition: transform 1s ease-in-out;
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
-    cursor: pointer; /* Smooth rotation for location labels */
+    transition: transform 1s ease-in-out; /* Smooth rotation for location labels */
 }
 
 .location:hover {
-    transform: scale(1.5); /* Enlarge the location text slightly on hover */
-    color: #4eb6bc; /* Change color on hover */
-    font-weight: bold; /* Make text bold */
+    color: #4eb6bc;
+    font-weight: bold;
 }
 
 footer {
