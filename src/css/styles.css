@@ -1,110 +1,89 @@
 body {
     font-family: 'Amatic SC', sans-serif;
-    font-weight: 700; /* Ensures bold version is used */
+    font-weight: 700;
     margin: 0;
     padding: 0;
     background-color: white;
     overflow-x: hidden;
 }
 
-.menu-icon {
+header {
+    background-color: transparent; /* Transparent background */
+    padding: 10px 0;
+    text-align: center;
     position: fixed;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
-.bar {
-    width: 30px;
-    height: 4px;
-    background-color: black;
-    margin: 5px 0;
-    transition: 0.4s;
-}
-
-.side-menu {
-    position: fixed;
+    width: 100%;
     top: 0;
-    right: -400px; /* Set to the same width as the menu */
-    width: 400px; /* Increased width to fit longer text */
-    height: 100%;
-    background-color: white;
-    padding-top: 70px; /* Add space at the top to center the list vertically */
-    display: flex; /* Flexbox layout */
-    flex-direction: column; /* Stack elements vertically */
-    justify-content: center; /* Center elements vertically */
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: 0.4s;
+    z-index: 1000;
+    box-shadow: none; /* Removed box shadow */
 }
 
-.side-menu ul {
+.icon-menu ul {
     list-style-type: none;
+    margin: 0;
     padding: 0;
-    margin: 0 auto; /* Center the list horizontally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.side-menu ul li {
-    font-size: 50px; /* Increased font size */
-    margin-bottom: 50px; /* Added more space between each location */
-    letter-spacing: 1px; /* Adjust letter spacing for the font */
-    cursor: pointer;
-    white-space: nowrap; /* Ensures the text stays on one line */
+.icon-menu ul li {
+    margin: 0 40px;
+    text-align: center; /* Center the icon and description */
 }
 
-.side-menu ul li:hover {
-    text-decoration: underline;
-}
-
-.side-menu.open {
-    right: 0;
-}
-
-/* Test Amatic SC with a large heading */
-h1 {
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: 700;
-    font-size: 80px; /* Larger font size for testing */
+.icon-menu ul li a {
+    text-decoration: none;
     color: black;
 }
 
-footer {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    flex-shrink: 0; /* Prevent footer from shrinking */
+.menu-icon-img {
+    width: 160px; /* Increased icon size */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-/* Helm container styling */
+.menu-icon-img:hover {
+    transform: scale(1.2); /* Larger hover effect */
+}
+
+/* Add description below each icon */
+.icon-description {
+    display: block;
+    font-size: 24px;
+    margin-top: 0px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
 .helm-container {
-    position: absolute;
+    position: relative;
     display: inline-block;
-    /*bottom: 0;*/
-    /*left: 50%;*/
+    bottom: 100%;
+    left: 50%;
     transform: translateX(-50%);
     width: 700px;
-    height: 350px;
+    height: 700px;
     background-color: transparent;
     z-index: 10;
     overflow: hidden;
-    margin: 0 auto;
+    margin: 100px auto;
 }
 
-/* Helm image styling */
 .helm {
-    position: absolute;
-    width: 90%; /* Ensure the helm image scales to fit the container width */
-    height: auto; /* Maintain the aspect ratio */
-    top: 100%; /* Center the helm vertically */
-    left: 50%; /* Center the helm horizontally */
-    transform: translate(-50%, -50%); /* Correct initial centering */
-    transition: transform 1s ease-in-out; /* Smooth rotation */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    position: relative;
+    width: 90%;
+    height: auto;
+    top: 120%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: transform 1s ease-in-out;
+    cursor: pointer;
 }
 
-/* Location labels around the helm */
 .location {
-    position: absolute;
+    position: relative;
     width: 95px;
     line-height: 1.2;
     text-align: center;
@@ -115,10 +94,15 @@ footer {
     transition: transform 1s ease-in-out;
 }
 
-/* Hover effects for location */
 .location:hover {
     cursor: pointer;
     color: #4eb6bc;
     font-weight: bold;
 }
 
+footer {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    flex-shrink: 0;
+}
