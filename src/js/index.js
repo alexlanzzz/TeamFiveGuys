@@ -23,21 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fishingText.style.display = 'block'; // Ensure the text is always visible
     });
 
-    // 获取模态框和关闭按钮
-    var modal = document.getElementById("Spot_modal");
-    var span = document.getElementsByClassName("close")[0];
-
-    console.log('Modal element:', modal);
-    console.log('Close button element:', span);
-
-    if (!modal) {
-        console.error('Unable to get modal element');
-    }
-
-    if (!span) {
-        console.error('Unable to get close button element');
-    }
-
     // 当鼠标悬停在渔夫视频上时，播放视频
     fishermanVideo.addEventListener("mouseenter", function() {
         console.log("Mouse entered fisherman video");
