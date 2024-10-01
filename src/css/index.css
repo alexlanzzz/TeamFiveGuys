@@ -73,34 +73,33 @@
 
 .boathead-container {
     position: absolute;
-    bottom: 0; 
+    bottom: -15px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 2; 
     pointer-events: auto; 
 }
 
-/* 船头图片样式 */
+/* Boathead image */
 .boathead {
     width: 150vw;
     height: auto;
     max-width: 100%;
-    /* 添加响应式设计 */
-    @media (max-width: 768px) {
-        width: 100px; 
+    transition: transform 0.3s ease-in-out;
+    animation: jump 2s infinite ease-in-out; /* Infinite jumping animation */
+}
+
+@media (max-width: 768px) {
+    .boathead {
+        width: 100px;
     }
 }
 
-.boathead-link {
-    display: inline-block;
-    pointer-events: auto; /* 确保链接响应点击事件 */
-    cursor: pointer; /* 鼠标悬停时显示为手型 */
-    transition: transform 0.3s ease, opacity 0.3s ease; /* 添加过渡效果 */
-}
-
-.boathead-link:hover .boathead {
-    transform: scale(1.1); /* 放大效果 */
-    opacity: 0.8; /* 半透明 */
+/* Define the continuous jumping effect */
+@keyframes jump {
+    0% { transform: translateY(0); } /* Start at original position */
+    50% { transform: translateY(-10px); } /* Jump up 10px */
+    100% { transform: translateY(0); } /* Back to original position */
 }
 
 
