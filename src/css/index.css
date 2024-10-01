@@ -1,103 +1,36 @@
 
-.fishing-scene {
+.background-container {
     position: relative;
-    height: 100vh;
-    width: 100vw;
-}
-
-.ocean-image {
-    position: absolute;
-    width: 80%;
-    height: auto;
-    bottom: 0;
-    left: 15%;
-    z-index: 0;
-}
-
-.fisherman {
-    position: absolute;
-    width: 45vw; /* Smaller size */
-    height: auto;
-    bottom: 4%; /* Align closer to the bottom of the ocean image */
-    left: 73%; /* Position the fisherman at the center over the ocean */
-    transform: translateX(-50%); /* Center the fisherman horizontally */
-    z-index: 2; /* Ensure it is above the ocean image */
-    transition: transform 0.3s ease-in-out;
-}
-
-
-/* 模态框样式 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000; /* 提高 z-index，确保模态框在最上层 */
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.4);
+    height: 100vh; /* 全屏高度 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* 根据背景选择合适的字体颜色 */
+    text-align: center;
 }
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1001;
+/* 不同时间段的背景类 */
+.morning {
+    background-image: url('../images/morning.png'); /* 根据实际路径调整 */
 }
 
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
+.noon {
+    background-image: url('../images/noon.png');
 }
 
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.afternoon {
+    background-image: url('../images/afternoon.png');
 }
 
-
-/* Updated class for the "CLICK TO GO FISHING" text */
-.fishing-text {
-    position: absolute;
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: 700;
-    font-size: 4rem; /* Large font size */
-    color: black; /* Keep the color black */
-    padding: 10px;
-    border-radius: 0px;
-    display: none; /* Initially hidden */
-    z-index: 3;
-
-    /* Add jumping animation */
-    animation: jump 1s infinite ease-in-out;
+.night {
+    background-image: url('../images/night.png');
 }
 
-/* Define the jumping effect (moving slightly up and down) */
-@keyframes jump {
-    0% {
-        transform: translateY(0); /* Start at original position */
-    }
-    50% {
-        transform: translateY(-10px); /* Jump up */
-    }
-    100% {
-        transform: translateY(0); /* Back to original position */
-    }
-}
 
 
 /* 加载动画容器样式 */

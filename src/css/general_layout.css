@@ -99,12 +99,6 @@ body, html {
     color: #f1f1f1;
 }
 
-/* Main Content Area */
-.fishing-scene {
-    transition: margin-left 0.3s ease; /* Smooth transition when sidebar opens */
-    padding: 20px;
-    margin-left: 0; /* Initial no margin */
-}
 
 /* Sidebar Open State */
 .sidebar.open {
