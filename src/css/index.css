@@ -1,100 +1,92 @@
-
-.fishing-scene {
+.background-container {
     position: relative;
-    height: 100vh;
-    width: 100vw;
+    width: 100%;
+    height: 100vh; /* 全屏高度 */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 0.5s ease; /* 平滑过渡效果 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white; /* 根据背景选择合适的字体颜色 */
+    text-align: center;
+    overflow: hidden; /* 防止波纹溢出 */
 }
 
-.ocean-image {
+/* 波纹容器样式 */
+.wave-container {
     position: absolute;
-    width: 80%;
-    height: auto;
     bottom: 0;
-    left: 15%;
-    z-index: 0;
+    width: 100%;
+    height: 100px; /* 根据需要调整高度 */
+    overflow: hidden;
+    line-height: 0;
 }
 
-.fisherman {
-    position: absolute;
-    width: 45vw; /* Smaller size */
-    height: auto;
-    bottom: 4%; /* Align closer to the bottom of the ocean image */
-    left: 73%; /* Position the fisherman at the center over the ocean */
-    transform: translateX(-50%); /* Center the fisherman horizontally */
-    z-index: 2; /* Ensure it is above the ocean image */
-    transition: transform 0.3s ease-in-out;
+/* 波纹 SVG 样式 */
+.waves {
+    position: relative;
+    width: 200%;
+    height: 100%;
 }
 
+/* 波纹动画 */
+.wave1 {
+    animation: moveWaves 10s linear infinite;
+}
 
-/* 模态框样式 */
-.modal {
-    display: none;
+.wave2 {
+    animation: moveWaves 18s linear infinite;
+}
+
+.wave3 {
+    animation: moveWaves 25s linear infinite;
+}
+
+@keyframes moveWaves {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* 不同时间段的背景类 */
+.morning {
+    background-image: url('../images/morning.png');
+}
+
+.noon {
+    background-image: url('../images/noon.png');
+}
+
+.afternoon {
+    background-image: url('../images/afternoon.png');
+}
+
+.night {
+    background-image: url('../images/night.png');
+}
+
+/* 加载动画容器样式 */
+#loading-container {
     position: fixed;
-    z-index: 1000; /* 提高 z-index，确保模态框在最上层 */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4);
+    background-color: #fff; /* 您可以根据需要更改背景颜色 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* 确保加载容器位于最上层 */
 }
 
-.modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    z-index: 1001;
-}
-
-.close {
-    color: #aaa;
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-/* Updated class for the "CLICK TO GO FISHING" text */
-.fishing-text {
-    position: absolute;
-    font-family: 'Amatic SC', sans-serif;
-    font-weight: 700;
-    font-size: 4rem; /* Large font size */
-    color: black; /* Keep the color black */
-    padding: 10px;
-    border-radius: 0px;
-    display: none; /* Initially hidden */
-    z-index: 3;
-
-    /* Add jumping animation */
-    animation: jump 1s infinite ease-in-out;
-}
-
-/* Define the jumping effect (moving slightly up and down) */
-@keyframes jump {
-    0% {
-        transform: translateY(0); /* Start at original position */
-    }
-    50% {
-        transform: translateY(-10px); /* Jump up */
-    }
-    100% {
-        transform: translateY(0); /* Back to original position */
-    }
+/* 隐藏加载动画时的淡出效果 */
+#loading-container.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease;
 }

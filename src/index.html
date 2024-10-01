@@ -10,6 +10,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div id="loading-container">
+        <img src="images/loading.gif" alt="Loading...">
+    </div>
+
+    <div class="background-container">
+        <h1>TEST</h1>
+        <p>TEST</p>
+    </div>
+
+    <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <defs>
+                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+            </defs>
+            <g class="wave1">
+                <use href="#wave-path" x="0" y="0" fill="rgba(255,255,255,0.4)"></use>
+            </g>
+            <g class="wave2">
+                <use href="#wave-path" x="0" y="3" fill="rgba(255,255,255,0.3)"></use>
+            </g>
+            <g class="wave3">
+                <use href="#wave-path" x="0" y="5" fill="rgba(255,255,255,0.2)"></use>
+            </g>
+        </svg>
+    </div>
+
     <!-- Menu Button -->
     <div id="menu-button" class="menu-button">
         <i class="fas fa-bars"></i>
@@ -32,16 +59,7 @@
     </nav>
     
     <!-- Main Content Area -->
-    <div class="fishing-scene">
-        <a href="Find_a_FISHING_SPOT.html">
-            <img src="images/pool.png" alt="Ocean" class="ocean-image">
-        </a>
-        <a href="Find_a_FISHING_SPOT.html">
-            <video class="fisherman" muted playsinline loop preload="auto">
-                <source src="images/fisherman.webm" type="video/webm">
-                <source src="images/fisherman.mp4" type="video/mp4">
-            </video>
-        </a>
+    <div class="main-content">
     </div>
 
     <script src="js/index.js"></script>
