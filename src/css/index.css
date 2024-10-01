@@ -1,4 +1,3 @@
-
 .background-container {
     position: relative;
     width: 100%;
@@ -6,17 +5,58 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    transition: background-image 0.5s ease; /* 平滑过渡效果 */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white; /* 根据背景选择合适的字体颜色 */
     text-align: center;
+    overflow: hidden; /* 防止波纹溢出 */
+}
+
+/* 波纹容器样式 */
+.wave-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px; /* 根据需要调整高度 */
+    overflow: hidden;
+    line-height: 0;
+}
+
+/* 波纹 SVG 样式 */
+.waves {
+    position: relative;
+    width: 200%;
+    height: 100%;
+}
+
+/* 波纹动画 */
+.wave1 {
+    animation: moveWaves 10s linear infinite;
+}
+
+.wave2 {
+    animation: moveWaves 18s linear infinite;
+}
+
+.wave3 {
+    animation: moveWaves 25s linear infinite;
+}
+
+@keyframes moveWaves {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 /* 不同时间段的背景类 */
 .morning {
-    background-image: url('../images/morning.png'); /* 根据实际路径调整 */
+    background-image: url('../images/morning.png');
 }
 
 .noon {
@@ -30,8 +70,6 @@
 .night {
     background-image: url('../images/night.png');
 }
-
-
 
 /* 加载动画容器样式 */
 #loading-container {
