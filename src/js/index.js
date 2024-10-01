@@ -114,7 +114,7 @@ window.addEventListener('load', function() {
     // 在动画结束后，将加载容器从文档中移除
     setTimeout(function() {
         loadingContainer.style.display = 'none';
-    }, 2000); // 与 CSS 中的过渡时间匹配（0.5s）
+    }, 1000); // 与 CSS 中的过渡时间匹配（0.5s）
 });
 
 // Set background time
