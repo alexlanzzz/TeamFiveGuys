@@ -170,3 +170,13 @@ function error(err) {
 
 // Initialize Weather on Page Load
 window.onload = getWeather;
+
+window.addEventListener('load', function() {
+    const loadingContainer = document.getElementById('loading-container');
+    loadingContainer.classList.add('fade-out');
+
+    // 在动画结束后，将加载容器从文档中移除
+    setTimeout(function() {
+        loadingContainer.style.display = 'none';
+    }, 3000); // 与 CSS 中的过渡时间匹配（0.5s）
+});
