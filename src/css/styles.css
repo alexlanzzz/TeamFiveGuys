@@ -8,14 +8,14 @@ body {
 }
 
 header {
-    background-color: transparent; /* Transparent background */
+    background-color: transparent;
     padding: 10px 0;
     text-align: center;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: none; /* Removed box shadow */
+    box-shadow: none;
 }
 
 .icon-menu ul {
@@ -29,7 +29,7 @@ header {
 
 .icon-menu ul li {
     margin: 0 40px;
-    text-align: center; /* Center the icon and description */
+    text-align: center;
 }
 
 .icon-menu ul li a {
@@ -38,17 +38,16 @@ header {
 }
 
 .menu-icon-img {
-    width: 160px; /* Increased icon size */
+    width: 160px;
     height: auto;
     cursor: pointer;
     transition: transform 0.3s ease;
 }
 
 .menu-icon-img:hover {
-    transform: scale(1.2); /* Larger hover effect */
+    transform: scale(1.2);
 }
 
-/* Add description below each icon */
 .icon-description {
     display: block;
     font-size: 24px;
@@ -57,52 +56,48 @@ header {
     letter-spacing: 2px;
 }
 
+/* Helm container in the footer */
 .helm-container {
     position: relative;
-    display: inline-block;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 700px;
-    height: 700px;
+    width: 500px;
+    height: 500px;
+    margin: 1000px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: transparent;
-    z-index: 10;
-    overflow: hidden;
-    margin: 100px auto;
 }
 
 .helm {
-    position: relative;
-    width: 90%;
+    width: 100%;
     height: auto;
-    top: 120%;
+    position: absolute;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out; /* Smooth rotation animation */
     cursor: pointer;
 }
 
 .location {
-    position: relative;
-    width: 95px;
-    line-height: 1.2;
+    position: absolute;
+    font-size: 25px;
+    width: 100px;
     text-align: center;
-    font-size: 32px;
-    top: 100%;
-    left: 45%;
-    white-space: normal;
-    transition: transform 1s ease-in-out;
+    transform-origin: center center;
+    transition: transform 1s ease-in-out; /* Smooth rotation for location labels */
 }
 
 .location:hover {
-    cursor: pointer;
     color: #4eb6bc;
     font-weight: bold;
 }
 
 footer {
-    position: relative;
-    z-index: 10;
+    background-color: transparent;
+    padding: 20px 0;
     text-align: center;
-    flex-shrink: 0;
+    width: 100%;
+    bottom: 0;
+    position: relative;
 }
