@@ -18,7 +18,7 @@ $(document).ready(function() {
         "Golden Perch": "Golden_Perch.png",
         "Mary River Cod": "Murray_Cod.png",
         "Saratoga": "saratoga.png",
-        "Silver Perch": "silver perch.png",
+        "Silver Perch": "silver_perch.png",
     };
 
     // Update location name in the header on click
@@ -73,7 +73,7 @@ $(document).ready(function() {
         });
     }
 
-    // Function to display fish data as images with names below
+    // Function to display fish data as images
     function displayFishData(fishRecords) {
         let htmlContent = '';
         let stockedSpecies = new Set(); // To store unique species
@@ -84,10 +84,12 @@ $(document).ready(function() {
             // Ensure each species is displayed only once
             if (!stockedSpecies.has(species)) {
                 const imageName = speciesImageMap[species] || 'fish1.png';
+                const direction = Math.random() > 0.5 ? 'left' : 'right';
+                const startPosition = direction === 'left' ? '-100px' : 'calc(100% - 100px)';
+
                 htmlContent += `
-                    <div class="fish-item-container">
-                        <img src="images/fishes/${imageName}" alt="${species}" class="fish-item">
-                        <p>${species}</p>
+                    <div class="fish-item-container" data-species="${species}" data-image="images/fishes/${imageName}" data-direction="${direction}">
+                        <img src="images/fishes/${imageName}" alt="${species}" class="fish-item" style="left: ${startPosition}; transform: scaleX(${direction === 'left' ? -1 : 1});">
                     </div>
                 `;
                 stockedSpecies.add(species);
@@ -97,92 +99,90 @@ $(document).ready(function() {
         // Insert the fish items into the container
         $('#locations-container').html(htmlContent);
 
-        // Attach click event to each fish-item-container to show the Wikipedia popup
+        // Animate the fish items
+        $('.fish-item-container').each(function() {
+            const $fishItem = $(this).find('.fish-item');
+            const direction = $(this).data('direction') === 'left' ? -1 : 1;
+            animateFish($fishItem, direction);
+        });
+
+        // Add click event listener to fish item containers
         $('.fish-item-container').click(function() {
-            const species = $(this).find('p').text();
-            const $imageElement = $(this).find('img');
-            fetchWikipediaInfo(species, $imageElement); // Fetch Wikipedia info for this species
+            const species = $(this).data('species');
+            const imageSrc = $(this).data('image');
+            fetchWikipediaInfo(species, imageSrc);
         });
     }
 
-    // Function to fetch information from Wikipedia API
-    function fetchWikipediaInfo(fishSpecies, $imageElement) {
-        const wikiApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(fishSpecies)}`;
+    // Function to animate fish
+    function animateFish($fishItem, direction) {
+        const speed = 2; // Speed in pixels per frame
+
+        function moveFish() {
+            const fishPosition = $fishItem.position().left;
+            const fishWidth = $fishItem.width();
+            const containerWidth = $(window).width();
+
+            if (direction === 1 && fishPosition + fishWidth >= containerWidth) {
+                direction = -1;
+                $fishItem.css('transform', 'scaleX(-1)'); // Flip the fish image
+            } else if (direction === -1 && fishPosition <= 0) {
+                direction = 1;
+                $fishItem.css('transform', 'scaleX(1)'); // Reset the fish image
+            }
+
+            $fishItem.css('left', fishPosition + speed * direction);
+
+            requestAnimationFrame(moveFish);
+        }
+
+        moveFish();
+    }
+
+    // Function to fetch Wikipedia info for a species
+    function fetchWikipediaInfo(species, imageSrc) {
+        const wikiApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(species)}`;
 
         $.ajax({
             url: wikiApiUrl,
             dataType: 'json',
             success: function(response) {
                 if (response.extract) {
-                    showPopup(response.extract, $imageElement);
+                    showPopup(species, imageSrc, response.extract);
                 } else {
-                    showPopup(`No Wikipedia information found for ${fishSpecies}.`, $imageElement);
+                    showPopup(species, imageSrc, 'No information available.');
                 }
             },
             error: function() {
-                showPopup('Failed to fetch Wikipedia information. Please try again later.', $imageElement);
+                showPopup(species, imageSrc, 'Failed to fetch information.');
             }
         });
     }
 
-    // Function to show a popup with the Wikipedia extract near the clicked image
-    function showPopup(content, $imageElement) {
-        removePopup(); // Remove any existing popup
-
-        const $popup = $(`
-            <div class="popup">
-                <div class="popup-content">
-                    <h3>Fish Information</h3>
-                    <p>${content}</p>
-                </div>
-            </div>
-        `);
-
-        $('body').append($popup);
-        adjustPopupPosition($popup, $imageElement);
-
-        setTimeout(function() {
-            $popup.addClass('show');
-        }, 10); // Delay to allow CSS transition
-
-        $(document).on('click.popup', function() {
-            removePopup();
-        });
+    // Function to show the popup with species info
+    function showPopup(species, imageSrc, info) {
+        $('#popup-image').attr('src', imageSrc);
+        $('#popup-text').html(`<h2>${species}</h2><p>${info}</p>`);
+        $('#popup-container').show();
     }
 
-    // Function to adjust the position of the popup after it's rendered
-    function adjustPopupPosition($popup, $imageElement) {
-        const imageOffset = $imageElement.offset();
-        const imageHeight = $imageElement.height();
-        const popupWidth = $popup.outerWidth();
-        const popupHeight = $popup.outerHeight();
-
-        let top = imageOffset.top + imageHeight + 10;
-        let left = imageOffset.left;
-
-        if (left + popupWidth > $(window).width()) {
-            left = $(window).width() - popupWidth - 10;
-        }
-
-        if (top + popupHeight > $(window).scrollTop() + $(window).height()) {
-            top = imageOffset.top - popupHeight - 10;
-        }
-
-        if (top < $(window).scrollTop()) {
-            top = imageOffset.top + imageHeight + 10;
-        }
-
-        $popup.css({
-            top: top + 'px',
-            left: left + 'px'
-        });
-    }
-
-    // Function to remove the popup
+    // Function to remove any existing popup
     function removePopup() {
         $('.popup').remove();
         $(document).off('click.popup');
     }
+
+    // Close the popup when the close button is clicked
+    $('.close-btn').click(function() {
+        $('#popup-container').hide();
+    });
+
+    // Close the popup when clicking outside of the popup content
+    $(window).click(function(event) {
+        if ($(event.target).is('#popup-container')) {
+            $('#popup-container').hide();
+        }
+    });
 
     // Event handler to prevent closing the popup when clicking inside it
     $(document).on('click', '.popup', function(event) {
