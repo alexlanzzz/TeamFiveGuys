@@ -12,7 +12,7 @@ body, html {
 .weather-info {
     position: fixed;
     top: 1vw;
-    left: 10vw; /* Initial position next to the menu button */
+    left: 5vw; /* Initial position next to the menu button */
     background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent background */
     color: #fff;
     padding: 12px 16px;
@@ -30,118 +30,6 @@ body, html {
     margin-right: 12px;
 }
 
-/* Menu Button Styles */
-.menu-button {
-    font-size: 2vw;
-    cursor: pointer;
-    color: #fff;
-    padding: 10px 15px;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 1100; /* Ensure button stays above sidebar */
-    background-color: #333;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-}
-
-.menu-button:hover {
-    background-color: #555;
-}
-
-/* Sidebar Styles */
-.sidebar {
-    height: 100%; /* Full height */
-    width: 0; /* Initial width */
-    position: fixed; /* Fixed positioning */
-    z-index: 1000; /* Below the weather-info and menu button */
-    top: 0;
-    left: 0;
-    background-color: #111; /* Sidebar background color */
-    overflow-x: hidden; /* Disable horizontal scroll */
-    transition: width 0.3s ease; /* Smooth transition for width */
-    padding-top: 60px; /* Top padding */
-}
-
-/* Close Button in Sidebar */
-.sidebar .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    font-size: 36px;
-    color: #fff;
-    text-decoration: none;
-}
-
-.sidebar .closebtn:hover {
-    color: #f1f1f1;
-}
-
-/* Sidebar Links */
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    padding: 12px 16px 12px 48px; /* Increased padding for better touch targets */
-}
-
-.sidebar ul li a {
-    color: #818181;
-    display: block;
-    text-decoration: none;
-    font-size: 25px;
-    transition: color 0.3s ease;
-}
-
-.sidebar ul li a:hover {
-    color: #f1f1f1;
-}
-
-
-/* Sidebar Open State */
-.sidebar.open {
-    width: 250px; /* Width when sidebar is open */
-}
-
-/* Shift Main Content and Weather Info When Sidebar is Open */
-.sidebar.open ~ .fishing-scene {
-    margin-left: 250px; /* Shift main content */
-}
-
-.sidebar.open ~ .weather-info {
-    left: 270px; /* Shift weather info to avoid overlapping with sidebar */
-}
-
-/* Responsive Adjustments */
-@media screen and (max-width: 600px) {
-    .sidebar.open {
-        width: 200px; /* Reduced width on smaller screens */
-    }
-    .sidebar.open ~ .fishing-scene {
-        margin-left: 200px; /* Adjust main content shift */
-    }
-    .sidebar.open ~ .weather-info {
-        left: 220px; /* Adjust weather info position */
-    }
-
-    .menu-button {
-        font-size: 24px;
-        padding: 8px 12px;
-    }
-
-    .weather-info {
-        left: 50px; /* Adjusted initial position */
-        font-size: 16px; /* Slightly smaller font on mobile */
-    }
-
-    .weather-info img, .weather-info i {
-        width: 24px; /* Smaller icons on mobile */
-        height: 24px;
-        margin-right: 8px;
-    }
-}
 
 header {
     background-color: transparent;

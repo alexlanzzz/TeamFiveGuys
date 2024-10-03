@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Get Elements
-const menuButton = document.getElementById('menu-button');
-const sidebar = document.getElementById('sidebar');
-const closeBtn = document.querySelector('.sidebar .closebtn');
+
 const weatherInfo = document.getElementById('weather-info');
 const temperatureElement = document.getElementById('temperature');
 const weatherDescriptionElement = document.getElementById('weather-description');
@@ -15,28 +13,8 @@ let weatherData = null; // To cache weather data
 // WeatherAPI.com API Key
 const WEATHER_API_KEY = '6a693f44a26e44eb86f101010242909'; // Replace with your actual API key
 
-// Toggle Sidebar
-menuButton.addEventListener('click', (event) => {
-    sidebar.classList.toggle('open');
-    // Prevent event from bubbling up to the document
-    event.stopPropagation();
-});
 
-// Close Sidebar
-closeBtn.addEventListener('click', (event) => {
-    sidebar.classList.remove('open');
-    // Prevent event from bubbling up to the document
-    event.stopPropagation();
-});
 
-// Close Sidebar When Clicking Outside
-document.addEventListener('click', (event) => {
-    const isClickInsideSidebar = sidebar.contains(event.target);
-    const isClickOnMenuButton = menuButton.contains(event.target);
-    if (!isClickInsideSidebar && !isClickOnMenuButton && sidebar.classList.contains('open')) {
-        sidebar.classList.remove('open');
-    }
-});
 
 // Fetch and Display Weather Information
 function getWeather() {
