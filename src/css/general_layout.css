@@ -5,7 +5,6 @@ body, html {
     width: 100%;
     height: 100%;
     font-family: 'Amatic SC', sans-serif;
-    overflow: hidden; 
 }
 
 /* Weather Information Container Styles */

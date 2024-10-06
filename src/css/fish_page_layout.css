@@ -1,32 +1,37 @@
 /* General layout styles */
 body {
-    font-family: 'Amatic SC', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f0f0f0;
+    display: grid;
+    grid-template-rows: minmax(150px, auto) 1fr auto; /* Set a minimum height for the first row (header) */
+    position: relative;
 }
 
-header.fish_page_header {
-    display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center;
-    padding: 10px 20px;
-    color: white;
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/fish_page_background_2.PNG') no-repeat center center;
+    background-size: cover; /* Ensure the image covers the entire screen */
+    z-index: -1; /* Place the image behind other content */
 }
 
-header.fish_page_header img {
-    height: 50px;
-    position: absolute;
-    left: 20px; /* Position the image to the left */
-}
-
-header.fish_page_header .location-name {
-    font-size: 36px;
-    color: black; /* Set the font color to black */
+header {
+    grid-row: 1 / 2;
+    position: fixed; /* Keep the header fixed */
+    width: 100%;
 }
 
 main {
-    padding: 20px;
+    grid-row: 2 / 3;
+    width: 100%;
+}
+
+header .location-name {
+    text-align: center;
+    font-size: 36px;
+    color: black; /* Set the font color to black */
 }
 
 footer {
@@ -34,6 +39,7 @@ footer {
     padding: 20px;
     background-color: #4eb6bc;
     color: white;
+    grid-row: 3; /* Footer at the bottom */
 }
 
 /* Helm container styling */
@@ -192,4 +198,19 @@ footer {
         max-height: 150px; /* Smaller height for mobile */
         overflow-y: auto; /* Enable scrolling */
     }
+}
+
+/* CSS for zoom animation */
+@keyframes zoomIn {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+.zoom-animation {
+    animation: zoomIn 0.5s forwards;
+    transform-origin: top center; /* 设置缩放中心点为顶部中心 */
 }

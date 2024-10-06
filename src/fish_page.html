@@ -13,26 +13,42 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    
-    <!-- Navigation Bar -->
-    <!-- <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="tide_page.html">Tide Information</a></li>
-            <li><a href="fish_page.html">Fish Information</a></li>
-            <li><a href="about_us.html">About Us</a></li>
-        </ul>
-    </nav> -->
-    
-    <header class="fish_page_header">
-        <img src="images/cloud 1.png" alt="Weather Icon" class="fish_page_header-left">
+    <div class="background-image"></div>
+    <header>
+        <nav class="icon-menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="images/homeicon.png" alt="Home" class="menu-icon-img">
+                        <span class="icon-description">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Find_a_FISHING_SPOT.html">
+                        <img src="images/locationicon.png" alt="Location" class="menu-icon-img">
+                        <span class="icon-description">Location</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="fish_page.html">
+                        <img src="images/fishicon.png" alt="Fish" class="menu-icon-img">
+                        <span class="icon-description">Fish</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tide_page.html" id="tide-link">
+                        <img src="images/tideicon.png" alt="Tide" class="menu-icon-img">
+                        <span class="icon-description">Tide</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
         <div class="location-name" id="location-name">Select Location</div>
-        <!-- <img src="images/location_icon.png" alt="Location Icon" class="fish_page_header-right" id="location-icon"> -->
     </header>
 
-    
-
     <main>
+
         <div id="main_content">
             <div id="locations-container"></div>
         </div>
@@ -54,7 +70,104 @@
 
     <!-- Pop-up container -->
     <div id="popup-container" class="popup-container">
-        <div class="popup-content">
+        <div class="popup-content"><!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Fishing Spot</title>
+                <!-- Link to your existing CSS files -->
+                <link rel="stylesheet" href="css/general_layout.css">
+                <link rel="stylesheet" href="css/fish_page_layout.css">
+                <link rel="stylesheet" href="css/styles.css">
+                <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+                <!-- Include jQuery library -->
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            </head>
+            <body>
+                <div class="background-image"></div>
+                <header>
+                    <nav class="icon-menu">
+                        <ul>
+                            <li>
+                                <a href="index.html">
+                                    <img src="images/homeicon.png" alt="Home" class="menu-icon-img">
+                                    <span class="icon-description">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Find_a_FISHING_SPOT.html">
+                                    <img src="images/locationicon.png" alt="Location" class="menu-icon-img">
+                                    <span class="icon-description">Location</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="fish_page.html">
+                                    <img src="images/fishicon.png" alt="Fish" class="menu-icon-img">
+                                    <span class="icon-description">Fish</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="tide_page.html" id="tide-link">
+                                    <img src="images/tideicon.png" alt="Tide" class="menu-icon-img">
+                                    <span class="icon-description">Tide</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="fish_page_header">
+                        <div class="location-name" id="location-name">Select Location</div>
+                    </div>
+                </header>
+                <main>
+                    <div id="main_content">
+                        <div id="locations-container"></div>
+                    </div>
+                </main>
+                <footer>
+                    <div class="helm-container">
+                        <img src="images/helm.png" alt="Helm" class="helm">
+                        <div class="location" style="transform: rotate(0deg) translate(300px) rotate(-270deg);">Mt Crosby Weir</div>
+                        <div class="location" style="transform: rotate(45deg) translate(300px) rotate(-270deg);">Bremer River</div>
+                        <div class="location" style="transform: rotate(90deg) translate(300px) rotate(-270deg);">North Pine Dam</div>
+                        <div class="location" style="transform: rotate(135deg) translate(300px) rotate(-270deg);">Somerset Dam</div>
+                        <div class="location" style="transform: rotate(180deg) translate(300px) rotate(-275deg);">Wivenhoe Dam</div>
+                        <div class="location" style="transform: rotate(225deg) translate(300px) rotate(-280deg);">Caboolture River Weir</div>
+                        <div class="location" style="transform: rotate(270deg) translate(300px) rotate(-270deg);">Logan River</div>
+                        <div class="location" style="transform: rotate(315deg) translate(300px) rotate(-265deg);">Albert River</div>
+                    </div>
+                </footer>
+            
+                <!-- Pop-up container -->
+                <div id="popup-container" class="popup-container">
+                    <div class="popup-content">
+                        <span class="close-btn">&times;</span>
+                        <img id="popup-image" src="" alt="Fish Image">
+                        <div id="popup-text"></div>
+                    </div>
+                </div>
+            
+                <script src="js/fish_location.js"></script>
+                <script src="js/test.js"></script>
+                <script>
+                    document.getElementById('tide-link').addEventListener('click', function(event) {
+                        event.preventDefault(); // 阻止默认的链接跳转行为
+                        const bodyRect = document.body.getBoundingClientRect();
+                        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                        const centerX = (bodyRect.left + bodyRect.right) / 2 + scrollLeft;
+                        const centerY = (bodyRect.top + bodyRect.bottom) / 2 + scrollTop;
+                        document.body.style.transformOrigin = `${centerX}px ${centerY}px`;
+                        document.body.classList.add('zoom-animation'); // 添加动画类
+            
+                        // 在动画结束后跳转到 tide_page.html
+                        setTimeout(function() {
+                            window.location.href = 'tide_page.html';
+                        }, 500); // 动画持续时间为 0.5 秒
+                    });
+                </script>
+            </body>
+            </html>
             <span class="close-btn">&times;</span>
             <img id="popup-image" src="" alt="Fish Image">
             <div id="popup-text"></div>
@@ -63,6 +176,23 @@
 
     <script src="js/fish_location.js"></script>
     <script src="js/test.js"></script>
+    <script>
+        document.getElementById('tide-link').addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止默认的链接跳转行为
+            const bodyRect = document.body.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            const centerX = (bodyRect.left + bodyRect.right) / 2 + scrollLeft;
+            const centerY = (bodyRect.top + bodyRect.bottom) / 2 + scrollTop;
+            document.body.style.transformOrigin = `${centerX}px ${centerY}px`;
+            document.body.classList.add('zoom-animation'); // 添加动画类
+
+            // 在动画结束后跳转到 tide_page.html
+            setTimeout(function() {
+                window.location.href = 'tide_page.html';
+            }, 500); // 动画持续时间为 0.5 秒
+        });
+    </script>
     
 </body>
 </html>
