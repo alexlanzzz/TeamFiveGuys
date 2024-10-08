@@ -50,3 +50,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+
+// 获取视频元素
+var video = document.getElementById('intro-video');
+// 获取网页内容的元素
+var content = document.getElementById('content');
+
+// 当视频播放结束时触发的事件
+video.onended = function() {
+    // 隐藏视频
+    video.style.display = 'none';
+    // 显示网页内容
+    content.style.display = 'block';
+};
+
+
+// 获取每个地点的元素
+var location1 = document.getElementById('location1');
+var location2 = document.getElementById('location2');
+var location3 = document.getElementById('location3');
+
+// 点击事件：获取地点名称并跳转到 fish_page.html
+location1.addEventListener('click', function() {
+    var locationName = "MT Crosby Weir"; // 获取该地点的名称
+    window.location.href = "fish_page.html?location=" + encodeURIComponent(locationName); // 跳转并传递地点名称
+});
+
+location2.addEventListener('click', function() {
+    var locationName = "Caboolture River Weir"; // 获取该地点的名称
+    window.location.href = "fish_page.html?location=" + encodeURIComponent(locationName); // 跳转并传递地点名称
+});
+
+location3.addEventListener('click', function() {
+    var locationName = "Wivenhoe Dam"; // 获取该地点的名称
+    window.location.href = "fish_page.html?location=" + encodeURIComponent(locationName); // 跳转并传递地点名称
+});
