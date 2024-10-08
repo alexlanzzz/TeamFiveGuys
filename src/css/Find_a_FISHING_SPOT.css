@@ -51,14 +51,6 @@ h1 {
     transform: scale(1.05);
 }
 
-.gif {
-    position: absolute; 
-    top: 60%; 
-    left: 80%; 
-    transform: translate(-50%, -50%); 
-    z-index: -1; 
-    
-}
 
 .fishing-spots li a {
     color: inherit; 
@@ -84,4 +76,107 @@ h1 {
 #loading img {
     width: 50px;
     height: 50px;
+}
+
+/* 容器，用来相对定位图标 */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* 定位图标1 */
+.location-marker1 {
+    position: absolute;
+    transform: translate(260px,0px);
+    cursor: pointer;
+}
+
+/* 定位图标2 */
+.location-marker2 {
+    position: absolute;
+    transform: translate(10px, -420px);
+    cursor: pointer;
+}
+
+/* 定位图标3 */
+.location-marker3 {
+    position: absolute;
+    transform: translate(-40px,-80px);
+    cursor: pointer;
+}
+
+/* 定位图标4 */
+.location-marker4 {
+    position: absolute;
+    transform: translate(2px, -300px);
+    cursor: pointer;
+}
+
+/* 定位图标5 */
+.location-marker5 {
+    position: absolute;
+    transform: translate(-200px, -420px);
+    cursor: pointer;
+}
+
+/* 定位图标6 */
+.location-marker6 {
+    position: absolute;
+    transform: translate(-190px, -310px);
+    cursor: pointer;
+}
+
+/* 定位图标7 */
+.location-marker7 {
+    position: absolute;
+    transform: translate(-50px,220%);
+    cursor: pointer;
+}
+
+/* 定位图标8 */
+.location-marker8 {
+    position: absolute;
+    transform: translate(65px,85%);
+    cursor: pointer;
+}
+
+/* 备注信息的样式 */
+.tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+}
+
+/* 鼠标悬停时显示备注信息 */
+.location-marker1:hover .tooltip {
+    display: block;
+}
+.location-marker2:hover .tooltip {
+    display: block;
+}
+.location-marker3:hover .tooltip {
+    display: block;
+}
+.location-marker4:hover .tooltip {
+    display: block;
+}
+.location-marker5:hover .tooltip {
+    display: block;
+}
+.location-marker6:hover .tooltip {
+    display: block;
+}
+.location-marker7:hover .tooltip {
+    display: block;
+}
+.location-marker8:hover .tooltip {
+    display: block;
 }
