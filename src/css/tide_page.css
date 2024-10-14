@@ -23,6 +23,7 @@
     flex-grow: 1;
     text-align: center;
     font-size: 1.2rem;
+    margin-top: 20px;
 }
 
 .location-filter-container {
@@ -144,7 +145,9 @@
     max-width: 1200px; /* Optional: Limit the maximum width */
     box-sizing: border-box;
 }
-
+.main-content {
+    margin-top: 20px; 
+}
 #main_content label {
     font-size: 1.2rem;
     margin-bottom: 10px;
@@ -165,168 +168,19 @@
     justify-content: space-between; /* Distribute space evenly */
     width: 100%; /* Full width */
     padding: 20px;
+    margin-top: 20px;
     box-sizing: border-box;
     max-width: 1200px; /* Optional: Limit the maximum width of the content */
-    margin: 0 auto; /* Center the content */
+    
     cursor: pointer; /* Add cursor pointer to indicate it's clickable */
 }
 
-/* Individual Fish Item Container */
-.fish-item-container {
-    width: 30%; /* Increase to 30% of the row width for bigger items */
-    margin-bottom: 20px; /* Space between rows */
-    text-align: center;
-    background-color: #fff;
-    padding: 20px; /* Increase padding for larger container */
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhance shadow */
-    transition: transform 0.2s ease-in-out;
-    box-sizing: border-box;
-}
 
-.fish-item-container:hover {
-    transform: scale(1.1); /* Increase the hover effect */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
-}
 
-/* Fish Image Styles */
-.fish-item {
-    width: 100%; /* Image fills the entire container */
-    height: auto;
-    object-fit: contain; /* Scale image to fit within container */
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    transition: border-color 0.2s ease;
-}
 
-.fish-item:hover {
-    border-color: #66afe9; /* Change border color on hover */
-}
 
-/* Fish Name Text */
-.fish-item-container p {
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 1rem;
-    color: #333;
-}
 
-.fish-item-container img {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    object-fit: contain;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    transition: border-color 0.2s;
-}
 
-/* Popup Styles */
-.popup {
-    position: absolute;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-    max-width: 300px; /* Limit the width */
-    z-index: 1000;
-    font-size: 0.9rem;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.popup.show {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Popup content styling */
-.popup-content {
-    padding: 10px;
-}
-
-.popup-content h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: #2c3e50;
-}
-
-.popup-content p {
-    margin: 10px 0;
-    color: #333;
-    font-size: 1rem;
-    line-height: 1.6; /* Increase line height for better readability */
-}
-
-/* Links in popup content */
-.popup-content a {
-    color: #3498db;
-    text-decoration: none;
-}
-
-.popup-content a:hover {
-    text-decoration: underline;
-}
-
-/* Responsive Design */
-
-/* For small screens (max-width: 600px) */
-@media (max-width: 600px) {
-    .fish-item-container {
-        width: 120px; /* Slightly increase for better visibility on small screens */
-    }
-
-    .fish-item-container p {
-        font-size: 0.9rem; /* Reduce font size */
-    }
-
-    .popup {
-        max-width: 200px; /* Smaller popup on small screens */
-        font-size: 0.8rem;
-    }
-
-    .popup::after, .popup::before {
-        left: 15px; /* Adjust arrow position */
-    }
-
-    .popup-content {
-        max-height: 150px; /* Smaller height for mobile */
-        overflow-y: auto; /* Enable scrolling */
-    }
-}
-
-/* For medium screens (min-width: 601px and max-width: 1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .fish-item-container {
-        width: 140px; /* Adjust container width */
-    }
-
-    .fish-item-container p {
-        font-size: 1rem; /* Maintain font size */
-    }
-
-    .popup {
-        max-width: 250px; /* Medium popup size */
-    }
-}
-
-/* For large screens (min-width: 1025px) */
-@media (min-width: 1025px) {
-    .fish-item-container {
-        width: 150px; /* Set container width */
-    }
-
-    .fish-item-container p {
-        font-size: 1.1rem; /* Increase font size */
-    }
-
-    .popup {
-        max-width: 300px; /* Larger popup size */
-    }
-}
 
 body {
     font-family: 'Amatic SC', sans-serif;
@@ -336,7 +190,11 @@ body {
     align-items: center;
     flex-direction: column; 
     height: 100vh;  
+    background-image: url('../images/tide_page_bg.png'); 
+    background-size: cover; 
+    background-position: center; 
 }
+
 
 h1 {
     text-align: center;
