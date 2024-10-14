@@ -9,31 +9,52 @@
     <link rel="stylesheet" href="css/tide_page.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <!-- Include jQuery library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-    <!-- Navigation Bar -->
-    <!-- <nav>
+<header>
+    <nav class="icon-menu">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="tide_page.html">Tide Information</a></li>
-            <li><a href="fish_page.html">Fish Information</a></li>
-            <li><a href="about_us.html">About Us</a></li>
+            <li>
+                <a href="index.html">
+                    <img src="images/homeicon.png" alt="Home" class="menu-icon-img">
+                    <span class="icon-description">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="Find_a_FISHING_SPOT.html">
+                    <img src="images/locationicon.png" alt="Location" class="menu-icon-img">
+                    <span class="icon-description">Location</span>
+                </a>
+            </li>
+            <li>
+                <a href="fish_page.html">
+                    <img src="images/fishicon.png" alt="Fish" class="menu-icon-img">
+                    <span class="icon-description">Fish</span>
+                </a>
+            </li>
+            <li>
+                <a href="tide_page.html">
+                    <img src="images/tideicon.png" alt="Tide" class="menu-icon-img">
+                    <span class="icon-description">Tide</span>
+                </a>
+            </li>
         </ul>
-    </nav> -->
-    
-    <header class="fish_page_header">
-        <img src="images/cloud 1.png" alt="Weather Icon" class="fish_page_header-left">
-        <div class="location-name" id="location-name">Select Location</div>
-        
+    </nav>
+</header>
+<body>
+    <!-- Weather Information Container -->
+    <div id="weather-info" class="weather-info">
+        <i class="fas fa-cloud-sun"></i> <span id="temperature">Loading...</span>, <span id="weather-description">--</span>
+    </div>
+    <!-- Menu Button -->
    
-    </header>
-
 
     <!-- Main Content Area -->
-    <h1>Tide Height Over Time</h1>
+    <div class="main-content">
+    
     <canvas id="tideCanvas" width="1200" height="600"></canvas>
-
+    </div>
     <!-- Scripts -->
     <script src="js/tide.js"></script>
 </body>
