@@ -68,19 +68,24 @@ function displayWeather(data) {
     const description = data.current.condition.text;
     const iconUrl = `https:${data.current.condition.icon}`;
     
+    // Update the existing elements directly
     temperatureElement.textContent = `${temp}°C`;
     weatherDescriptionElement.textContent = description;
     
-    // Update weather info container with icon and temperature
-    weatherInfo.innerHTML = `<img src="${iconUrl}" alt="Weather Icon"> ${temp}°C, ${description}`;
+    // Optionally, set the color explicitly in JavaScript if needed
+    weatherInfo.style.color = 'black'; // Ensure the text remains black
+
+    // Update the weather info with the icon
+    const img = document.createElement('img');
+    img.src = iconUrl;
+    img.alt = "Weather Icon";
+    
+    // Append the icon
+    weatherInfo.innerHTML = ''; // Clear previous content
+    weatherInfo.appendChild(img);
+    weatherInfo.appendChild(document.createTextNode(` ${temp}°C, ${description}`));
 }
 
-function error(err) {
-    weatherInfo.classList.remove('loading'); // Remove loading state
-    console.warn(`ERROR(${err.code}): ${err.message}`);
-    weatherDescriptionElement.textContent = "Unable to retrieve your location.";
-    temperatureElement.textContent = "--°C";
-}
 
 // Initialize Weather on Page Load
 window.onload = getWeather;

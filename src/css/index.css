@@ -1,19 +1,35 @@
 .background-container {
     position: relative;
     width: 100%;
-    height: 100vh; /* 全屏高度 */
+    height: 100vh; 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    transition: background-image 0.5s ease; /* 平滑过渡效果 */
+    transition: background-image 0.5s ease; 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white; /* 根据背景选择合适的字体颜色 */
+    color: white; 
     text-align: center;
-    overflow: hidden; /* 防止波纹溢出 */
+    overflow: hidden; 
 }
+
+.logo-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.logo-container h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 56px; /* Adjust the size to your preference */
+    color: rgb(0, 0, 0); /* You can adjust the color if needed */
+    text-align: center;
+}
+
 
 /* 波纹容器样式 */
 .wave-container {
@@ -74,7 +90,7 @@
 .boathead-container {
     position: absolute;
     bottom: -15px; 
-    left: 50%;
+    left: 52%;
     transform: translateX(-50%);
     z-index: 2; 
     pointer-events: auto; 
@@ -121,4 +137,10 @@
 #loading-container.fade-out {
     opacity: 0;
     transition: opacity 1s ease;
+}
+
+.weather-info {
+    background: none; /* Remove the background */
+    color: black; /* Change the text color to black */
+    font-size: 16px; /* Adjust the size if necessary */
 }
