@@ -3,120 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find a Fishing Spot</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/general_layout.css">
+    <title> Fishing Map</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/Find_a_FISHING_SPOT.css">
-    <style>
-        /* 视频全屏显示的样式 */
-        #intro-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9999; /* 确保视频位于最上层 */
-            background-color: black;
-        }
-
-        /* 页面内容初始隐藏 */
-        #content {
-            display: none;
-        }
-
-    </style>
-    
 </head>
+
 <body>
-    
 
-    <!-- 视频部分 -->
-    <video id="intro-video" autoplay muted>
-        <source src="images/map.mp4" type="video/mp4">
-        <!-- 当视频格式不支持时的提示 -->
-        Your browser does not support the video tag.
-    </video>
-
-    <div id="loading" style="display: none;">
-        <img src="images/loding.Gif.gif" alt="Loading...">
-    </div> 
-
-     <!-- 标记位置 1 -->
-     <div class="location-marker1" data-url="target-page1.html" style="top: 40%; left: 30%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">MT Crosby Weir - Click to view details</div>
-    </div>
-
-     <!-- 标记位置 2 -->
-     <div class="location-marker2" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        <div class="tooltip">Caboolture River Weir - Click to view details</div>
-    
-    </div>
-
-    <!-- 标记位置 3 -->
-    <div class="location-marker3" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">Bremer River - Click to view details</div>
-    </div>
-
-    <!-- 标记位置 4 -->
-    <div class="location-marker4" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">North Pine Dam - Click to view details</div>
-    </div>
-
-    <!-- 标记位置 5 -->
-    <div class="location-marker5" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">Somerset Dam - Click to view details</div>
-    </div>
-
-    <!-- 标记位置 6 -->
-    <div class="location-marker6" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">Wivenhoe Dam - Click to view details</div>
-    </div>
-
-     <!-- 标记位置 7 -->
-     <div class="location-marker7" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">Logan River - Click to view details</div>
-    </div>
-
-     <!-- 标记位置 8 -->
-     <div class="location-marker8" data-url="target-page2.html" style="top: 60%; left: 50%;">
-        <svg t="1728272474163" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7091" width="60" height="60"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" p-id="7092"></path><path d="M270.41792 429.056c7.97696 7.9872 234.43456 75.1616 234.43456 75.1616s68.79232 228.0448 74.32192 233.5744a26.34752 26.34752 0 0 0 45.2608-11.9808c4.7104-18.1248 96.9728-381.8496 104.7552-412.8768a27.53536 27.53536 0 0 0-33.3824-33.4848c-22.528 5.5296-387.82976 97.8944-413.88032 105.0624a26.18368 26.18368 0 0 0-11.50976 44.544z" fill="#EBBA50" p-id="7093"></path></svg>
-        
-        <div class="tooltip">Albert River - Click to view details</div>
-    </div>
-
-
-
-    <!--<div class="container">
-        <div class="map-background">
-            <h1>Find a Fishing Spot</h1>
-            <ul class="fishing-spots">
-                <li><a href="fish_page.html?location=MT%20Crosby%20Weir">MT Crosby Weir</a></li>
-                <li><a href="fish_page.html?location=Bremer%20River">Bremer River</a></li>
-                <li><a href="fish_page.html?location=North%20Pine%20Dam">North Pine Dam</a></li>
-                <li><a href="fish_page.html?location=Somerset%20Dam">Somerset Dam</a></li>
-                <li><a href="fish_page.html?location=Wivenhoe%20Dam">Wivenhoe Dam</a></li>
-                <li><a href="fish_page.html?location=Caboolture%20River%20Weir">Caboolture River Weir</a></li>
-                <li><a href="fish_page.html?location=Logan%20River">Logan River</a></li>
-                <li><a href="fish_page.html?location=Albert%20River">Albert River</a></li>
+    <!-- Header with Icon-based Menu -->
+    <header>
+        <nav class="icon-menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="images/homeicon.png" alt="Home" class="menu-icon-img">
+                        <span class="icon-description">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Find_a_FISHING_SPOT.html">
+                        <img src="images/locationicon.png" alt="Location" class="menu-icon-img">
+                        <span class="icon-description">Location</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="fish_page.html">
+                        <img src="images/fishicon.png" alt="Fish" class="menu-icon-img">
+                        <span class="icon-description">Fish</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tide_page.html">
+                        <img src="images/tideicon.png" alt="Tide" class="menu-icon-img">
+                        <span class="icon-description">Tide</span>
+                    </a>
+                </li>
             </ul>
-        </div>
-        
-    </div>-->
-    <script src="js/Find_a_FISHING_SPOT.js"></script>
+        </nav>
+    </header>
+
+    <!-- Big image that starts below the header -->
+    <div class="image-container">
+        <img src="images/map1.png" alt="Big Picture" class="big-picture">
+
+        <!-- Clickable location names -->
+        <a href="#" class="location" style="top: 45%; left: 42%;">Mt Crosby Weir</a>
+        <a href="#" class="location" style="top: 12%; left: 48%;">Caboolture River Weir</a>
+        <a href="#" class="location" style="top: 36%; left: 40%;">Wivenhoe Dam</a>
+        <a href="#" class="location" style="top: 25%; left: 45%;">North Pine Dam</a>
+        <a href="#" class="location" style="top: 11%; left: 38%;">Somerset Dam</a>
+        <a href="#" class="location" style="top: 85%; left: 46%;">Logan River</a>
+        <a href="#" class="location" style="top: 76%; left: 53%;">Albert River</a>
+        <a href="#" class="location" style="top: 53%; left: 39%;">Bremer River</a>
+    </div>
+
+    <script src="js/test.js"></script>
 </body>
 </html>
