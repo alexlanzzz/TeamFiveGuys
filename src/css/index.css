@@ -138,9 +138,3 @@
     opacity: 0;
     transition: opacity 1s ease;
 }
-
-.weather-info {
-    background: none; /* Remove the background */
-    color: black; /* Change the text color to black */
-    font-size: 16px; /* Adjust the size if necessary */
-}
