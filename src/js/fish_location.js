@@ -99,44 +99,12 @@ $(document).ready(function() {
         // Insert the fish items into the container
         $('#locations-container').html(htmlContent);
 
-        // Animate the fish items
-        $('.fish-item-container').each(function() {
-            const $fishItem = $(this).find('.fish-item');
-            const direction = $(this).data('direction') === 'left' ? -1 : 1;
-            animateFish($fishItem, direction);
-        });
-
         // Add click event listener to fish item containers
         $('.fish-item-container').click(function() {
             const species = $(this).data('species');
             const imageSrc = $(this).data('image');
             fetchWikipediaInfo(species, imageSrc);
         });
-    }
-
-    // Function to animate fish
-    function animateFish($fishItem, direction) {
-        const speed = 2; // Speed in pixels per frame
-
-        function moveFish() {
-            const fishPosition = $fishItem.position().left;
-            const fishWidth = $fishItem.width();
-            const containerWidth = $(window).width();
-
-            if (direction === 1 && fishPosition + fishWidth >= containerWidth) {
-                direction = -1;
-                $fishItem.css('transform', 'scaleX(-1)'); // Flip the fish image
-            } else if (direction === -1 && fishPosition <= 0) {
-                direction = 1;
-                $fishItem.css('transform', 'scaleX(1)'); // Reset the fish image
-            }
-
-            $fishItem.css('left', fishPosition + speed * direction);
-
-            requestAnimationFrame(moveFish);
-        }
-
-        moveFish();
     }
 
     // Function to fetch Wikipedia info for a species
@@ -189,18 +157,4 @@ $(document).ready(function() {
         event.stopPropagation();
     });
 
-    // **Fix Helm Rotation**
-    const helm = document.querySelector('.helm');
-    let currentRotation = 0;  // Track the current rotation
-
-    helm.addEventListener('click', function () {
-        currentRotation += 90; // Rotate 90 degrees with each click
-        helm.style.transform = `translate(-50%, -50%) rotate(${currentRotation}deg)`;
-
-        locations.forEach((location, index) => {
-            const angle = index * 45; // Each location is 45 degrees apart
-            const newAngle = angle + currentRotation;
-            location.style.transform = `rotate(${newAngle}deg) translate(300px) rotate(-${newAngle}deg)`;
-        });
-    });
 });
