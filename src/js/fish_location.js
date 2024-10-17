@@ -18,7 +18,7 @@ $(document).ready(function() {
         "Golden Perch": "Golden_Perch.png",
         "Mary River Cod": "Murray_Cod.png",
         "Saratoga": "saratoga.png",
-        "Silver Perch": "silver_perch.png",
+        "Silver Perch": "silver perch.png",
     };
 
     // Update location name in the header on click
@@ -83,13 +83,11 @@ $(document).ready(function() {
 
             // Ensure each species is displayed only once
             if (!stockedSpecies.has(species)) {
-                const imageName = speciesImageMap[species] || 'fish1.png';
-                const direction = Math.random() > 0.5 ? 'left' : 'right';
-                const startPosition = direction === 'left' ? '-100px' : 'calc(100% - 100px)';
+                const imageName = speciesImageMap[species] || 'australian_bass.png';
 
                 htmlContent += `
-                    <div class="fish-item-container" data-species="${species}" data-image="images/fishes/${imageName}" data-direction="${direction}">
-                        <img src="images/fishes/${imageName}" alt="${species}" class="fish-item" style="left: ${startPosition}; transform: scaleX(${direction === 'left' ? -1 : 1});">
+                    <div class="fish-item-container" data-species="${species}" data-image="images/fishes/${imageName}">
+                        <img src="images/fishes/${imageName}" alt="${species}" class="fish-item">
                     </div>
                 `;
                 stockedSpecies.add(species);

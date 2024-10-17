@@ -14,7 +14,6 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div class="background-image"></div>
     <header>
         <nav class="icon-menu">
             <ul>
@@ -55,19 +54,17 @@
         </div>
     </main>
 
-    <footer>
-        <div class="helm-container">
-            <img src="images/helm.png" alt="Helm" class="helm">
-            <div class="location" style="transform: rotate(0deg) translate(300px) rotate(-270deg);">Mt Crosby Weir</div>
-            <div class="location" style="transform: rotate(45deg) translate(300px) rotate(-270deg);">Bremer River</div>
-            <div class="location" style="transform: rotate(90deg) translate(300px) rotate(-270deg);">North Pine Dam</div>
-            <div class="location" style="transform: rotate(135deg) translate(300px) rotate(-270deg);">Somerset Dam</div>
-            <div class="location" style="transform: rotate(180deg) translate(300px) rotate(-275deg);">Wivenhoe Dam</div>
-            <div class="location" style="transform: rotate(225deg) translate(300px) rotate(-280deg);">Caboolture River Weir</div>
-            <div class="location" style="transform: rotate(270deg) translate(300px) rotate(-270deg);">Logan River</div>
-            <div class="location" style="transform: rotate(315deg) translate(300px) rotate(-265deg);">Albert River</div>
-        </div>
-    </footer>
+    <div class="helm-container">
+        <img src="images/helm.png" alt="Helm" class="helm">
+        <div class="location" style="transform: rotate(0deg) translate(300px) rotate(-270deg);">Mt Crosby Weir</div>
+        <div class="location" style="transform: rotate(45deg) translate(300px) rotate(-270deg);">Bremer River</div>
+        <div class="location" style="transform: rotate(90deg) translate(300px) rotate(-270deg);">North Pine Dam</div>
+        <div class="location" style="transform: rotate(135deg) translate(300px) rotate(-270deg);">Somerset Dam</div>
+        <div class="location" style="transform: rotate(180deg) translate(300px) rotate(-275deg);">Wivenhoe Dam</div>
+        <div class="location" style="transform: rotate(225deg) translate(300px) rotate(-280deg);">Caboolture River Weir</div>
+        <div class="location" style="transform: rotate(270deg) translate(300px) rotate(-270deg);">Logan River</div>
+        <div class="location" style="transform: rotate(315deg) translate(300px) rotate(-265deg);">Albert River</div>
+    </div>
 
     <!-- Pop-up container -->
     <div id="popup-container" class="popup-container">
@@ -79,24 +76,10 @@
         </div>
     </div>
 
+    <div class="background-image"></div>
+
     <script src="js/fish_location.js"></script>
     <script src="js/test.js"></script>
-    <script>
-        document.getElementById('tide-link').addEventListener('click', function(event) {
-            event.preventDefault();
-            const bodyRect = document.body.getBoundingClientRect();
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-            const centerX = (bodyRect.left + bodyRect.right) / 2 + scrollLeft;
-            const centerY = (bodyRect.top + bodyRect.bottom) / 2 + scrollTop;
-            document.body.style.transformOrigin = `${centerX}px ${centerY}px`;
-            document.body.classList.add('zoom-animation');
-
-            setTimeout(function() {
-                window.location.href = 'tide_page.html';
-            }, 500);
-        });
-    </script>
     
 </body>
 </html>
