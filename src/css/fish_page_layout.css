@@ -1,9 +1,8 @@
 /* General layout styles */
 body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: minmax(150px, auto) 1fr auto; /* Set a minimum height for the first row (header) */
+    position: relative;
 }
 
 
@@ -19,16 +18,13 @@ body {
 }
 
 header {
+    grid-row: 1 / 2;
     position: fixed; /* Keep the header fixed */
     width: 100%;
-    top: 0;
-    z-index: 1; /* Place the header above other content */
 }
 
 main {
-    flex: 1; /* Fill remaining space */
-    overflow-y: auto;
-    margin-top: 60%;
+    grid-row: 2 / 3;
     width: 100%;
 }
 
@@ -42,10 +38,8 @@ footer {
     text-align: center;
     padding: 20px;
     background-color: #4eb6bc;
-    color: black;
-    position: sticky;
-    bottom: 0;
-    width: 100%;
+    color: white;
+    grid-row: 3; /* Footer at the bottom */
 }
 
 /* Helm container styling */
