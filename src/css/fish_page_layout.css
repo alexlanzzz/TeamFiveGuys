@@ -3,8 +3,8 @@ body {
     position: relative;
     margin: 0;
     height: 100vh;
+    overflow: hidden;
 }
-
 
 .background-image {
     position: fixed;
@@ -30,7 +30,9 @@ header {
 }
 
 main {
+    overflow-y: auto; /* Allow vertical scrolling within the main content */
     margin-top: 200px;
+    height: calc(100vh - 250px); /* Ensure the height fits the remaining space */
     width: 100%;
 }
 
@@ -58,138 +60,144 @@ main {
     animation: fadeIn 2s forwards; /* Apply the fade-in effect over 2 seconds */
 }
 
-/* Helm container styling */
 .helm-container {
-    position: relative;
-    display: inline-block;
-    width: 300px;
-    height: 300px;
+    position: fixed; /* Change to fixed to keep it at the bottom */
+    bottom: 0; /* Align it to the bottom of the viewport */
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: transparent;
-    overflow: hidden;
-    margin: 0 auto;
+    z-index: 100; /* Ensure it stays above other content */
 }
 
 .helm {
-    position: absolute;
     width: 100%;
     height: auto;
+    position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    transition: transform 1s ease-in-out;
+    transition: transform 1s ease-in-out, box-shadow 0.3s ease; /* Smooth rotation animation */
     cursor: pointer;
 }
 
 .location {
     position: absolute;
-    width: 95px;
-    line-height: 1.2;
+    font-size: 25px;
+    width: 100px;
     text-align: center;
-    font-size: 16px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0deg);
-    white-space: normal;
-    transition: transform 1s ease-in-out;
+    transform-origin: center center;
+    transition: transform 1s ease-in-out; /* Smooth rotation for location labels */
 }
 
-.location:hover {
-    cursor: pointer;
-    color: #4eb6bc;
-    font-weight: bold;
-}
-
-/* Container for fish items */
+/* Container for fish items and details */
 #locations-container {
     display: flex;
-    flex-direction: column; /* Ensure items are in a column */
+    justify-content: space-between;
     align-items: center;
-    gap: 20px; /* Space between fish items */
-    overflow: hidden; /* Ensure overflow is hidden */
+    height: 80vh; /* Occupy most of the viewport height */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
 /* Fish item container */
 .fish-item-container {
-    width: 100%; /* Full width */
     display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    position: relative;
-    overflow: hidden;
-    height: 200px; /* Adjust height as needed */
-    cursor: pointer; /* Make the container clickable */
+    justify-content: center; /* Center align the image and name vertically */
+    transition: all 0.5s ease; /* Smooth transition for sliding */
+    width: 50%; /* Closer to center for better sliding effect */
+    margin: 0 auto;
+    transform: translateX(50px); 
+}
+
+/* Slide effect when clicked */
+.fish-item-container.slide-left {
+    transform: translateX(-150px); /* Slide the container 150px to the left */
 }
 
 /* Fish image */
 .fish-item {
-    width: auto;
-    height: 100%;
-    justify-self: center;
+    width: 350px; /* Adjusted image size for better centering */
+    height: auto;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease; /* Add smooth transition for scaling */
+}
+
+/* Add scaling effect when hovering over fish image */
+.fish-item:hover {
+    transform: scale(1.2); /* Scale up the fish image when hovered */
 }
 
 /* Fish name */
 .fish-name {
-    font-size: 24px;
-    text-align: center;
-    width: 100%;
-    position: relative; /* Change to relative to avoid overlapping issues */
-    margin-top: 10px; /* Adjust position as needed */
-    white-space: nowrap; /* Prevent text from wrapping */
+    font-family: 'Lexend Deca', sans-serif; /* Use Lexend Deca font */
+    font-size: 42px; /* Larger font size for the fish name */
+    font-weight: 700; /* Make the name bold */
+    color: #333;
+    transition: all 0.5s ease; /* Ensure smooth transition for text as well */
 }
 
-/* Pop-up container */
-.popup-container {
-    display: none; /* Hidden by default */
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+/* Fish details container */
+.fish-detail-container {
+    width: 0%; /* Initially hidden */
+    opacity: 0;
+    transition: all 0.5s ease; /* Smooth transition for showing details */
+    font-size: 22px; /* Smaller font size for the detailed description */
+    font-family: 'Lexend Deca', sans-serif; /* Use Lexend Deca for details as well */
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 150px;
+    margin-right: 100px;
+    color: #333;
+    overflow: hidden;
+    max-width: 500px;
+    word-wrap: break-word;
+    line-height: 1.5;
 }
 
-/* Pop-up content */
-.popup-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    display: flex;
-    align-items: center;
+/* Show details when fish image slides */
+.fish-detail-container.show-details {
+    width: 40%; /* Take 40% of the space when details are shown */
+    opacity: 1; /* Make the container visible */
 }
 
-/* Close button */
-.close-btn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Pop-up image */
-#popup-image {
-    width: 150px; /* Adjust size as needed */
+/* Style for navigation arrows */
+.nav-arrow {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    width: 100px; /* Initial size for the arrow */
     height: auto;
-    margin-right: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth transition for scaling effect */
+    z-index: 1000;
 }
 
-/* Pop-up text */
-#popup-text {
-    flex: 1;
+/* Left arrow */
+#prevButton {
+    left: 120px;
 }
+
+/* Right arrow */
+#nextButton {
+    right: 120px;
+}
+
+/* Hover effect to scale up the arrows */
+.nav-arrow:hover {
+    transform: translateY(-50%) scale(1.2); /* Scale up the arrows when hovered */
+}
+
+/* Button hover effect */
+.nav-arrow:active {
+    transform: translateY(-50%) scale(1.1); /* Slightly smaller scale on click */
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 600px) {
@@ -200,33 +208,4 @@ main {
     .fish-name {
         font-size: 0.9rem; /* Reduce font size */
     }
-
-    .popup {
-        max-width: 200px; /* Smaller popup on small screens */
-        font-size: 0.8rem;
-    }
-
-    .popup::after, .popup::before {
-        left: 15px; /* Adjust arrow position */
-    }
-
-    .popup-content {
-        max-height: 150px; /* Smaller height for mobile */
-        overflow-y: auto; /* Enable scrolling */
-    }
-}
-
-/* CSS for zoom animation */
-@keyframes zoomIn {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(1.2);
-    }
-}
-
-.zoom-animation {
-    animation: zoomIn 0.5s forwards;
-    transform-origin: top center; /* 设置缩放中心点为顶部中心 */
 }

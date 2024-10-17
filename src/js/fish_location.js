@@ -54,7 +54,6 @@ $(document).ready(function() {
 
         // Display loading indicator
         $('#locations-container').html('<div class="loader"></div>');
-        removePopup(); // Remove any existing popup
 
         $.ajax({
             url: apiUrl,
@@ -73,86 +72,105 @@ $(document).ready(function() {
         });
     }
 
-    // Function to display fish data as images
+    let fishData = []; // Store fetched fish data
+    let currentIndex = 0; // Track the current fish being displayed
+    let detailsVisible = false; // Track if details are currently visible
+    
     function displayFishData(fishRecords) {
-        let htmlContent = '';
-        let stockedSpecies = new Set(); // To store unique species
-
-        fishRecords.forEach(record => {
-            const species = record['Species stocked'];
-
-            // Ensure each species is displayed only once
-            if (!stockedSpecies.has(species)) {
-                const imageName = speciesImageMap[species] || 'australian_bass.png';
-
-                htmlContent += `
-                    <div class="fish-item-container" data-species="${species}" data-image="images/fishes/${imageName}">
-                        <img src="images/fishes/${imageName}" alt="${species}" class="fish-item">
-                    </div>
-                `;
-                stockedSpecies.add(species);
-            }
-        });
-
-        // Insert the fish items into the container
-        $('#locations-container').html(htmlContent);
-
-        // Add click event listener to fish item containers
-        $('.fish-item-container').click(function() {
-            const species = $(this).data('species');
-            const imageSrc = $(this).data('image');
-            fetchWikipediaInfo(species, imageSrc);
-        });
+        fishData = fishRecords; // Store the fish records for navigation
+        displayCurrentFish(); // Display the first fish
     }
+    
+    function displayCurrentFish() {
+        const currentFish = fishData[currentIndex];
+        const species = currentFish['Species stocked'];
+        const imageName = speciesImageMap[species] || 'australian_bass.png';
+    
+        // Update the HTML for the current fish and buttons
+        const htmlContent = `
+            <div class="fish-item-container">
+                <img src="images/fishes/${imageName}" alt="${species}" class="fish-item zoom-animation">
+                <div class="fish-name">${species}</div>
+            </div>
+            <div class="fish-detail-container"></div> <!-- Container for fish details -->
+        `;
+    
+        $('#locations-container').html(htmlContent); // Display the current fish
+    
+        // Add click event listener to toggle the slide effect for details
+        $('.fish-item-container').click(function() {
+            if (!detailsVisible) {
+                // If details are hidden, show them by sliding left
+                const imageSrc = `images/fishes/${imageName}`;
+                fetchWikipediaInfo(species, imageSrc); // Fetch details for the clicked fish
+    
+                $('.fish-item-container').addClass('slide-left'); // Add sliding animation to the container
+                $('.fish-detail-container').addClass('show-details'); // Show the details container
+            } else {
+                // If details are visible, hide them by sliding back to the center
+                $('.fish-item-container').removeClass('slide-left'); // Slide back to the center
+                $('.fish-detail-container').removeClass('show-details'); // Hide the details container
+            }
+            detailsVisible = !detailsVisible; // Toggle visibility status
+        });
 
-    // Function to fetch Wikipedia info for a species
+        // Add hover effect for scaling the image when hovered
+        $('.fish-item').hover(
+            function() {
+                $(this).css('transform', 'scale(1.2)'); // Scale image when hovered
+            }, 
+            function() {
+                $(this).css('transform', 'scale(1)'); // Reset scale when hover ends
+            }
+        );
+    }
+    
+    // Event listeners for navigation buttons
+    $('#prevButton').click(function() {
+        currentIndex = (currentIndex - 1 + fishData.length) % fishData.length; // Loop backward
+        resetFishDisplay(); // Reset the fish display and details
+        displayCurrentFish(); // Display the previous fish
+    });
+    
+    $('#nextButton').click(function() {
+        currentIndex = (currentIndex + 1) % fishData.length; // Loop forward
+        resetFishDisplay(); // Reset the fish display and details
+        displayCurrentFish(); // Display the next fish
+    });
+    
+    // Function to reset fish display before switching
+    function resetFishDisplay() {
+        $('.fish-item-container').removeClass('slide-left'); // Remove the sliding class
+        $('.fish-detail-container').removeClass('show-details'); // Hide the details
+        detailsVisible = false; // Reset the visibility status
+    }
+    
+    // Function to fetch fish details
     function fetchWikipediaInfo(species, imageSrc) {
         const wikiApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(species)}`;
-
+    
         $.ajax({
             url: wikiApiUrl,
             dataType: 'json',
             success: function(response) {
                 if (response.extract) {
-                    showPopup(species, imageSrc, response.extract);
+                    displayFishDetails(species, imageSrc, response.extract);
                 } else {
-                    showPopup(species, imageSrc, 'No information available.');
+                    displayFishDetails(species, imageSrc, 'No information available.');
                 }
             },
             error: function() {
-                showPopup(species, imageSrc, 'Failed to fetch information.');
+                displayFishDetails(species, imageSrc, 'Failed to fetch information.');
             }
         });
     }
-
-    // Function to show the popup with species info
-    function showPopup(species, imageSrc, info) {
-        $('#popup-image').attr('src', imageSrc);
-        $('#popup-text').html(`<h2>${species}</h2><p>${info}</p>`);
-        $('#popup-container').show();
+    
+    // Function to display the fish details in the right container
+    function displayFishDetails(species, imageSrc, info) {
+        const detailsHtml = `
+            <h2>${species}</h2>
+            <p>${info}</p>
+        `;
+        $('.fish-detail-container').html(detailsHtml); // Inject the details into the right-side container
     }
-
-    // Function to remove any existing popup
-    function removePopup() {
-        $('.popup').remove();
-        $(document).off('click.popup');
-    }
-
-    // Close the popup when the close button is clicked
-    $('.close-btn').click(function() {
-        $('#popup-container').hide();
-    });
-
-    // Close the popup when clicking outside of the popup content
-    $(window).click(function(event) {
-        if ($(event.target).is('#popup-container')) {
-            $('#popup-container').hide();
-        }
-    });
-
-    // Event handler to prevent closing the popup when clicking inside it
-    $(document).on('click', '.popup', function(event) {
-        event.stopPropagation();
-    });
-
 });
