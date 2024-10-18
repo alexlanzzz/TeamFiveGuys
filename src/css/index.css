@@ -125,8 +125,8 @@ html,body{
 .boathead-container a:hover::after {
     content: attr(data-title);
     position: absolute;
-    bottom: 50%; 
-    left: 45%; 
+    top: -200px;
+    left: 45%;
     transform: translate(-50%, -120%); 
     background-color: none;
     color: white;
