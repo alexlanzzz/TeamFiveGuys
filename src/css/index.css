@@ -14,7 +14,11 @@
     text-align: center;
     overflow: hidden; 
 }
-
+.logo{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
 .logo-container {
     margin-top: 20px;
     display: flex;
