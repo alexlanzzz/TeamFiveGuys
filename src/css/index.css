@@ -76,19 +76,19 @@
 
 /* 不同时间段的背景类 */
 .morning {
-    background-image: url('../images/morning.png');
+    background-image: url('../images/bgindexmorining.png');
 }
 
 .noon {
-    background-image: url('../images/noon.png');
+    background-image: url('../images/bgindexmorining.png');
 }
 
 .afternoon {
-    background-image: url('../images/afternoon.png');
+    background-image: url('../images/bgindexafternoon.png');
 }
 
 .night {
-    background-image: url('../images/night.png');
+    background-image: url('../images/bgindexafternoon.png');
 }
 
 .boathead-container {
