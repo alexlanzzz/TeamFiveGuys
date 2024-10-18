@@ -183,7 +183,7 @@ body {
     align-items: center;
     flex-direction: column; 
     height: 100vh;  
-    background-image: url('../images/tide_page_bg.png'); 
+    background-image: url('../images/tidepagebg.png'); 
     background-size: cover; 
     background-position: center; 
 }
