@@ -1,0 +1,60 @@
+#helm-container {
+    position: fixed;
+    bottom: -120px;
+    left: 40%;
+    width: 200px; /* Match the size of the helm */
+    height: 200px; /* Match the size of the helm */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; /* Ensure the location list is visible */
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    transform-origin: center center; /* Rotate around the center */
+    transform: rotate(180deg); /* Initial reversed state */
+}
+
+#helm-container.rotated {
+    transform: rotate(0deg); /* Rotate to normal position */
+}
+
+#helm {
+    width: 100%; /* Full width of the container */
+    height: 100%; /* Full height of the container */
+    background: url('../images/helm.png') no-repeat center center;
+    background-size: contain;
+}
+
+#location-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    bottom: 100%; /* Position the location list at the top of the helm */
+    z-index: 1; /* Ensure the location list is above the helm */
+    transition: transform 0.5s ease; /* Ensure smooth rotation */
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    padding: 1em;
+    border-radius: 10%;
+    font-size: 1.25em;
+}
+
+#location-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#location-list li {
+    margin: 5px 0;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#location-list li:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
+    color: #007BFF; /* Change text color on hover */
+}

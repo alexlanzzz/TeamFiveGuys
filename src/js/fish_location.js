@@ -28,7 +28,7 @@ $(document).ready(function() {
     // Retrieve the selected location from local storage
     const selectedLocation = localStorage.getItem('selectedLocation');
     if (selectedLocation) {
-        locationNameDisplay.html(`<span class="additional-text">What you can catch in:</span> ${selectedLocation}`); // Update location name
+        locationNameDisplay.html(`<p class="additional-text">What u catch in:</p> ${selectedLocation}`); // Update location name
         fetchData(selectedLocation); // Fetch fish data based on location
     }
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
     locations.forEach((location) => {
         location.addEventListener('click', function() {
             const selectedLocation = this.textContent;
-            locationNameDisplay.html(`<span class="additional-text">What you can catch in:</span> ${selectedLocation}`); // Update location name
+            locationNameDisplay.html(`<p class="additional-text">What u catch in:</p> ${selectedLocation}`); // Update location name
             fetchData(selectedLocation); // Fetch fish data based on location
         });
     });
@@ -53,7 +53,7 @@ $(document).ready(function() {
         };
 
         // Display loading indicator
-        $('#locations-container').html('<div class="loader"></div>');
+        $('#fish-container').html('<div class="loader"></div>');
 
         $.ajax({
             url: apiUrl,
@@ -63,11 +63,11 @@ $(document).ready(function() {
                 if (response.result.records && response.result.records.length > 0) {
                     displayFishData(response.result.records);
                 } else {
-                    $('#locations-container').html('<p>No data found for this location.</p>');
+                    $('#fish-container').html('<p>No data found for this location.</p>');
                 }
             },
             error: function() {
-                $('#locations-container').html('<p>Failed to fetch data. Please try again later.</p>');
+                $('#fish-container').html('<p>Failed to fetch data. Please try again later.</p>');
             }
         });
     }
@@ -95,7 +95,7 @@ $(document).ready(function() {
             <div class="fish-detail-container"></div> <!-- Container for fish details -->
         `;
     
-        $('#locations-container').html(htmlContent); // Display the current fish
+        $('#fish-container').html(htmlContent); // Display the current fish
     
         // Add click event listener to toggle the slide effect for details
         $('.fish-item-container').click(function() {

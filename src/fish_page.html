@@ -7,8 +7,8 @@
     <!-- Link to your existing CSS files -->
     <link rel="stylesheet" href="css/general_layout.css">
     <link rel="stylesheet" href="css/fish_page_layout.css">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/helm.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&display=swap" rel="stylesheet">
@@ -51,7 +51,7 @@
     </header>
 
     <main>
-        <div id="locations-container"></div> <!-- Fish content will be dynamically loaded here -->
+        <div id="fish-container"></div> <!-- Fish content will be dynamically loaded here -->
     
         <!-- Navigation buttons -->
         <!-- Navigation buttons -->
@@ -59,18 +59,22 @@
         <img id="nextButton" class="nav-arrow" src="images/arrow-right.png" alt="Next">
 
     </main>
-    
 
-    <div class="helm-container">
-        <img src="images/helm.png" alt="Helm" class="helm">
-        <div class="location" style="transform: rotate(0deg) translate(300px) rotate(-270deg);">Mt Crosby Weir</div>
-        <div class="location" style="transform: rotate(45deg) translate(300px) rotate(-270deg);">Bremer River</div>
-        <div class="location" style="transform: rotate(90deg) translate(300px) rotate(-270deg);">North Pine Dam</div>
-        <div class="location" style="transform: rotate(135deg) translate(300px) rotate(-270deg);">Somerset Dam</div>
-        <div class="location" style="transform: rotate(180deg) translate(300px) rotate(-275deg);">Wivenhoe Dam</div>
-        <div class="location" style="transform: rotate(225deg) translate(300px) rotate(-280deg);">Caboolture River Weir</div>
-        <div class="location" style="transform: rotate(270deg) translate(300px) rotate(-270deg);">Logan River</div>
-        <div class="location" style="transform: rotate(315deg) translate(300px) rotate(-265deg);">Albert River</div>
+    <!-- Helm container -->
+    <div id="helm-container">
+        <div id="helm"></div>
+        <div id="location-list">
+            <ul>
+                <li class="location">Mt Crosby Weir</li>
+                <li class="location">Caboolture River Weir</li>
+                <li class="location">Wivenhoe Dam</li>
+                <li class="location">North Pine Dam</li>
+                <li class="location">Somerset Dam</li>
+                <li class="location">Logan River</li>
+                <li class="location">Albert River</li>
+                <li class="location">Bremer River</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Pop-up container -->
@@ -91,8 +95,8 @@
     <div class="background-image"></div>
 
     <script src="js/fish_location.js"></script>
-    <script src="js/test.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/helm.js"></script>
     
 </body>
 </html>

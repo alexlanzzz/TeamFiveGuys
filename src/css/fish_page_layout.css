@@ -47,8 +47,9 @@ main {
 }
 
 .additional-text {
-    font-size: 0.7em; /* Smaller font size */
-    font-weight: 100; /* Thinner font weight */
+    font-size: 0.5em; /* Smaller font size */
+    font-weight: 150px; /* Thinner font weight */
+    font-family: 'Lexend Deca', sans-serif;
 }
 
 @keyframes fadeIn {
@@ -65,42 +66,11 @@ main {
     animation: fadeIn 2s forwards; /* Apply the fade-in effect over 2 seconds */
 }
 
-.helm-container {
-    position: fixed; /* Change to fixed to keep it at the bottom */
-    bottom: 0; /* Align it to the bottom of the viewport */
-    width: 100%;
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    z-index: 100; /* Ensure it stays above other content */
-}
-
-.helm {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: transform 1s ease-in-out, box-shadow 0.3s ease; /* Smooth rotation animation */
-    cursor: pointer;
-}
-
-.location {
-    position: absolute;
-    font-size: 25px;
-    width: 100px;
-    text-align: center;
-    transform-origin: center center;
-    transition: transform 1s ease-in-out; /* Smooth rotation for location labels */
-}
-
 /* Container for fish items and details */
-#locations-container {
+#fish-container {
     display: flex;
     justify-content: space-between;
+    justify-items: center;
     align-items: center;
     height: 80vh; /* Occupy most of the viewport height */
     text-align: center;
