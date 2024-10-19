@@ -166,9 +166,18 @@ html, body {
 }
 
 
+/* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
+    #bird-img {
+        width: 60px; /* Smaller size for smaller screens */
+    }
+
+    .logo-container h1 {
+        font-size: 40px; /* Smaller logo font size on smaller screens */
+    }
+
     .boathead {
-        width: 100px;
+        width: 80vw; /* Adjust width on smaller screens */
     }
 }
 
@@ -202,7 +211,7 @@ html, body {
 
 /* Bird container styling */
 .bird-container {
-    position: absolute;
+    position: fixed;
     top: 58%;
     right: 15%;
     z-index: 10;
