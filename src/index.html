@@ -9,98 +9,79 @@
     <!-- Include Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
-
 </head>
 
-<header>
-    <nav class="icon-menu">
-        <ul>
-            <li>
-                <a href="index.html">
-                    <img src="images/homeicon.png" alt="Home" class="menu-icon-img">
-                    <span class="icon-description">Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="Find_a_FISHING_SPOT.html">
-                    <img src="images/locationicon.png" alt="Location" class="menu-icon-img">
-                    <span class="icon-description">Location</span>
-                </a>
-            </li>
-            <li>
-                <a href="fish_page.html">
-                    <img src="images/fishicon.png" alt="Fish" class="menu-icon-img">
-                    <span class="icon-description">Fish</span>
-                </a>
-            </li>
-            <li>
-                <a href="tide_page.html">
-                    <img src="images/tideicon.png" alt="Tide" class="menu-icon-img">
-                    <span class="icon-description">Tide</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</header>
-
 <body>
+    <!-- Header Section -->
+    <header>
+        <nav class="icon-menu">
+            <ul>
+                <li>
+                    <a href="index.html">
+                        <img src="images/homeicon.png" alt="Home" class="menu-icon-img">
+                        <span class="icon-description">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Find_a_FISHING_SPOT.html">
+                        <img src="images/locationicon.png" alt="Location" class="menu-icon-img">
+                        <span class="icon-description">Location</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="fish_page.html">
+                        <img src="images/fishicon.png" alt="Fish" class="menu-icon-img">
+                        <span class="icon-description">Fish</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tide_page.html">
+                        <img src="images/tideicon.png" alt="Tide" class="menu-icon-img">
+                        <span class="icon-description">Tide</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
     <!-- Loading Animation -->
     <div id="loading-container">
         <img src="images/loading.gif" alt="Loading...">
     </div>
-
+    
+    <!-- Background and Logo -->
     <div class="background-container">
-        <!-- Other content here -->
-    
         <!-- Add your text logo here -->
-        <div class="logo-container">
+        <section class="logo-container">
             <h1>Fishing & Fish</h1>
-        </div>
+            <p>Step1: Click the boathead to find a fishing spot you want</p>
+            <p>Step2: Pick a location from the map</p>
+            <p>Step3: Get fish information and change location by clicking Helm</p>
+        </section>
     </div>
-    
-        <!-- wave-->
-        <div class="wave-container">
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-                <defs>
-                    <path id="wave-path" d="M-160 44c30 0 58-18 88-18s58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
-                </defs>
-                <g class="wave1">
-                    <use href="#wave-path" x="0" y="0" fill="rgba(140,194,200,0.4)"></use>
-                </g>
-                <g class="wave2">
-                    <use href="#wave-path" x="0" y="3" fill="rgba(140,194,200,0.3)"></use>
-                </g>
-                <g class="wave3">
-                    <use href="#wave-path" x="0" y="5" fill="rgba(140,194,200,0.2)"></use>
-                </g>
-            </svg>
-        </div>
 
-        <div class="boathead-container">
-            <a href="Find_a_FISHING_SPOT.html" class="boathead-link" data-title="Click to find fishing Spot">
-                <img src="images/boathead.png" alt="Boat Head" class="boathead">
+    <!-- Wave Animation -->
+    <div class="wave-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+            <!-- SVG content -->
+        </svg>
+    </div>
 
-            </a>
-        </div>
+    <!-- Boat Head Image -->
+    <div class="boathead-container">
+        <a href="Find_a_FISHING_SPOT.html" class="boathead-link" data-title="Click to find fishing Spot">
+            <img src="images/boathead.png" alt="Boat Head" class="boathead">
+        </a>
+        <div id="prompt-text">Click to quickly change location</div>
     </div>
-    <!-- Menu Button -->
-    <div id="menu-button" class="menu-button">
-        <i class="fas fa-bars"></i>
-    </div>
-    
+
     <!-- Weather Information Container -->
     <div id="weather-info" class="weather-info">
         <i class="fas fa-cloud-sun"></i> <span id="temperature">Loading...</span>, <span id="weather-description">--</span>
     </div>
-    
 
-    <!-- Sidebar Navigation -->
 
-    
-    <!-- Main Content Area -->
-    <div class="main-content">
-    </div>
-
+    <!-- Scripts -->
     <script src="js/index.js"></script>
 </body>
 </html>

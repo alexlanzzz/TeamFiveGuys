@@ -10,13 +10,41 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: white; 
     text-align: center;
-    overflow: hidden; 
-}
-html,body{
     overflow: hidden;
 }
+
+#prompt-text {
+    position: absolute; /* Position to the right of the boathead */
+    top: 60%;
+    left: 35%;
+    transform: translateY(-50%); /* Center vertically */
+    width: auto;
+    text-align: left;
+    font-size: 1.5em;
+    color: #f3efef;
+    padding: 5px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .logo{
     width: 200px;
     height: 200px;
@@ -37,6 +65,13 @@ html,body{
     text-align: center;
 }
 
+.logo-container p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 35px; /* Adjust the size to your preference */
+    color: rgb(0, 0, 0); /* You can adjust the color if needed */
+    text-align: center;
+    margin: 10px;
+}
 
 /* 波纹容器样式 */
 .wave-container {
@@ -122,24 +157,6 @@ html,body{
     cursor: pointer; 
 }
 
-.boathead-container a:hover::after {
-    content: attr(data-title);
-    position: absolute;
-    top: -200px;
-    left: 45%;
-    transform: translate(-50%, -120%); 
-    background-color: none;
-    color: white;
-    padding: 5px 10px;  
-    border-radius: 5px;
-    font-size: 30px;
-    white-space: nowrap;
-    z-index: 100;
-}
-
-.boathead-container a:hover .boathead {
-    transform: scale(1.1); 
-}
 
 @media (max-width: 768px) {
     .boathead {
@@ -174,3 +191,4 @@ html,body{
     opacity: 0;
     transition: opacity 1s ease;
 }
+
