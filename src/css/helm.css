@@ -59,7 +59,7 @@
     color: #007BFF; /* Change text color on hover */
 }
 
-#prompt-text {
+#helm-prompt-text {
     position: fixed;
     left: calc(40% + 220px); /* Position to the right of the helm */
     top: 90vh;
