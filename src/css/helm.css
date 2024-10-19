@@ -58,3 +58,16 @@
     background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
     color: #007BFF; /* Change text color on hover */
 }
+
+#prompt-text {
+    position: fixed;
+    left: calc(40% + 220px); /* Position to the right of the helm */
+    bottom: 5%; /* Center vertically relative to the helm */
+    transform: translateY(50%); /* Center vertically */
+    width: auto;
+    text-align: left;
+    font-size: 1.5em;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+}
