@@ -142,19 +142,21 @@ header {
 }
 
 .annotation {
-    display: none; /* Not shown by default */
+    display: none;
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.8); 
+    background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    font-size: 14px;
+    font-family: 'Lexend Deca', sans-serif; /* Font style */
+    font-size: 1em; /* Responsive font size */
+    line-height: 1.5em; /* Improve readability */
+    text-align: justify; /* Justify text on both sides */
     z-index: 100;
-
-    width: 300px; 
-    height: auto; 
-    max-width: 500px; /* Setting the maximum width */
-    max-height: 500px; 
+    width: auto; /* Dynamic width based on content */
+    max-width: 400px; /* Set a maximum width to avoid overly wide annotations */
+    word-wrap: break-word; /* Ensure text wraps within the container */
+    white-space: normal; /* Allow text to wrap */
     
 }
 
@@ -165,12 +167,20 @@ header {
 
 
 /* Ensuring location points are not too small on smaller devices */
+/* Responsive design */
 @media (max-width: 600px) {
+    .annotation {
+        font-size: 0.9em; /* Make font smaller for mobile */
+        width: 250px; /* Adjust width */
+    }
+
     .location {
-        font-size: 2vw; /* Larger font size on smaller screens */
+        font-size: 2vw;
     }
 }
 
-.a{
-    font-weight: bold;
+@media (min-width: 1200px) {
+    .annotation {
+        font-size: 1.1em; /* Increase font size for large screens */
+    }
 }

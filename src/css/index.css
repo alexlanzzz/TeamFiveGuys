@@ -17,14 +17,15 @@
 #prompt-text {
     position: absolute; /* Position to the right of the boathead */
     top: 60%;
-    left: 35%;
+    left: 33%;
     transform: translateY(-50%); /* Center vertically */
     width: auto;
     text-align: left;
-    font-size: 1.5em;
-    color: #f3efef;
+    font-size: 2.5em;
+    color: #000000;
     padding: 5px;
     animation: pulse 2s infinite;
+    font-family: 'Satisfy', cursive;
 }
 
 @keyframes pulse {
@@ -50,42 +51,34 @@ html, body {
     height: 200px;
     margin-bottom: 20px;
 }
+
 .logo-container {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 5; /* Ensure it is on top of other elements */
+    position: relative;
 }
 
 .logo-container h1 {
     font-family: 'Satisfy', cursive;
-    font-size: 56px; /* Adjust the size to your preference */
+    font-size: 60px; /* Adjust the size to your preference */
     color: rgb(0, 0, 0); /* You can adjust the color if needed */
     text-align: center;
     text-decoration: none;
-    animation: float 3s ease-in-out infinite;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
 }
 
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0);
-    }
+.logo-container h1:hover {
+    transform: scale(1.2); /* Scale logo on hover */
 }
 
-.logo-container p {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 35px; /* Adjust the size to your preference */
-    color: rgb(0, 0, 0); /* You can adjust the color if needed */
-    text-align: center;
-    margin: 10px;
-    text-decoration: none;
+
+.logo-container a {
+    text-decoration: none; /* Remove underline */
 }
 
 /* 波纹容器样式 */
@@ -205,5 +198,40 @@ html, body {
 #loading-container.fade-out {
     opacity: 0;
     transition: opacity 1s ease;
+}
+
+/* Bird container styling */
+.bird-container {
+    position: absolute;
+    top: 58%;
+    right: 15%;
+    z-index: 10;
+}
+
+/* Bird Image styling */
+#bird-img {
+    width: 100px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+/* Rotate bird on hover */
+#bird-img:hover {
+    transform: rotate(-20deg);
+}
+
+/* Styling for popup window */
+.popup-window {
+    display: none;
+    position: absolute;
+    top: 53%;
+    right: 20%;
+    width: 200px;
+    background-color: white;
+    padding: 10px;
+    z-index: 20;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Lexend Deca', sans-serif;
+    background-color: rgba(255, 255, 255, 0.8);
 }
 

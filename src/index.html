@@ -9,6 +9,7 @@
     <!-- Include Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Lexend+Deca&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -51,15 +52,17 @@
     
     <!-- Background and Logo -->
     <div class="background-container">
-        <!-- Add your text logo here -->
+        <!-- Make the logo clickable to go to the About Us page -->
         <section class="logo-container">
             <a href="about_us.html">
-            <h1>Fishing & Fish</h1>
+                <h1>Fishing & Fish</h1>
             </a>
-            <p>Step1: Click the boathead to find a fishing spot you want</p>
-            <p>Step2: Pick a location from the map</p>
-            <p>Step3: Get fish information and change location by clicking Helm</p>
         </section>
+    </div>
+
+    <!-- Add Bird Image -->
+    <div class="bird-container">
+        <img src="images/bird.png" alt="Bird" id="bird-img">
     </div>
 
     <!-- Wave Animation -->
@@ -74,14 +77,13 @@
         <a href="Find_a_FISHING_SPOT.html" class="boathead-link" data-title="Click to find fishing Spot">
             <img src="images/boathead.png" alt="Boat Head" class="boathead">
         </a>
-        <div id="prompt-text">Click to quickly change location</div>
+        <div id="prompt-text">Start Your Journey</div>
     </div>
 
     <!-- Weather Information Container -->
     <div id="weather-info" class="weather-info">
         <i class="fas fa-cloud-sun"></i> <span id="temperature">Loading...</span>, <span id="weather-description">--</span>
     </div>
-
 
     <!-- Scripts -->
     <script src="js/index.js"></script>

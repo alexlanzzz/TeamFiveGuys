@@ -125,3 +125,36 @@ function setBackgroundBasedOnTime() {
 
     console.log(`Current hour: ${hours}, applied class: ${timeOfDay}`);
 }
+
+// Get bird image element
+const birdImg = document.getElementById('bird-img');
+
+// Check if the current page is the index page
+if (window.location.pathname.includes("index.html")) {
+    // Get bird image element
+    const birdImg = document.getElementById('bird-img');
+
+    // Create popup element with additional tips
+    const popup = document.createElement('div');
+    popup.className = 'popup-window';
+    popup.innerHTML = `
+        <p>1. Click the boathead to find a fishing spot you want</p>
+        <p>2. Pick a location from the map</p>
+        <p>3. Get fish information and change location by clicking Helm</p>
+    `;
+
+    // Append popup to body
+    document.body.appendChild(popup);
+
+    // Handle click event to show popup
+    birdImg.addEventListener('click', () => {
+        popup.style.display = (popup.style.display === 'none' || popup.style.display === '') ? 'block' : 'none';
+    });
+
+    // Optionally hide the popup when clicked outside
+    document.addEventListener('click', (event) => {
+        if (!birdImg.contains(event.target) && !popup.contains(event.target)) {
+            popup.style.display = 'none';
+        }
+    });
+}
