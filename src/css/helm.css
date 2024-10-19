@@ -62,13 +62,12 @@
 #prompt-text {
     position: fixed;
     left: calc(40% + 220px); /* Position to the right of the helm */
-    bottom: 5%;
+    top: 90vh;
     transform: translateY(50%); /* Center vertically */
     width: auto;
     text-align: left;
     font-size: 1.5em;
     color: #333;
-    padding: 5px;
     animation: pulse 2s infinite;
 }
 
