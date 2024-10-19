@@ -229,6 +229,41 @@ html, body {
     transform: rotate(-20deg);
 }
 
+/* 定义动画圈的样式 */
+.bird-container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 5px solid white;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+  }
+  
+  /* 当鼠标悬停时触发动画，将圈放大 */
+  .bird-container:hover::after {
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  /* bird-img 的基础样式，可以根据需要进行调整 */
+  #bird-img {
+    width: 100px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* 悬停时旋转bird-img */
+  #bird-img:hover {
+    transform: rotate(-20deg);
+  }
+  
 /* Styling for popup window */
 .popup-window {
     display: none;
