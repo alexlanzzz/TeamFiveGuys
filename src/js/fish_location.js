@@ -28,7 +28,7 @@ $(document).ready(function() {
     // Retrieve the selected location from local storage
     const selectedLocation = localStorage.getItem('selectedLocation');
     if (selectedLocation) {
-        locationNameDisplay.text(selectedLocation); // Update location name
+        locationNameDisplay.html(`<span class="additional-text">What you can catch in:</span> ${selectedLocation}`); // Update location name
         fetchData(selectedLocation); // Fetch fish data based on location
     }
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
     locations.forEach((location) => {
         location.addEventListener('click', function() {
             const selectedLocation = this.textContent;
-            locationNameDisplay.text(selectedLocation); // Update location name
+            locationNameDisplay.html(`<span class="additional-text">What you can catch in:</span> ${selectedLocation}`); // Update location name
             fetchData(selectedLocation); // Fetch fish data based on location
         });
     });
@@ -147,6 +147,7 @@ $(document).ready(function() {
     
     // Function to fetch fish details
     function fetchWikipediaInfo(species, imageSrc) {
+        // The Saratoga species name is different in the Wikipedia API
         if (species === 'Saratoga') {
             species = 'Southern saratoga';
         }

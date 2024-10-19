@@ -46,6 +46,11 @@ main {
     opacity: 0; /* Initially hidden */
 }
 
+.additional-text {
+    font-size: 0.7em; /* Smaller font size */
+    font-weight: 100; /* Thinner font weight */
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
