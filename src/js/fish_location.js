@@ -18,7 +18,7 @@ $(document).ready(function() {
         "Golden Perch": "Golden_Perch.png",
         "Mary River Cod": "Murray_Cod.png",
         "Saratoga": "saratoga.png",
-        "Silver Perch": "silver perch.png",
+        "Silver Perch": "silver_perch.png",
     };
 
     // Update location name in the header on click
@@ -147,6 +147,10 @@ $(document).ready(function() {
     
     // Function to fetch fish details
     function fetchWikipediaInfo(species, imageSrc) {
+        if (species === 'Saratoga') {
+            species = 'Southern saratoga';
+        }
+
         const wikiApiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(species)}`;
     
         $.ajax({
