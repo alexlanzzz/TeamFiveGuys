@@ -129,13 +129,39 @@ header {
     animation: fadeIn 2s ease-in forwards; /* Apply fade-in animation over 2 seconds */
     text-decoration: none; /* Remove the underline */
     transition: transform 0.3s ease;
+    font-weight: bold;
 }
 
 .location:hover {
     transform: scale(1.1);
+    background-color: white; 
+    padding: 5px; 
+    border-radius: 10px; 
+    color: black; 
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5); 
 }
 
+.annotation {
+    display: none; /* Not shown by default */
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.8); 
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 100;
 
+    width: 300px; 
+    height: auto; 
+    max-width: 500px; /* Setting the maximum width */
+    max-height: 500px; 
+    
+}
+
+/* Show comment box on mouse hover */
+.location:hover + .annotation {
+    display: block;
+}
 
 
 /* Ensuring location points are not too small on smaller devices */
@@ -143,4 +169,8 @@ header {
     .location {
         font-size: 2vw; /* Larger font size on smaller screens */
     }
+}
+
+.a{
+    font-weight: bold;
 }
