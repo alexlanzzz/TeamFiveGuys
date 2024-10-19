@@ -1,0 +1,48 @@
+/* about_us.css */
+
+/* General styles for the team introduction section */
+.team-intro {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f9f9f9;
+    margin-top: 150px; /* Add margin to avoid overlap with the icon-menu */
+}
+
+.team-intro h1 {
+    font-size: 3rem;
+    font-family: 'Amatic SC', cursive;
+    margin-bottom: 30px;
+}
+
+.team-members {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 200px;
+    text-align: center;
+}
+
+.member-photo {
+    width: 100%;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.team-member h2 {
+    font-size: 1.5rem;
+    font-family: 'Satisfy', cursive;
+    margin-bottom: 10px;
+}
+
+.team-member p {
+    font-size: 1rem;
+    color: #070707;
+    font-family: 'Times New Roman', Times, serif;
+}

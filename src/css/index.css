@@ -63,6 +63,20 @@ html, body {
     font-size: 56px; /* Adjust the size to your preference */
     color: rgb(0, 0, 0); /* You can adjust the color if needed */
     text-align: center;
+    text-decoration: none;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .logo-container p {
@@ -71,6 +85,7 @@ html, body {
     color: rgb(0, 0, 0); /* You can adjust the color if needed */
     text-align: center;
     margin: 10px;
+    text-decoration: none;
 }
 
 /* 波纹容器样式 */
