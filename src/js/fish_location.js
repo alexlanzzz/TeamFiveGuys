@@ -28,7 +28,7 @@ $(document).ready(function() {
     // Retrieve the selected location from local storage
     const selectedLocation = localStorage.getItem('selectedLocation');
     if (selectedLocation) {
-        locationNameDisplay.html(`<p class="additional-text">What u catch in:</p> ${selectedLocation}`); // Update location name
+        locationNameDisplay.html(`<p class="additional-text">What you can catch in:</p> ${selectedLocation}`); // Update location name
         fetchData(selectedLocation); // Fetch fish data based on location
     }
 
@@ -36,7 +36,7 @@ $(document).ready(function() {
     locations.forEach((location) => {
         location.addEventListener('click', function() {
             const selectedLocation = this.textContent;
-            locationNameDisplay.html(`<p class="additional-text">What u catch in:</p> ${selectedLocation}`); // Update location name
+            locationNameDisplay.html(`<p class="additional-text">What you can catch in:</p> ${selectedLocation}`); // Update location name
             fetchData(selectedLocation); // Fetch fish data based on location
         });
     });
@@ -61,13 +61,28 @@ $(document).ready(function() {
             dataType: 'json',
             success: function(response) {
                 if (response.result.records && response.result.records.length > 0) {
-                    displayFishData(response.result.records);
+                    const uniqueFishRecords = filterUniqueSpecies(response.result.records);
+                    displayFishData(uniqueFishRecords);
                 } else {
                     $('#fish-container').html('<p>No data found for this location.</p>');
                 }
             },
             error: function() {
                 $('#fish-container').html('<p>Failed to fetch data. Please try again later.</p>');
+            }
+        });
+    }
+
+    // Function to filter unique species
+    function filterUniqueSpecies(records) {
+        const seenSpecies = new Set();
+        return records.filter(record => {
+            const species = record['Species stocked'];
+            if (seenSpecies.has(species)) {
+                return false;
+            } else {
+                seenSpecies.add(species);
+                return true;
             }
         });
     }
@@ -85,6 +100,9 @@ $(document).ready(function() {
         const currentFish = fishData[currentIndex];
         const species = currentFish['Species stocked'];
         const imageName = speciesImageMap[species] || 'australian_bass.png';
+
+        // Log the species to the console for debugging
+        console.log(`Displaying fish species: ${species}`);
     
         // Update the HTML for the current fish and buttons
         const htmlContent = `
