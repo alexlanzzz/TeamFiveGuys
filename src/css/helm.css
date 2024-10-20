@@ -1,7 +1,7 @@
 #helm-container {
     position: fixed;
     bottom: -120px;
-    left: 68%;
+    left: 45%;
     width: 200px; /* Match the size of the helm */
     height: 200px; /* Match the size of the helm */
     display: flex;
@@ -67,7 +67,7 @@
 
 #helm-prompt-text {
     position: fixed;
-    left: 65%; /* Position to the right of the helm */
+    left: 45%; 
     top: 88vh;
     transform: translateY(50%); /* Center vertically */
     width: auto;
