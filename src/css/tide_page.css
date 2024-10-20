@@ -11,7 +11,7 @@ canvas {
     width: 900px; /* Adjust width */
     height: 400px; /* Adjust height */
     margin-left: 20px;
-   
+    overflow: auto;
 }
 
 .right-panel {
@@ -87,7 +87,7 @@ h1 {
     margin-bottom: 10px;
     text-align: center;
     font-size: 48px; /* Make the Tide title larger */
-    margin-top: 0; /* Ensure it doesn't have excess top margin */
+    margin-top: 100px; /* Ensure it doesn't have excess top margin */
 }
 
 h2 {
