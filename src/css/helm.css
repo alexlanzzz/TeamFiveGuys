@@ -23,6 +23,7 @@
     height: 200px; /* Full height of the container */
     background: url('../images/helm.png') no-repeat center center;
     background-size: contain;
+    justify-self: center;
 }
 
 #location-list {
