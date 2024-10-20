@@ -67,8 +67,7 @@
 
 #helm-prompt-text {
     position: fixed;
-    /* left: 42%;  */
-    top: 88vh;
+    bottom: 100px;
     transform: translateY(50%); /* Center vertically */
     width: 100%;
     text-align: center;

@@ -26,10 +26,10 @@ $(document).ready(function() {
 
     $(document).ready(function() {
         const helmPromptText = $('#helm-prompt-text');
-        const helmContainer = $('#helm-container');
+        const helm = $('#helm');
     
         // Event listener for clicking the helm container
-        helmContainer.on('click', function() {
+        helm.on('click', function() {
             helmPromptText.toggle(); // Toggle the visibility of the helm prompt text on each click
         });
     }); 
