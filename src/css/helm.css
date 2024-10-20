@@ -2,11 +2,7 @@
     position: fixed;
     bottom: -120px;
     width: 100%; /* Match the size of the helm */
-<<<<<<< Updated upstream
     height: 200px; /* Match the size of the helm */
-=======
-    height: auto; /* Match the size of the helm */
->>>>>>> Stashed changes
     display: flex;
     justify-content: center;
     justify-items: center;
