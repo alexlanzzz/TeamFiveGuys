@@ -74,7 +74,7 @@ main {
     justify-content: space-between;
     justify-items: center;
     align-items: center;
-    height: 80vh; /* Occupy most of the viewport height */
+    height: 50vh; /* Occupy most of the viewport height */
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -95,6 +95,7 @@ main {
 /* Slide effect when clicked */
 .fish-item-container.slide-left {
     transform: translateX(-150px); /* Slide the container 150px to the left */
+    margin-left: 200px; /* Adjust margin to keep the container centered */
 }
 
 /* Fish image */
@@ -124,12 +125,10 @@ main {
     width: 0%; /* Initially hidden */
     opacity: 0;
     transition: all 0.5s ease; /* Smooth transition for showing details */
-    font-size: 22px; /* Smaller font size for the detailed description */
+    font-size: 16px; /* Smaller font size for the detailed description */
     font-family: 'Lexend Deca', sans-serif; /* Use Lexend Deca for details as well */
     text-align: justify;
     padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 150px;
     margin-right: 150px;
     color: #333;
     overflow: hidden;
