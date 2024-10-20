@@ -157,7 +157,8 @@ header {
     max-width: 400px; /* Set a maximum width to avoid overly wide annotations */
     word-wrap: break-word; /* Ensure text wraps within the container */
     white-space: normal; /* Allow text to wrap */
-    
+    top: 12%; 
+    left: 70%;
 }
 
 /* Show comment box on mouse hover */
