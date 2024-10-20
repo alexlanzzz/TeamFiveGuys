@@ -7,7 +7,10 @@
     <!-- Link to your existing CSS files -->
     <link rel="stylesheet" href="css/general_layout.css">
     <link rel="stylesheet" href="css/tide_page.css">
+    <link rel="stylesheet" href="css/helm.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&display=swap" rel="stylesheet">
     <!-- Include jQuery library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -41,21 +44,76 @@
             </li>
         </ul>
     </nav>
+    
 </header>
 <body>
     <!-- Weather Information Container -->
     <div id="weather-info" class="weather-info">
         <i class="fas fa-cloud-sun"></i> <span id="temperature">Loading...</span>, <span id="weather-description">--</span>
     </div>
-    <!-- Menu Button -->
-   
 
     <!-- Main Content Area -->
-    <div class="main-content">
-    
-    <canvas id="tideCanvas" width="1200" height="600"></canvas>
+    <div class="content-container">
+        <div class="left-panel">
+            <h1>Tide</h1>
+            <canvas id="tideCanvas" width="900" height="450"></canvas>
+        </div>
+        <div class="right-panel">
+            <h2 class="centered-title">Other Info</h2>
+        
+            <!-- UV Index Info -->
+            <div class="info-row">
+                <div class="info-icon">
+                    <img src="images/uv-icon.png" alt="UV Index Icon" class="info-img">
+                </div>
+                <div class="info-details">
+                    <p>UV Index:</p>
+                    <p id="uv-index">Loading...</p>
+                </div>
+            </div>
+        
+            <!-- Wind Speed Info -->
+            <div class="info-row">
+                <div class="info-icon">
+                    <img src="images/wind-icon.png" alt="Wind Speed Icon" class="info-img">
+                </div>
+                <div class="info-details">
+                    <p>Wind Speed:</p>
+                    <p id="wind-speed">Loading...</p>
+                </div>
+            </div>
+
+            <div class="info-row">
+                <div class="info-icon">
+                    <img src="images/pressure-icon.png" alt="Air Pressure Icon" class="info-img">
+                </div>
+                <div class="info-details">
+                    <p>Air Pressure:</p>
+                    <p id="pressure">Loading...</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Helm container -->
+    <div id="helm-container">
+        <div id="helm"></div>
+        <div id="location-list">
+            <ul>
+                <li class="location">Mt Crosby Weir</li>
+                <li class="location">Caboolture River Weir</li>
+                <li class="location">Wivenhoe Dam</li>
+                <li class="location">North Pine Dam</li>
+                <li class="location">Somerset Dam</li>
+                <li class="location">Logan River</li>
+                <li class="location">Albert River</li>
+            </ul>
+        </div>
+    </div>
+    
     <!-- Scripts -->
+
     <script src="js/tide.js"></script>
+    <script src="js/helm.js"></script>
 </body>
 </html>
