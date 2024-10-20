@@ -53,11 +53,35 @@ header {
 .icon-menu ul li {
     margin: 0 40px;
     text-align: center;
+    position: relative; /* Ensure the circle effect is positioned correctly */
 }
 
 .icon-menu ul li a {
     text-decoration: none;
     color: black;
+    display: block; /* Ensure the anchor tag covers the entire li */
+}
+
+/* Define the circle animation styles */
+.icon-menu ul li::after {
+    content: "";
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 5px solid rgb(20, 20, 20);
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+/* Trigger the animation on hover, enlarging the circle */
+.icon-menu ul li:hover::after {
+    width: 120%;
+    height: 120%;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .menu-icon-img {
@@ -67,8 +91,9 @@ header {
     transition: transform 0.3s ease;
 }
 
-.menu-icon-img:hover {
-    transform: scale(1.2);
+/* Rotate the icon-menu items on hover */
+.icon-menu ul li:hover .menu-icon-img {
+    transform: rotate(-20deg) scale(1.2); /* Combine rotation and scaling */
 }
 
 .icon-description {
