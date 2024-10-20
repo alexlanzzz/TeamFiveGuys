@@ -4,7 +4,7 @@
 .team-intro {
     text-align: center;
     padding: 50px 20px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     margin-top: 150px; /* Add margin to avoid overlap with the icon-menu */
 }
 
@@ -45,4 +45,17 @@
     font-size: 1rem;
     color: #070707;
     font-family: 'Times New Roman', Times, serif;
+}
+
+/* Team description text */
+.team-description {
+    text-align: justify;
+    margin-top: 60px;
+    font-family: 'Lexend Deca', sans-serif; /* Apply Lexend Deca font */
+    font-size: 1.5rem; /* Adjust font size */
+    max-width: 800px; /* Optional: set a max width */
+    margin-left: auto;
+    margin-right: auto;
+    color: #000000;
+    line-height: 1.8; /* Increase line spacing */
 }
