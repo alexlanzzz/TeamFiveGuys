@@ -158,12 +158,12 @@ main {
 
 /* Left arrow */
 #prevButton {
-    left: 120px;
+    left: 1%;
 }
 
 /* Right arrow */
 #nextButton {
-    right: 120px;
+    right: 1%;
 }
 
 /* Hover effect to scale up the arrows */
