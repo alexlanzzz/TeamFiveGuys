@@ -206,7 +206,7 @@ html, body {
 /* 隐藏加载动画时的淡出效果 */
 #loading-container.fade-out {
     opacity: 0;
-    transition: opacity 2s ease;
+    transition: opacity 4s ease;
 }
 
 /* Bird container styling */
