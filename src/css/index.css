@@ -197,12 +197,12 @@ html, body {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /
+    z-index: 9999; /* 确保加载容器位于最上层 */
+    transition: opacity 1.5s ease; /* Shorter fade-out duration */
 }
 
 #loading-container.fade-out {
     opacity: 0;
-    transition: opacity 2s ease;
 }
 
 
