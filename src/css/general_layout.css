@@ -11,7 +11,7 @@ body, html {
 .weather-info {
     position: fixed;
     top: 1vw;
-    left: 5vw; /* Initial position next to the menu button */
+    left: 2vw; /* Initial position next to the menu button */
     background-color: none; /* Semi-transparent background */
     color: #000000;
     padding: 12px 16px;
@@ -78,11 +78,11 @@ header {
 }
 
 /* Trigger the animation on hover, enlarging the circle */
-.icon-menu ul li:hover::after {
+/* .icon-menu ul li:hover::after {
     width: 120%;
     height: 120%;
     transform: translate(-50%, -50%) scale(1);
-}
+} */
 
 .menu-icon-img {
     width: 160px;
@@ -93,7 +93,7 @@ header {
 
 /* Rotate the icon-menu items on hover */
 .icon-menu ul li:hover .menu-icon-img {
-    transform: rotate(-20deg) scale(1.2); /* Combine rotation and scaling */
+    transform: scale(1.2); /* Combine rotation and scaling */
 }
 
 .icon-description {
