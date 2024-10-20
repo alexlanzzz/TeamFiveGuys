@@ -201,12 +201,12 @@ html, body {
     align-items: center;
     justify-content: center;
     z-index: 9999; /* 确保加载容器位于最上层 */
+    transition: opacity 1.5s ease; /* Shorter fade-out duration */
 }
 
 /* 隐藏加载动画时的淡出效果 */
 #loading-container.fade-out {
     opacity: 0;
-    transition: opacity 3s ease;
 }
 
 /* Bird container styling */
