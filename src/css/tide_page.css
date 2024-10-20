@@ -16,9 +16,9 @@ canvas {
 
 .right-panel {
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
+    
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
     width: 400px; /* 扩宽为原来的一倍 */
     margin-left: 20px;
     
