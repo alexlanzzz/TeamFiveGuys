@@ -16,11 +16,12 @@ canvas {
 
 .right-panel {
     padding: 20px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.5);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 400px; /* 扩宽为原来的一倍 */
     margin-left: 20px;
+    
 }
 
 .info-row {
@@ -39,6 +40,7 @@ canvas {
 .info-details {
     display: flex;
     flex-direction: column;
+    font-family: 'lexend deca', sans-serif;
 }
 
 .info-details p {
@@ -68,7 +70,7 @@ canvas {
 
 
 body {
-    font-family: 'Amatic SC', sans-serif;
+    font-family: 'lexend deca', sans-serif;
     margin: 0;
     height: 100vh;
     display: flex;
@@ -81,7 +83,7 @@ body {
 }
 
 h1 {
-    font-family: 'Amatic SC', sans-serif;
+    font-family: 'lexend deca', sans-serif;
     margin-bottom: 10px;
     text-align: center;
     font-size: 48px; /* Make the Tide title larger */
@@ -89,7 +91,7 @@ h1 {
 }
 
 h2 {
-    font-family: 'Amatic SC', sans-serif;
+    font-family: 'lexend deca', sans-serif;
     margin-bottom: 10px;
     text-align: left;
     font-size: 32px;
@@ -99,7 +101,7 @@ h2 {
     text-align: center;
     font-size: 50px;
     color: black;
-    font-family: 'Tangerine', cursive;
+    font-family: 'lexend deca', sans-serif;
     font-weight: 700;
     padding: 10px;
     opacity: 0; /* Initially hidden */
