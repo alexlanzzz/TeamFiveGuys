@@ -1,11 +1,11 @@
 #helm-container {
     position: fixed;
     bottom: -120px;
-    left: 45%;
-    width: 200px; /* Match the size of the helm */
+    width: 100%; /* Match the size of the helm */
     height: 200px; /* Match the size of the helm */
     display: flex;
     justify-content: center;
+    justify-items: center;
     align-items: center;
     overflow: visible; /* Ensure the location list is visible */
     cursor: pointer;
@@ -19,8 +19,8 @@
 }
 
 #helm {
-    width: 100%; /* Full width of the container */
-    height: 100%; /* Full height of the container */
+    width: 200px; /* Full width of the container */
+    height: 200px; /* Full height of the container */
     background: url('../images/helm.png') no-repeat center center;
     background-size: contain;
 }
@@ -67,11 +67,11 @@
 
 #helm-prompt-text {
     position: fixed;
-    left: 42%; 
+    /* left: 42%;  */
     top: 88vh;
     transform: translateY(50%); /* Center vertically */
-    width: auto;
-    text-align: left;
+    width: 100%;
+    text-align: center;
     font-size: 1.5em;
     color: #333;
     animation: pulse 2s infinite;
