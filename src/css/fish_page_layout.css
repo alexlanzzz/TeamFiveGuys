@@ -46,8 +46,14 @@ main {
     opacity: 0; /* Initially hidden */
 }
 
+.location {
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 0.8em; /* Adjust the size as needed */
+}
+
+
 .additional-text {
-    font-size: 0.5em; /* Smaller font size */
+    font-size: 1em; /* Smaller font size */
     font-weight: 150px; /* Thinner font weight */
     font-family: 'Lexend Deca', sans-serif;
 }
@@ -163,6 +169,11 @@ main {
     right: 120px;
 }
 
+#helm-prompt-text {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+
 /* Hover effect to scale up the arrows */
 .nav-arrow:hover {
     transform: translateY(-50%) scale(1.2); /* Scale up the arrows when hovered */
@@ -172,7 +183,6 @@ main {
 .nav-arrow:active {
     transform: translateY(-50%) scale(1.1); /* Slightly smaller scale on click */
 }
-
 
 /* Responsive adjustments */
 @media (max-width: 600px) {

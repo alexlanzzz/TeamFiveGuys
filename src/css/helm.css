@@ -1,7 +1,7 @@
 #helm-container {
     position: fixed;
     bottom: -120px;
-    left: 40%;
+    left: 68%;
     width: 200px; /* Match the size of the helm */
     height: 200px; /* Match the size of the helm */
     display: flex;
@@ -33,7 +33,7 @@
     bottom: 100%; /* Position the location list at the top of the helm */
     z-index: 1; /* Ensure the location list is above the helm */
     transition: transform 0.5s ease; /* Ensure smooth rotation */
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
     padding: 1em;
     border-radius: 10%;
@@ -47,7 +47,8 @@
 }
 
 #location-list li {
-    margin: 5px 0;
+    white-space: nowrap; 
+    margin: 10px 0;
     cursor: pointer;
     font-size: 1.2em;
     color: black;
@@ -61,8 +62,8 @@
 
 #helm-prompt-text {
     position: fixed;
-    left: calc(40% + 220px); /* Position to the right of the helm */
-    top: 90vh;
+    left: 65%; /* Position to the right of the helm */
+    top: 88vh;
     transform: translateY(50%); /* Center vertically */
     width: auto;
     text-align: left;
