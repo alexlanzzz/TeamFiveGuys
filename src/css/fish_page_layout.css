@@ -46,11 +46,6 @@ main {
     opacity: 0; /* Initially hidden */
 }
 
-.location {
-    font-family: 'Lexend Deca', sans-serif;
-    font-size: 0.8em; /* Adjust the size as needed */
-}
-
 
 .additional-text {
     font-size: 1em; /* Smaller font size */
@@ -168,11 +163,6 @@ main {
 #nextButton {
     right: 120px;
 }
-
-#helm-prompt-text {
-    font-family: 'Lexend Deca', sans-serif;
-}
-
 
 /* Hover effect to scale up the arrows */
 .nav-arrow:hover {
