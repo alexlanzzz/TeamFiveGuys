@@ -13,18 +13,159 @@ $(document).ready(function() {
     "Bremer River": "-27.6164,152.7661"        
 };
 
-  const locationNameDisplay = $('#location-name');
-  const locations = document.querySelectorAll('.location');
 
+
+
+
+
+
+  const locationName2Display = $('#location-name2');
+  const locations = document.querySelectorAll('.location');
+  const cacheDuration = 60 * 60 * 1000;
+  const apikey = 'b8983068-7320-11ef-968a-0242ac130004-b89830e0-7320-11ef-968a-0242ac130004';
   // Retrieve the selected location from local storage
   const selectedLocation = localStorage.getItem('selectedLocation');
   if (selectedLocation) {
-      locationNameDisplay.text(selectedLocation); // Update location name
+      locationName2Display.text(selectedLocation); // Update location name
       const coords = locationDict[selectedLocation]; 
       if (coords) {
           fetchTideData(coords);  
+          fetchUVIndex(coords);
+          fetchWindSpeed(coords);
+          fetchPressure(coords);
       }
   }
+  locations.forEach((location) => {
+    location.addEventListener('click', function() {
+        const selectedLocation = this.textContent;
+        localStorage.setItem('selectedLocation', selectedLocation); // Store selected location
+        locationName2Display.html(` ${selectedLocation}`); // Update location name
+        fetchTideData(locationDict[selectedLocation]); // Fetch tide data based on location
+    });
+});
+function fetchPressure(coords) {
+  const [lat, lng] = coords.split(',');  // Split coordinates into latitude and longitude
+  const params = 'pressure';  // Ensure 'pressure' is the correct parameter for API request
+  const cacheKey = `pressure_${lat}_${lng}`;  // Key for local storage caching
+  const cachedData = JSON.parse(localStorage.getItem(cacheKey));  // Retrieve cached data if available
+  const now = new Date().getTime();
+  
+
+  // If cached data is available and still valid, use it
+  if (cachedData && (now - cachedData.time < cacheDuration)) {
+    displayPressure(cachedData.pressure);  // Use cached pressure data
+  } else {
+    // Build the API URL to fetch pressure data for the given coordinates
+    const apiUrl = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`;
+    
+    // Make the API request using fetch
+    fetch(apiUrl, {
+      headers: {
+        'Authorization': apikey  // API key for authorization
+      }
+    })
+    .then(response => response.json())  // Parse the response as JSON
+    .then(jsonData => {
+      // Extract pressure data from the API response
+      const pressure = jsonData.hours[0].pressure.noaa;  // Retrieve pressure from NOAA
+      // Store the retrieved pressure and current timestamp in local storage
+      localStorage.setItem(cacheKey, JSON.stringify({ pressure, time: now }));
+      // Display the pressure data on the page
+      displayPressure(pressure);
+    })
+    .catch(error => {
+      // If there's an error, log it and display an error message
+      console.error('Error fetching pressure:', error);
+      displayPressure('Error');
+    });
+  }
+}
+
+// Function to display pressure data on the page
+function displayPressure(pressure) {
+  const pressureElement = document.getElementById('pressure');  // Get the element to display pressure
+  pressureElement.textContent = `${pressure} hPa`;  // Set the content to show the pressure in hPa
+}
+
+
+function fetchUVIndex(coords) {
+  const [lat, lng] = coords.split(',');
+  const params = 'uvIndex';
+  const cacheKey = `uvIndex_${lat}_${lng}`;
+  const cachedData = JSON.parse(localStorage.getItem(cacheKey));
+  const now = new Date().getTime();
+
+  if (cachedData && (now - cachedData.time < cacheDuration)) {
+    displayUVIndex(cachedData.uvIndex); // Use cached data
+  } else {
+    const apiUrl = `https://api.stormglass.io/v2/solar/point?lat=${lat}&lng=${lng}&params=${params}`;
+    
+    fetch(apiUrl, {
+      headers: {
+        'Authorization': apikey
+      }
+    })
+    .then(response => response.json())
+    .then(jsonData => {
+      if (jsonData.data && jsonData.data.length > 0) {
+        const uvIndex = jsonData.data[0].uvIndex.sg;
+        localStorage.setItem(cacheKey, JSON.stringify({ uvIndex, time: now })); // Cache UV data
+        displayUVIndex(uvIndex);
+      } else {
+        displayUVIndex('N/A');
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching UV index:', error);
+      displayUVIndex('Error');
+    });
+  }
+}
+
+function fetchWindSpeed(coords) {
+  const [lat, lng] = coords.split(',');
+  const params = 'windSpeed';
+  const cacheKey = `windSpeed_${lat}_${lng}`;
+  const cachedData = JSON.parse(localStorage.getItem(cacheKey));
+  const now = new Date().getTime();
+
+  if (cachedData && (now - cachedData.time < cacheDuration)) {
+    displayWindSpeed(cachedData.windSpeed); // Use cached data
+  } else {
+    const apiUrl = `https://api.stormglass.io/v2/weather/point?lat=${lat}&lng=${lng}&params=${params}`;
+    
+    fetch(apiUrl, {
+      headers: {
+        'Authorization': apikey
+      }
+    })
+    .then(response => response.json())
+    .then(jsonData => {
+      const windSpeed = jsonData.hours[0].windSpeed.noaa;
+      localStorage.setItem(cacheKey, JSON.stringify({ windSpeed, time: now })); // Cache wind speed
+      displayWindSpeed(windSpeed);
+    })
+    .catch(error => {
+      console.error('Error fetching wind speed:', error);
+      displayWindSpeed('Error');
+    });
+  }
+}
+
+// Function to display UV index on the page
+function displayUVIndex(uvIndex) {
+  const uvIndexElement = document.getElementById('uv-index');
+  uvIndexElement.textContent = uvIndex;
+}
+
+// Function to display wind speed on the page
+function displayWindSpeed(windSpeed) {
+  const windSpeedElement = document.getElementById('wind-speed');
+  windSpeedElement.textContent = `${windSpeed} m/s`;
+}
+
+
+
 
  
   function fetchTideData(coords) {
@@ -56,7 +197,7 @@ $(document).ready(function() {
        else {
         fetch(`https://api.stormglass.io/v2/tide/extremes/point?lat=${lat}&lng=${lng}&start=${currentDate}&end=${endDate}`, {
             headers: {
-                'Authorization': '0d15ffe2-728d-11ef-a732-0242ac130004-0d160046-728d-11ef-a732-0242ac130004'
+                'Authorization': apikey
             }
         })
         .then(response => response.json())
@@ -165,61 +306,67 @@ function drawSmoothWave(tideData) {
   const canvas = document.getElementById('tideCanvas');
   const ctx = canvas.getContext('2d');
 
+  // Clear the previous drawing
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const canvasWidth = canvas.width;
   const canvasHeight = canvas.height;
-  const heightScaleFactor = 200;  
+  const heightScaleFactor = 200;  // Scaling factor for wave height
 
- 
-  const times = tideData.map((data, index) => (index / (tideData.length - 1)) * canvasWidth);
-  const heights = tideData.map(data => data.height * heightScaleFactor);  
+  // Calculate the min and max time from the tide data
+  const minTime = tideData[0].time.getTime();
+  const maxTime = tideData[tideData.length - 1].time.getTime();
+  const timeRange = maxTime - minTime;
+
+  // Normalize time values and map them to the canvas width
+  const times = tideData.map(data => ((data.time.getTime() - minTime) / timeRange) * canvasWidth);
+  const heights = tideData.map(data => data.height * heightScaleFactor);  // Scale heights
 
   if (heights.length < 2) {
     console.error("Not enough data points to draw a wave.");
     return;
   }
 
-
+  // Begin drawing the wave
   ctx.beginPath();
-  ctx.moveTo(0, canvasHeight / 2 - heights[0]);  
+  ctx.moveTo(0, canvasHeight / 2 - heights[0]);  // Start at the first point
 
+  // Use quadratic curves for smooth transitions between points
   for (let i = 1; i < times.length; i++) {
-    const xc = (times[i - 1] + times[i]) / 2; 
-    const yc = (canvasHeight / 2 - heights[i - 1] + canvasHeight / 2 - heights[i]) / 2;  
+    const xc = (times[i - 1] + times[i]) / 2;  // Midpoint for the curve
+    const yc = (canvasHeight / 2 - heights[i - 1] + canvasHeight / 2 - heights[i]) / 2;  // Midpoint height
     ctx.quadraticCurveTo(times[i - 1], canvasHeight / 2 - heights[i - 1], xc, yc);
   }
 
- 
+  // Finish the path at the last point
   ctx.lineTo(times[times.length - 1], canvasHeight / 2 - heights[times.length - 1]);
 
+  // Style and stroke the path
   ctx.strokeStyle = "blue";
   ctx.lineWidth = 2;
   ctx.stroke();
 
- 
+  // Add text labels for each data point
   tideData.forEach((data, index) => {
     const x = times[index];
     const y = canvasHeight / 2 - heights[index];
 
-    
-    console.log(`Point ${index}: Height=${data.height}, Time=${data.time}, Type=${data.type}`);
-
-   
+    // Format the time for display
     const timeString = data.time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
-   
+    // Set font style and color
     ctx.fillStyle = "black";
-    ctx.font = "14px Arial";  
+    ctx.font = "14px Arial";
 
-    
+    // Adjust text positioning for the last point
     if (index === times.length - 1) {
       ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x - 150, y - 10);
     } else {
       ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x + 5, y - 10);
     }
   });
-}})
+}
+})
 const weatherInfo = document.getElementById('weather-info');
 const temperatureElement = document.getElementById('temperature');
 const weatherDescriptionElement = document.getElementById('weather-description');
