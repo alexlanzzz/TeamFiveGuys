@@ -195,16 +195,6 @@ $(document).ready(function() {
             <p>${info}</p>
         `;
         $('.fish-detail-container').html(detailsHtml); // Inject the details into the right-side container
-    }
-
-    $(document).ready(function() {
-        const helmPromptText = $('#helm-prompt-text');
-        const helmContainer = $('#helm-container');
-    
-        // Event listener for clicking the helm container
-        helmContainer.on('click', function() {
-            helmPromptText.toggle(); // Toggle the visibility of the helm prompt text on each click
-        });
-    });    
+    }  
     
 });
