@@ -212,8 +212,8 @@ html, body {
 
 .bird-container {
     position: fixed;
-    top: 58%;
-    right: 15%;
+    top: 55%;
+    right: 12%;
     z-index: 10;
 }
 

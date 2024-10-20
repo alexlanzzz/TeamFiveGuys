@@ -31,8 +31,8 @@ header {
 
 main {
     overflow-y: auto; /* Allow vertical scrolling within the main content */
-    margin-top: 300px;
-    margin-bottom: 200px;
+    margin-top: 250px;
+    margin-bottom: 260px;
     height: calc(100vh - 350px); /* Ensure the height fits the remaining space */
     width: 100%;
 }
@@ -74,7 +74,7 @@ main {
     justify-content: space-between;
     justify-items: center;
     align-items: center;
-    height: 100vh; /* Occupy most of the viewport height */
+    height: 80vh; /* Occupy most of the viewport height */
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -130,7 +130,7 @@ main {
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 150px;
-    margin-right: 100px;
+    margin-right: 150px;
     color: #333;
     overflow: hidden;
     max-width: 500px;
