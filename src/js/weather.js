@@ -95,5 +95,5 @@ document.addEventListener("DOMContentLoaded", function() {
         setTimeout(function() {
             loadingContainer.style.display = 'none';
         }, 1000); // Match this duration with the CSS transition duration
-    }, 1500); // Display the loading page for 3 seconds
+    }, 1500);
 });
