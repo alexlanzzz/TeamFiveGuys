@@ -1,202 +1,120 @@
-.fish_page_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    position: relative;
-}
-
-.fish_page_header-left {
-    width: 5%;
-    padding-left: 5px;
-    padding-top: 5px;
-}
-
-.fish_page_header-right {
-    width: 3%;
-    padding-right: 5px;
-    padding-top: 5px;
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
-}
-
-.location-name {
-    flex-grow: 1;
-    text-align: center;
-    font-size: 1.2rem;
-    margin-top: 20px;
-}
-
-.location-filter-container {
-    display: none; /* Hidden by default */
-    position: absolute;
-    top: 100%;
-    right: 5%;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-.location-filter-container label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.location-filter-container select {
-    width: 100%;
-    padding: 8px 12px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-/* Modal styles (for pop-up window) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1000; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    background-color: rgba(0, 0, 0, 0.5); /* Dark background */
-}
-
-.modal-content {
-    position: relative;
-    background-color: white;
-    margin: 15% auto; /* Centered vertically and horizontally */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
-    max-width: 500px; /* Limit the maximum width */
-    border-radius: 10px;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-}
-
-.close-btn:hover,
-.close-btn:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-#location-list {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-#location-list li {
-    margin: 10px 0;
-    cursor: pointer;
-    font-size: 1.2rem;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-}
-
-#location-list li:hover {
-    background-color: #ddd;
-}
-
-/* Loader Styles */
-.loader {
-    border: 8px solid #f3f3f3; /* Light grey border */
-    border-top: 8px solid #3498db; /* Blue border on top */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1s linear infinite; /* Spin animation */
-    margin: 20px auto; /* Center the loader */
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.fish_page_border {
-    margin-top: 50px;
-    width: 100%;
-    height: auto;
-}
-
 /* Main Content Area */
-#main_content {
+.content-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
+    justify-content: space-between; /* Create space between the left and right panels */
     width: 100%;
-    max-width: 1200px; /* Optional: Limit the maximum width */
-    box-sizing: border-box;
-}
-.main-content {
-    margin-top: 20px; 
-}
-#main_content label {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+    padding: 20px;
+    margin-top: 40px; /* Adjust margin-top to make it slightly lower than Location */
 }
 
-#location-filter {
-    padding: 8px 12px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+canvas {
+    width: 900px; /* Adjust width */
+    height: 400px; /* Adjust height */
+    margin-left: 20px;
+   
+}
+
+.right-panel {
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px; /* 扩宽为原来的一倍 */
+    margin-left: 20px;
+}
+
+.info-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     margin-bottom: 20px;
 }
 
-/* Container for Fish Images */
-#locations-container {
-    display: flex;
-    flex-wrap: wrap; /* Wrap items if they don't fit in one row */
-    justify-content: space-between; /* Distribute space evenly */
-    width: 100%; /* Full width */
-    padding: 20px;
-    margin-top: 20px;
-    box-sizing: border-box;
-    max-width: 1200px; /* Optional: Limit the maximum width of the content */
-    
-    cursor: pointer; /* Add cursor pointer to indicate it's clickable */
+.info-icon {
+    width: 100px; /* 保持图标大小 */
+    height: 100px;
+    margin-right: 15px; /* 图标和文字之间的间距 */
 }
+
+.info-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-details p {
+    margin: 0;
+    font-size: 18px;
+}
+
+#uv-index, #wind-speed, #pressure {
+    font-weight: bold;
+}
+
+
+.centered-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+
+.info-img {
+    width: 100%; /* Make the image take full width of the container */
+    height: auto;
+}
+
+
 
 body {
     font-family: 'Amatic SC', sans-serif;
     margin: 0;
+    height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column; 
-    height: 100vh;  
-    background-image: url('../images/tidepagebg.png'); 
-    background-size: cover; 
-    background-position: center; 
+    background-image: url('../images/tidepagebg.png');
+    background-size: cover;
+    background-position: center;
 }
-
 
 h1 {
-    text-align: center;
     font-family: 'Amatic SC', sans-serif;
-    margin-bottom: 20px; 
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 48px; /* Make the Tide title larger */
+    margin-top: 0; /* Ensure it doesn't have excess top margin */
 }
 
-canvas {
-    width: 1200px;
-    height: 600px;  
-    
+h2 {
+    font-family: 'Amatic SC', sans-serif;
+    margin-bottom: 10px;
+    text-align: left;
+    font-size: 32px;
+}
+
+.location-name2 {
+    text-align: center;
+    font-size: 50px;
+    color: black;
+    font-family: 'Tangerine', cursive;
+    font-weight: 700;
+    padding: 10px;
+    opacity: 0; /* Initially hidden */
+    margin-top: 20px; /* Adjust margin to control positioning */
+}
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
