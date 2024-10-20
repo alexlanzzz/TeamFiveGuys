@@ -311,7 +311,7 @@ function drawSmoothWave(tideData) {
 
   const canvasWidth = canvas.width;
   const canvasHeight = canvas.height;
-  const heightScaleFactor = 200;  // Scaling factor for wave height
+  const heightScaleFactor = 100;  // Scaling factor for wave height
 
   // Calculate the min and max time from the tide data
   const minTime = tideData[0].time.getTime();
@@ -346,7 +346,7 @@ function drawSmoothWave(tideData) {
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // Add text labels for each data point
+  // Add text labels for each data point (closer to the wave)
   tideData.forEach((data, index) => {
     const x = times[index];
     const y = canvasHeight / 2 - heights[index];
@@ -358,14 +358,18 @@ function drawSmoothWave(tideData) {
     ctx.fillStyle = "black";
     ctx.font = "14px Arial";
 
+    // Adjust the y position of text depending on the height of the wave
+    const labelOffsetY = heights[index] > 0 ? 15 : -15; // Place label above for high points, below for low points
+
     // Adjust text positioning for the last point
     if (index === times.length - 1) {
-      ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x - 150, y - 10);
+      ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x - 150, y + labelOffsetY);
     } else {
-      ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x + 5, y - 10);
+      ctx.fillText(`${data.type} (${data.height.toFixed(2)}m) ${timeString}`, x + 5, y + labelOffsetY);
     }
   });
 }
+
 })
 const weatherInfo = document.getElementById('weather-info');
 const temperatureElement = document.getElementById('temperature');
