@@ -81,24 +81,23 @@ html, body {
     text-decoration: none; /* Remove underline */
 }
 
-/* 波纹容器样式 */
+
 .wave-container {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 100px; /* 根据需要调整高度 */
+    height: 100px; 
     overflow: hidden;
     line-height: 0;
 }
 
-/* 波纹 SVG 样式 */
 .waves {
     position: relative;
     width: 200%;
     height: 100%;
 }
 
-/* 波纹动画 */
+
 .wave1 {
     animation: moveWaves 10s linear infinite;
 }
@@ -120,7 +119,6 @@ html, body {
     }
 }
 
-/* 不同时间段的背景类 */
 .morning {
     background-image: url('../images/bgindexmorining.png');
 }
@@ -189,27 +187,25 @@ html, body {
 }
 
 
-/* 加载动画容器样式 */
 #loading-container {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #fff; /* 您可以根据需要更改背景颜色 */
+    background-color: #fff; 
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 9999; /* 确保加载容器位于最上层 */
+    z-index: 9999; /
 }
 
-/* 隐藏加载动画时的淡出效果 */
 #loading-container.fade-out {
     opacity: 0;
-    transition: opacity 3s ease;
+    transition: opacity 2s ease;
 }
 
-/* Bird container styling */
+
 .bird-container {
     position: fixed;
     top: 58%;
@@ -229,7 +225,6 @@ html, body {
     transform: rotate(-20deg);
 }
 
-/* 定义动画圈的样式 */
 .bird-container::after {
     content: "";
     position: absolute;
@@ -244,14 +239,13 @@ html, body {
     pointer-events: none;
   }
   
-  /* 当鼠标悬停时触发动画，将圈放大 */
+
   .bird-container:hover::after {
     width: 120%;
     height: 120%;
     transform: translate(-50%, -50%) scale(1);
   }
   
-  /* bird-img 的基础样式，可以根据需要进行调整 */
   #bird-img {
     width: 100px;
     height: auto;
@@ -259,7 +253,6 @@ html, body {
     cursor: pointer;
   }
   
-  /* 悬停时旋转bird-img */
   #bird-img:hover {
     transform: rotate(-20deg);
   }
