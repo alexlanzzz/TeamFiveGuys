@@ -21,7 +21,7 @@ $(document).ready(function() {
 
   const locationName2Display = $('#location-name2');
   const locations = document.querySelectorAll('.location');
-  const cacheDuration = 60 * 60 * 1000;
+  const cacheDuration = 60 * 60 * 1000 * 12;
   const apikey = 'b8983068-7320-11ef-968a-0242ac130004-b89830e0-7320-11ef-968a-0242ac130004';
   // Retrieve the selected location from local storage
   const selectedLocation = localStorage.getItem('selectedLocation');
