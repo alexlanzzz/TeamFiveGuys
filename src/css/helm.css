@@ -2,7 +2,11 @@
     position: fixed;
     bottom: -120px;
     width: 100%; /* Match the size of the helm */
+<<<<<<< Updated upstream
     height: 200px; /* Match the size of the helm */
+=======
+    height: auto; /* Match the size of the helm */
+>>>>>>> Stashed changes
     display: flex;
     justify-content: center;
     justify-items: center;
@@ -23,6 +27,7 @@
     height: 200px; /* Full height of the container */
     background: url('../images/helm.png') no-repeat center center;
     background-size: contain;
+    justify-self: center;
 }
 
 #location-list {
