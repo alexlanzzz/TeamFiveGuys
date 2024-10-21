@@ -16,7 +16,7 @@ body, html {
     color: #000000;
     padding: 12px 16px;
     border-radius: 6px;
-    font-size: 2vw; /* Increased font size */
+    font-size: 2vw;
     display: flex;
     align-items: center;
     transition: left 0.3s ease; /* Smooth transition when shifting */
@@ -24,7 +24,7 @@ body, html {
 }
 
 .weather-info img, .weather-info i {
-    width: 2vw; /* Increased icon size */
+    width: 2vw;
     height: 2vw;
     margin-right: 12px;
 }
@@ -77,13 +77,6 @@ header {
     pointer-events: none;
 }
 
-/* Trigger the animation on hover, enlarging the circle */
-/* .icon-menu ul li:hover::after {
-    width: 120%;
-    height: 120%;
-    transform: translate(-50%, -50%) scale(1);
-} */
-
 .menu-icon-img {
     width: 140px;
     height: auto;
@@ -91,9 +84,8 @@ header {
     transition: transform 0.3s ease;
 }
 
-/* Rotate the icon-menu items on hover */
 .icon-menu ul li:hover .menu-icon-img {
-    transform: scale(1.2); /* Combine rotation and scaling */
+    transform: scale(1.2);
 }
 
 .icon-description {

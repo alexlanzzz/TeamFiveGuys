@@ -15,19 +15,19 @@ function setBackgroundBasedOnTime() {
     let timeOfDay = '';
 
     if (hours >= 5 && hours < 12) {
-        timeOfDay = 'morning'; // 早晨
+        timeOfDay = 'morning'; // Morning
     } else if (hours >= 12 && hours < 17) {
-        timeOfDay = 'noon'; // 中午
+        timeOfDay = 'noon'; // Noon
     } else if (hours >= 17 && hours < 20) {
-        timeOfDay = 'afternoon'; // 下午
+        timeOfDay = 'afternoon'; // Afternoon
     } else {
-        timeOfDay = 'night'; // 夜晚
+        timeOfDay = 'night'; // Night
     }
 
-    // 移除之前的时间段类
+    // Remove all time classes
     container.classList.remove('morning', 'noon', 'afternoon', 'night');
 
-    // 添加当前时间段的类
+    // Add the current time class
     container.classList.add(timeOfDay);
 
     console.log(`Current hour: ${hours}, applied class: ${timeOfDay}`);

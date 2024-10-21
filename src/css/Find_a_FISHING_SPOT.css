@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../images/bg.jpg'); /* Path to your image */
+    background-image: url('../images/bg.jpg');
     background-size: cover; /* Ensures the image covers the entire page */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents tiling */
@@ -13,7 +13,7 @@ body {
 
 /* Style the header to stay fixed at the top */
 header {
-    font-family: 'Amatic SC', sans-serif; /* Keep the header font from the test page */
+    font-family: 'Amatic SC', sans-serif;
     background-color: transparent;
     padding: 10px 0;
     text-align: center;
@@ -148,7 +148,7 @@ header {
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    font-family: 'Lexend Deca', sans-serif; /* Font style */
+    font-family: 'Lexend Deca', sans-serif;
     font-size: 1em; /* Responsive font size */
     line-height: 1.5em; /* Improve readability */
     text-align: justify; /* Justify text on both sides */

@@ -57,13 +57,13 @@
 }
 
 #location-list li:hover {
-    background-color: rgba(0, 0, 0, 0.1); /* Light gray background on hover */
+    background-color: rgba(0, 0, 0, 0.1);
     color: #007BFF; /* Change text color on hover */
 }
 
 .location {
     font-family: 'Lexend Deca', sans-serif;
-    font-size: 0.8em; /* Adjust the size as needed */
+    font-size: 0.8em;
 }
 
 #helm-prompt-text {

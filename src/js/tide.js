@@ -190,7 +190,7 @@ function displayWindSpeed(windSpeed) {
     if (cachedData) {
       const tideData = JSON.parse(cachedData).map(tide => ({
           height: tide.height,
-          time: new Date(tide.time), // 将字符串转换为 Date 对象
+          time: new Date(tide.time),
           type: tide.type  
       }));
       drawSmoothWave(tideData)}
@@ -208,7 +208,7 @@ function displayWindSpeed(windSpeed) {
                 type: tide.type  
             }));
 
-            localStorage.setItem(cacheKey, JSON.stringify(tideData)); // 缓存数据
+            localStorage.setItem(cacheKey, JSON.stringify(tideData));
             drawSmoothWave(tideData);  
         })
         .catch(error => {
@@ -356,7 +356,7 @@ function drawSmoothWave(tideData) {
 
     // Set font style and color
     ctx.fillStyle = "black";
-    ctx.font = "14px Arial";
+    ctx.font = "18px Arial";
 
     // Adjust the y position of text depending on the height of the wave
     const labelOffsetY = heights[index] > 0 ? 15 : -15; // Place label above for high points, below for low points
@@ -456,8 +456,7 @@ window.addEventListener('load', function() {
     const loadingContainer = document.getElementById('loading-container');
     loadingContainer.classList.add('fade-out');
 
-    // 在动画结束后，将加载容器从文档中移除
     setTimeout(function() {
         loadingContainer.style.display = 'none';
-    }, 1000); // 与 CSS 中的过渡时间匹配（0.5s）
+    }, 1000);
 });

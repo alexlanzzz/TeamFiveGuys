@@ -19,7 +19,7 @@ canvas {
     
     border-radius: 10px;
   
-    width: 400px; /* 扩宽为原来的一倍 */
+    width: 400px;
     margin-left: 20px;
     
 }
@@ -32,9 +32,9 @@ canvas {
 }
 
 .info-icon {
-    width: 100px; /* 保持图标大小 */
+    width: 100px;
     height: 100px;
-    margin-right: 15px; /* 图标和文字之间的间距 */
+    margin-right: 15px;
 }
 
 .info-details {
@@ -101,7 +101,7 @@ h2 {
     text-align: center;
     font-size: 50px;
     color: black;
-    font-family: 'lexend deca', sans-serif;
+    font-family: 'Tangerine', cursive;
     font-weight: 700;
     padding: 10px;
     opacity: 0; /* Initially hidden */

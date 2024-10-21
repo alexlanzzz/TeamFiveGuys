@@ -49,8 +49,8 @@ main {
 
 
 .additional-text {
-    font-size: 0.4em; /* Smaller font size */
-    font-weight: 150px; /* Thinner font weight */
+    font-size: 0.4em;
+    font-weight: 150px;
     font-family: 'Lexend Deca', sans-serif;
 }
 
@@ -74,7 +74,7 @@ main {
     justify-content: space-between;
     justify-items: center;
     align-items: center;
-    height: 50vh; /* Occupy most of the viewport height */
+    height: 50vh;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -87,7 +87,7 @@ main {
     align-items: center;
     justify-content: center; /* Center align the image and name vertically */
     transition: all 0.5s ease; /* Smooth transition for sliding */
-    width: 50%; /* Closer to center for better sliding effect */
+    width: 50%;
     margin: 0 auto;
     transform: translateX(50px); 
 }
@@ -95,12 +95,12 @@ main {
 /* Slide effect when clicked */
 .fish-item-container.slide-left {
     transform: translateX(-150px); /* Slide the container 150px to the left */
-    margin-left: 200px; /* Adjust margin to keep the container centered */
+    margin-left: 200px;
 }
 
 /* Fish image */
 .fish-item {
-    width: 350px; /* Adjusted image size for better centering */
+    width: 350px;
     height: auto;
     margin-bottom: 20px;
     transition: transform 0.3s ease; /* Add smooth transition for scaling */
@@ -113,8 +113,8 @@ main {
 
 /* Fish name */
 .fish-name {
-    font-family: 'Lexend Deca', sans-serif; /* Use Lexend Deca font */
-    font-size: 42px; /* Larger font size for the fish name */
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 42px;
     font-weight: 700; /* Make the name bold */
     color: #333;
     transition: all 0.5s ease; /* Ensure smooth transition for text as well */
@@ -125,8 +125,8 @@ main {
     width: 0%; /* Initially hidden */
     opacity: 0;
     transition: all 0.5s ease; /* Smooth transition for showing details */
-    font-size: 16px; /* Smaller font size for the detailed description */
-    font-family: 'Lexend Deca', sans-serif; /* Use Lexend Deca for details as well */
+    font-size: 16px;
+    font-family: 'Lexend Deca', sans-serif;
     text-align: justify;
     padding-top: 20px;
     margin-right: 150px;
@@ -182,6 +182,6 @@ main {
     }
 
     .fish-name {
-        font-size: 0.9rem; /* Reduce font size */
+        font-size: 0.9rem;
     }
 }
