@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 /* Main Content Area */
 .content-container {
     display: flex;
@@ -21,6 +25,7 @@ canvas {
   
     width: 400px;
     margin-left: 20px;
+    margin-top: 90px;
     
 }
 
@@ -86,7 +91,7 @@ h1 {
     font-family: 'lexend deca', sans-serif;
     margin-bottom: 10px;
     text-align: center;
-    font-size: 48px; /* Make the Tide title larger */
+    font-size: 40px; /* Make the Tide title larger */
     margin-top: 100px; /* Ensure it doesn't have excess top margin */
 }
 
